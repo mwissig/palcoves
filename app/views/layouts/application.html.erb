@@ -12,6 +12,11 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="content">
+      <% if logged_in? %>
+      you are logged in
+      <% else %>
+      you are not logged in
+      <% end %>
     <%= yield %>
   </div>
         <%= render 'layouts/footer' %>
