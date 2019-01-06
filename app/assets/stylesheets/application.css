@@ -14,26 +14,36 @@
  *= require_self
  */
 body {
-  background-color: rgb(237, 209, 219);
+  background-color: white;
+  font-family: sans-serif;
 }
-header {
+header, footer {
   position: fixed;
   top: 0;
   left: 0;
   margin: 0;
   width: 100%;
   height: 2em;
-  background-color: green;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-around;
 }
 footer {
-  position: fixed;
+  top: auto;
   bottom: 0;
-  left: 0;
-  margin: 0;
-  width: 100%;
-  height: 2em;
-  background-color: green;
 }
 .content {
   padding: 2em 0;
+}
+form input {
+  border: 1px solid black;
+  border-radius: 0;
+  padding: 3px 8px;
+  font-family: sans-serif;
+  background-color: white;
+}
+form input[type="submit"] {
+  background-color: red;
+  color: black;
 }
