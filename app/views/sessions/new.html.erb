@@ -1,7 +1,7 @@
 <h1>Log in</h1>
 <p>Not registered? <%= link_to 'Create an account', register_path %>.</p>
 <%= form_for(:session, url: login_path) do |f| %>
-  <%= f.password_field :email, placeholder: 'email', require: true %>
+  <%= f.email_field :email, placeholder: 'email', require: true %>
   <%= f.password_field :password, placeholder: 'Password', require: true %>
   <%= f.submit 'Log in' %>
 <% end %>

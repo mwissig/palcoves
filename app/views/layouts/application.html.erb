@@ -12,8 +12,22 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="content">
+
+      <% if !flash.empty? %>
+        <div class="flash-messages-container">
+          <% flash.each do |name, msg| %>
+            <% if msg.is_a?(String) && [:success, :info, :error, :warning].include?(name) %>
+              <div class="flash-message" data-type="<%= name %>" >
+                <%= msg %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <% flash.clear %>
+      <% end %>
+
       <% if logged_in? %>
-      you are logged in
+      you are logged in as <%= @current_user.email %>
       <% else %>
       you are not logged in
       <% end %>
