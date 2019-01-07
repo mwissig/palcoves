@@ -1,13 +1,23 @@
-class UsernamenamesController < ApplicationController
+class UsernamesController < ApplicationController
 
     before_action :find_username, only: %i[show edit update]
     def new
+      @user = @current_user
       @username = Username.new
       end
 
     def create
       @username = Username.new(username_params)
+
       if @username.save
+        if @username.default == true && @current_user.usernames.count > 1
+          @current_user.usernames each do |u|
+            u.default = false
+            u.save!
+          end
+          @username.default = true
+          @username.save!
+        end
         redirect_to user_path(@current_user)
       else
         render 'new'

@@ -1,9 +1,10 @@
 <h1>Usernames#new</h1>
-<p>Find me in app/views/usernames/new.html.erb</p>
-<%= form_for (@current_user, @username) do |f| %>
+<% if logged_in? %>
+<%= form_for(@current_user, @username) do |f| %>
 <%= f.text_field :email, placeholder: 'email', require: true %>
 <%= f.text_area :description, placeholder: 'write a description (you can do this later)' %>
-<%= f.upload :avatar, placeholder: 'upload an avatar' %>
+<%= f.file_field :avatar, placeholder: 'upload an avatar' %>
 <%= f.label "Make default?" %><%= f.check_box :default %>
 <%= f.submit 'Create username' %>
+<% end %>
 <% end %>
