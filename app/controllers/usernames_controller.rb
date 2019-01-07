@@ -12,12 +12,7 @@ class UsernamesController < ApplicationController
       @username.user_id = @current_user.id
       if @username.save
         if @username.default == true && @current_user.usernames.count > 1
-          @current_user.usernames.each do |u|
-            u.default = false
-            u.save!
-            @username.default = true
-            @username.save!
-          end
+          set_default
         end
         redirect_to user_path(@current_user)
       else
@@ -53,6 +48,17 @@ class UsernamesController < ApplicationController
     @username = Username.find(params[:username_id])
     @username.destroy
     redirect_to root_path
+  end
+
+  def set_default
+    @current_user.usernames.each do |u|
+      if u == @username
+        u.default = true
+      else
+      u.default = false
+    end
+      u.save!
+    end
   end
 
     private
