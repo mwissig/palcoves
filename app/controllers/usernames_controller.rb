@@ -15,9 +15,9 @@ class UsernamesController < ApplicationController
           @current_user.usernames.each do |u|
             u.default = false
             u.save!
+            @username.default = true
+            @username.save!
           end
-          @username.default = true
-          @username.save!
         end
         redirect_to user_path(@current_user)
       else
