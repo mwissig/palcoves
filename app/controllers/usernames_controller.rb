@@ -42,7 +42,7 @@ class UsernamesController < ApplicationController
   end
 
     def show
-      @username = Username.find(params[:id])
+      @username = Username.find_by username: params[:username]
     end
 
     def index
@@ -73,7 +73,7 @@ class UsernamesController < ApplicationController
     end
 
     def find_username
-      @username = Username.find(params[:id])
+      @username = Username.find_by username: params[:username]
    end
 
 end
