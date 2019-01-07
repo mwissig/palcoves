@@ -1,4 +1,4 @@
-<%= form_for([@current_user, @username, @post]) do |f| %>
+<%= form_for([@username, @post]) do |f| %>
 <%= f.label 'Post as' %> <%= f.select :username_id, @username_selector %><br>
   <%= f.text_field :title, placeholder: 'title', require: true %><br>
   <%= f.text_area :body, placeholder: 'body', require: true %><br>

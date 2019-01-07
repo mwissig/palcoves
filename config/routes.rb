@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'comments/new'
+  get 'comments/index'
+  get 'comments/edit'
+  get 'comments/show'
   get 'posts/new'
   get 'posts/edit'
   get 'posts/index'
@@ -10,7 +14,7 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  
+
  get 'post' => 'pages#post'
 
   get 'users' => 'users#index'
@@ -22,12 +26,16 @@ Rails.application.routes.draw do
 
   resources :users do
  delete 'delete' => 'users#destroy'
- resources :usernames do
-    delete 'delete' => 'usernames#destroy'
-    resources :posts do
-       delete 'delete' => 'posts#destroy'
-     end
-  end
 end
+
+resources :usernames do
+   delete 'delete' => 'usernames#destroy'
+   resources :posts do
+      delete 'delete' => 'posts#destroy'
+      resources :comments do
+         delete 'delete' => 'comments#destroy'
+       end
+    end
+ end
 
 end
