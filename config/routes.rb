@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'posts/new'
+  get 'posts/edit'
+  get 'posts/index'
+  get 'posts/show'
   get 'usernames/new'
   get 'usernames/index'
   get 'usernames/edit'
@@ -19,6 +23,9 @@ Rails.application.routes.draw do
  delete 'delete' => 'users#destroy'
  resources :usernames do
     delete 'delete' => 'usernames#destroy'
+    resources :posts do
+       delete 'delete' => 'posts#destroy'
+     end
   end
 end
 
