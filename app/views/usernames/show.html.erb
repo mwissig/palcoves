@@ -1,2 +1,4 @@
-<h1>Usernames#show</h1>
-<p>Find me in app/views/usernames/show.html.erb</p>
+<h1><%= @username.username %></h1>
+<p><%= @username.profile %></p>
+<% @posts = @username.posts %>
+<%= render 'layouts/post' %>

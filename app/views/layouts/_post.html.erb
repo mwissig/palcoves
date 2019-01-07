@@ -1,0 +1,9 @@
+<%# will_paginate @posts %>
+<% @posts.each do |p| %>
+  <div class="post"><h2>
+  <%= p.title %></h2>
+<p><%= p.body %></p>
+<p><i>by <%= p.username.username %></i> at <%= p.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
+</p></div>
+<% end %>
+<%# will_paginate @posts %>

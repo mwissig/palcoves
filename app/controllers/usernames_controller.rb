@@ -43,6 +43,7 @@ class UsernamesController < ApplicationController
 
     def show
       @username = Username.find_by username: params[:username]
+      @posts = @username.posts.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
     end
 
     def index
