@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def home
+    @posts = Post.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
   end
   def post
     if logged_in?
