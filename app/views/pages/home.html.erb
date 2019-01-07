@@ -6,10 +6,11 @@
 <%= link_to "sign up", register_path %><br>
 <% end %>
 <div class="posts">
-  <% Post.all.each do |p| %>
+  <% Post.all.order("created_at DESC").each do |p| %>
     <div class="post"><h2>
     <%= p.title %></h2>
   <p><%= p.body %></p>
-<p><i>by <%= p.username.username %></i></p></div>
+<p><i>by <%= p.username.username %></i> at <%= p.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
+</p></div>
   <% end %>
 </div>
