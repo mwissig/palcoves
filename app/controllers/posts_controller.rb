@@ -9,18 +9,29 @@ class PostsController < ApplicationController
       @username = @user.usernames.find_by(default: true)
       @post = Post.new
     end
+    names = ["(Default) " + @user.usernames.find_by(default: true).username]
+    ids = [@user.usernames.find_by(default: true).id]
+      @user.usernames.each do |u|
+        names.push u.username
+      end
+      @user.usernames.each do |u|
+        ids.push u.id
+      end
+      @username_selector = names.zip(ids)
+
       end
 
     def create
       if logged_in?
       @post = Post.new(post_params)
       @user = @current_user
-      @username = @user.usernames.find_by(default: true)
+      # @post.username ||= @user.usernames.find_by(default: true)
+
+
       @post.username_id = @username.id
       if @post.op_id == "" || @post.op_id == nil
         @post.op_id = @post.id
       end
-      @post.username = @current_user.usernames.find_by(default: true)
        @post.save!
       if @post.save
         redirect_to user_path(@current_user)
