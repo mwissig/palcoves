@@ -1,10 +1,14 @@
 <h1>Usernames#new</h1>
 <% if logged_in? %>
-<%= form_for(@current_user, @username) do |f| %>
-<%= f.text_field :email, placeholder: 'email', require: true %>
-<%= f.text_area :description, placeholder: 'write a description (you can do this later)' %>
-<%= f.file_field :avatar, placeholder: 'upload an avatar' %>
-<%= f.label "Make default?" %><%= f.check_box :default %>
+
+<%= form_for([@current_user, @username]) do |f| %>
+<%= f.text_field :username, placeholder: 'create a username', require: true %><br>
+<%= f.text_area :profile, placeholder: 'write a description (you can do this later)' %><br><br><br>
+<%= f.file_field :avatar, placeholder: 'upload an avatar' %><br><br>
+<%= f.label "Make default?" %><%= f.check_box :default %><br>
 <%= f.submit 'Create username' %>
 <% end %>
+
+<% else %>
+Must be logged in
 <% end %>

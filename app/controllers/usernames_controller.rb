@@ -7,11 +7,12 @@ class UsernamesController < ApplicationController
       end
 
     def create
+      if logged_in?
       @username = Username.new(username_params)
-
+      @username.user_id = @current_user.id
       if @username.save
         if @username.default == true && @current_user.usernames.count > 1
-          @current_user.usernames each do |u|
+          @current_user.usernames.each do |u|
             u.default = false
             u.save!
           end
@@ -25,6 +26,7 @@ class UsernamesController < ApplicationController
         flash.now[:error] = msg
       end
     end
+  end
 
     def edit; end
 
@@ -56,7 +58,7 @@ class UsernamesController < ApplicationController
     private
 
     def username_params
-      params.require(:username).permit(:username, :description, :default)
+      params.require(:username).permit(:username, :profile, :avatar, :default)
     end
 
     def find_username

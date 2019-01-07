@@ -8,7 +8,11 @@
   Your accounts<br>
     <% if @current_user.usernames.count > 0 %>
       <% @current_user.usernames.each do |u| %>
-        <%= u.username %><br>
+        <%= u.username %>
+        <% if u.default == true %>
+        (default)
+          <% end %>
+          <br>
       <% end %>
     <% else %>
     You have no usernames<br>
