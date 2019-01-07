@@ -64,3 +64,6 @@ form input[type="submit"] {
   margin: 5px;
   padding: 5px;
 }
+.default {
+  background-color: yellow;
+}

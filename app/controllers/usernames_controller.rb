@@ -27,6 +27,11 @@ class UsernamesController < ApplicationController
 
     def update
       if @username.update(username_params)
+        if logged_in?
+        if @username.default == true && @current_user.usernames.count > 1
+          set_default
+        end
+      end
         p 'username successfully updated'
         redirect_back(fallback_location: root_path)
       else
