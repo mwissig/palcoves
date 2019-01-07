@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
   resources :users do
  delete 'delete' => 'users#destroy'
+ resources :usernames do
+    delete 'delete' => 'usernames#destroy'
+  end
 end
 
 end
