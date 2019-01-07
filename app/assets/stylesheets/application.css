@@ -48,15 +48,27 @@ header ul li a {
 .content {
   padding: 2em 0;
 }
-form input, textarea {
+form input, textarea, select {
   border: 1px solid black;
   border-radius: 0;
   padding: 3px 8px;
   font-family: sans-serif;
   background-color: white;
+    border-radius: 5px;
+    margin: 3px;
+    font-size: 16px;
+}
+textarea {
+  width: 70%;
+  height: 10em;
 }
 form input[type="submit"] {
-  background-color: red;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+}
+form input[type="submit"]:hover {
+  background-color: rgb(247, 197, 141);
   color: black;
 }
 .username {
