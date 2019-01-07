@@ -3,8 +3,8 @@
 
 <%= form_for([@current_user, @username]) do |f| %>
 <%= f.text_field :username, placeholder: 'create a username', require: true %><br>
-<%= f.text_area :profile, placeholder: 'write a description (you can do this later)' %><br><br><br>
-<%= f.file_field :avatar, placeholder: 'upload an avatar' %><br><br>
+<%= f.text_area :profile, placeholder: 'write a description (you can do this later)' %><br>
+<%= f.file_field :avatar, placeholder: 'upload an avatar' %><br>
 <%= f.label "Make default?" %><%= f.check_box :default %><br>
 <%= f.submit 'Create username' %>
 <% end %>
