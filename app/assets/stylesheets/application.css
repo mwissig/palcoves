@@ -59,3 +59,8 @@ form input[type="submit"] {
   background-color: red;
   color: black;
 }
+.username {
+  border: 2px solid black;
+  margin: 5px;
+  padding: 5px;
+}

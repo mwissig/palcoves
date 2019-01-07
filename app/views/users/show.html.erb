@@ -8,11 +8,11 @@
   Your accounts<br>
     <% if @current_user.usernames.count > 0 %>
       <% @current_user.usernames.each do |u| %>
-        <%= u.username %>
+        <div class="username"><%= link_to u.username, user_username_path(@current_user, u) %>
         <% if u.default == true %>
         (default)
           <% end %>
-          <br>
+        </div>
       <% end %>
     <% else %>
     You have no usernames<br>
