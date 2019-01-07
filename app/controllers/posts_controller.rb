@@ -14,10 +14,14 @@ class PostsController < ApplicationController
     def create
       if logged_in?
       @post = Post.new(post_params)
+      @user = @current_user
+      @username = @user.usernames.find_by(default: true)
       @post.username_id = @username.id
       if @post.op_id == "" || @post.op_id == nil
         @post.op_id = @post.id
       end
+      @post.username = @current_user.usernames.find_by(default: true)
+       @post.save!
       if @post.save
         redirect_to user_path(@current_user)
       else
@@ -67,15 +71,14 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
    end
 
-    def find_user
-      if logged_in?
-         @user = @current_user
-       end
-      end
 
       def find_username
       @username = Username.find(params[:username_id])
      end
 
-
+     def find_user
+       if logged_in?
+       @user = @username.user
+        end
+       end
 end

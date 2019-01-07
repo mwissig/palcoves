@@ -48,7 +48,7 @@ header ul li a {
 .content {
   padding: 2em 0;
 }
-form input {
+form input, textarea {
   border: 1px solid black;
   border-radius: 0;
   padding: 3px 8px;
@@ -66,4 +66,9 @@ form input[type="submit"] {
 }
 .default {
   background-color: yellow;
+}
+.post {
+  border: 2px solid black;
+  margin: 5px;
+  padding: 5px;
 }
