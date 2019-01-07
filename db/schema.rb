@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_06_215144) do
+ActiveRecord::Schema.define(version: 2019_01_07_004453) do
+
+  create_table "usernames", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "username"
+    t.text "profile"
+    t.boolean "default"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["username"], name: "index_usernames_on_username", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'usernames/new'
+  get 'usernames/index'
+  get 'usernames/edit'
+  get 'usernames/show'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
