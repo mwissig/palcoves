@@ -11,7 +11,7 @@ class PagesController < ApplicationController
       names = ["(Default) " + @current_user.usernames.find_by(default: true).username]
       ids = [@current_user.usernames.find_by(default: true).id]
         @current_user.usernames.each do |u|
-          names.push u.username
+          names.push u.name
         end
         @current_user.usernames.each do |u|
           ids.push u.id

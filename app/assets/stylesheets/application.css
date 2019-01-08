@@ -29,6 +29,16 @@ header, footer {
   display: flex;
   justify-content: space-around;
 }
+h1, h2, p {
+  margin: auto auto;
+}
+h1, h2 {
+  text-align: center;
+}
+p {
+  max-width: 70%;
+  margin: 0 auto;
+}
 footer {
   top: auto;
   bottom: 0;
@@ -47,6 +57,11 @@ header ul li a {
 }
 .content {
   padding: 2em 0;
+}
+form {
+  display: inline;
+  max-width: 70%;
+  margin: 0 auto;
 }
 form input, textarea, select {
   border: 1px solid black;
@@ -75,12 +90,15 @@ form input[type="submit"]:hover {
   border: 2px solid black;
   margin: 5px;
   padding: 5px;
+  width: 70%;
+  margin: 5px auto;
 }
 .default {
   background-color: yellow;
 }
 .post {
   border: 2px solid black;
-  margin: 5px;
   padding: 5px;
+  max-width: 70vw;
+  margin: 5px auto;
 }

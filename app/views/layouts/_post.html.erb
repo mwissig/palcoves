@@ -3,7 +3,7 @@
   <div class="post"><h2>
   <%= p.title %></h2>
 <p><%= p.body %></p>
-<p><i>by <%= p.username.username %></i> at <%= p.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
+<p><i>by <%= p.username.name %></i> at <%= p.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
 </p></div>
 <% end %>
 <%# will_paginate @posts %>
