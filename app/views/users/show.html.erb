@@ -12,8 +12,12 @@
           <div class="default username"><%= link_to u.name, username_path(u.name) %>
           </div>
           <% else %>
+          <% p u %>
+          <% p u.posts %>
+          <% p "--------------------------------------------" %>
           <div class="username"><%= link_to u.name, username_path(u.name) %>
             <%= form_for u do |f| %>
+
               <%= f.hidden_field :name, value: u.name %>
               <%# f.hidden_field :id, value: u.id %>
               <%= f.hidden_field :default, value: true %>

@@ -10,7 +10,7 @@ class UsernamesController < ApplicationController
       if logged_in?
       @username = Username.new(username_params)
       @username.user_id = @current_user.id
-      if @username.save
+      if @username.save(username_params)
         if @username.default == true && @current_user.usernames.count > 1
           set_default
         end
@@ -42,7 +42,7 @@ class UsernamesController < ApplicationController
   end
 
     def show
-      @username = Username.find_by username: params[:name]
+      @username = Username.find_by(slug: params[:id])
       @posts = @username.posts.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
     end
 
@@ -51,13 +51,13 @@ class UsernamesController < ApplicationController
     end
 
     def destroy
-    @username = Username.find_by username: params[:name]
+    @username = Username.find_by(slug: params[:id])
     @username.destroy
     redirect_to root_path
   end
 
   def set_default
-    @username = Username.find_by username: params[:name]
+    @username = Username.find_by(slug: params[:id])
     @current_user.usernames.each do |u|
       if u == @username
         u.default = true
@@ -71,11 +71,11 @@ class UsernamesController < ApplicationController
     private
 
     def username_params
-      params.require(:username).permit(:name, :profile, :avatar, :default)
+      params.require(:username).permit(:id, :slug, :name, :profile, :avatar, :default)
     end
 
     def find_username
-      @username = Username.find_by name: params[:name]
+      @username = Username.find_by(slug: params[:id])
    end
 
 end
