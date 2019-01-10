@@ -28,7 +28,7 @@ Rails.application.routes.draw do
  delete 'delete' => 'users#destroy'
 end
 
-resources :usernames, param: :username do
+resources :usernames do
    delete 'delete' => 'usernames#destroy'
    resources :posts do
       delete 'delete' => 'posts#destroy'

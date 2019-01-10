@@ -42,7 +42,7 @@ class UsernamesController < ApplicationController
   end
 
     def show
-      @username = Username.friendly.find_by(params[:id])
+      @username = Username.friendly.find(params[:id])
       @posts = @username.posts.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
     end
 
@@ -51,13 +51,13 @@ class UsernamesController < ApplicationController
     end
 
     def destroy
-    @username = Username.friendly.find_by(params[:id])
+    @username = Username.friendly.find(params[:id])
     @username.destroy
     redirect_to root_path
   end
 
   def set_default
-    @username = Username.friendly.find_by(params[:id])
+    @username = Username.friendly.find(params[:id])
     @current_user.usernames.each do |u|
       if u == @username
         u.default = true
@@ -75,7 +75,7 @@ class UsernamesController < ApplicationController
     end
 
     def find_username
-      @username = Username.friendly.find_by(params[:id])
+      @username = Username.friendly.find(params[:id])
    end
 
 end
