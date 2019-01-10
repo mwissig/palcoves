@@ -1,4 +1,15 @@
-<%# will_paginate @posts %>
+<%= will_paginate @posts %>
+<% if logged_in? %>
+<% ids = [@current_user.usernames.find_by(default: true).id] %>
+  <%     names = ["(Default) " + @current_user.usernames.find_by(default: true).name] %>
+  <% @current_user.usernames.each do |u| %>
+    <% names.push u.name %>
+  <% end %>
+  <% @current_user.usernames.each do |u| %>
+    <% ids.push u.id %>
+  <% end %>
+  <% @username_selector = names.zip(ids) %>
+<% end %>
 <% @posts.each do |p| %>
   <div class="post"><h2>
   <%= p.title %></h2>
@@ -17,20 +28,21 @@
       <% end %>
   <%= c.body %></p>
 <p><i>by <%= c.username.name %></i> at <%= c.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
-</p><hr>
+</p>
+<%= form_for([c.username, c.post, Comment.new]) do |f| %>
+<%= f.label 'Reply as' %> <%= f.select :username_id, @username_selector %><br>
+<%= f.text_area :body, placeholder: 'body', require: true %><br>
+<%= f.hidden_field :post_id, value: c.post.id %><br>
+<%= f.hidden_field :reply_id, value: c.id %><br>
+  <%= f.label "Share this to your feed?" %><%= f.check_box :shared %><br>
+    <%= f.label "Send comment as private message to #{c.username.name}?" %>
+      <%= f.check_box :private %><br>
+<%= f.submit 'Comment' %>
+<% end %>
+<hr>
   <% end %>
 
-<% if logged_in? %>
-<% ids = [@current_user.usernames.find_by(default: true).id] %>
-  <%     names = ["(Default) " + @current_user.usernames.find_by(default: true).name] %>
-  <% @current_user.usernames.each do |u| %>
-    <% names.push u.name %>
-  <% end %>
-  <% @current_user.usernames.each do |u| %>
-    <% ids.push u.id %>
-  <% end %>
-  <% @username_selector = names.zip(ids) %>
-<% end %>
+
 
 <%= form_for([p.username, p, Comment.new]) do |f| %>
 <%= f.label 'Reply as' %> <%= f.select :username_id, @username_selector %><br>

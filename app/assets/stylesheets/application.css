@@ -102,6 +102,13 @@ form input[type="submit"]:hover {
   max-width: 70vw;
   margin: 5px auto;
 }
+.post textarea {
+  height: 1em;
+}
+.post textarea:hover, .post textarea:active {
+  height: 3em;
+  background-color: rgb(255, 248, 181);
+}
 .comment {
 
 }
