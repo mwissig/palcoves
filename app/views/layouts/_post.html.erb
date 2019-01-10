@@ -6,7 +6,16 @@
 <p><i>by <%= p.username.name %></i> at <%= p.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
 </p>
 <hr><% p.comments.each do |c| %>
-<p>  <%= c.body %></p>
+<% if c.private == true && c.reply_id == nil %>
+<p class="top private comment">
+  <% elsif c.private == true && c.reply_id != nil %>
+  <p class="indent private comment">
+  <% elsif c.private == false && c.reply_id != nil %>
+    <p class="indent comment">
+    <% else %>
+    <p class="top comment">
+      <% end %>
+  <%= c.body %></p>
 <p><i>by <%= c.username.name %></i> at <%= c.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
 </p><hr>
   <% end %>
@@ -28,6 +37,8 @@
 <%= f.text_area :body, placeholder: 'body', require: true %><br>
 <%= f.hidden_field :post_id, value: p.id %><br>
   <%= f.label "Share this to your feed?" %><%= f.check_box :shared %><br>
+    <%= f.label "Send comment as private message to #{p.username.name}?" %>
+      <%= f.check_box :private %><br>
 <%= f.submit 'Comment' %>
 <% end %>
 </div>
