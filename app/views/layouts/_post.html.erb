@@ -6,7 +6,9 @@
 <p><i>by <%= p.username.name %></i> at <%= p.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
 </p>
 <hr><% p.comments.each do |c| %>
-<p>  <% c %></p>
+<p>  <%= c.body %></p>
+<p><i>by <%= c.username.name %></i> at <%= c.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
+</p><hr>
   <% end %>
 
 <% if logged_in? %>
@@ -24,6 +26,7 @@
 <%= form_for([p.username, p, Comment.new]) do |f| %>
 <%= f.label 'Reply as' %> <%= f.select :username_id, @username_selector %><br>
 <%= f.text_area :body, placeholder: 'body', require: true %><br>
+<%= f.hidden_field :post_id, value: p.id %><br>
   <%= f.label "Share this to your feed?" %><%= f.check_box :shared %><br>
 <%= f.submit 'Comment' %>
 <% end %>
