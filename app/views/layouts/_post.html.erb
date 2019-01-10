@@ -1,4 +1,4 @@
-<%= will_paginate @posts %>
+<%# will_paginate @posts %>
 <% if logged_in? %>
 <% ids = [@current_user.usernames.find_by(default: true).id] %>
   <%     names = ["(Default) " + @current_user.usernames.find_by(default: true).name] %>
@@ -10,57 +10,20 @@
   <% end %>
   <% @username_selector = names.zip(ids) %>
 <% end %>
-<% @posts.each do |p| %>
+<% @posts.each do |po| %>
   <div class="post">
     <h2>
-  <%= p.title %></h2>
-<p><b><%= p.body %></p>
-<p><i>by <%= p.username.name %></i> at <%= p.created_at.strftime("%-l:%M%P on %b %-d, %Y") %></b>
+  <%= po.title %></h2>
+<p><b><%= po.body %></p>
+<p><i>by <%= po.username.name %></i> at <%= po.created_at.strftime("%-l:%M%P on %b %-d, %Y") %></b>
 </p>
-<hr><% p.comments.each do |c| %>
-<div class="comment">
-<% if c.private == true && c.reply_id == nil %>
-<p class="top private comment">
-    <% elsif c.private == false && c.reply_id == nil %>
-    <p class="top comment">
-      <% end %>
-  <%= c.body %></p>
-<p><i>by <%= c.username.name %></i> at <%= c.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
-</p>
-<% p.comments.where(reply_id: c.id).each do |rep| %>
-<% if c.private == true && c.reply_id != nil %>
-<p class="indent private comment">
-<% elsif c.private == false && c.reply_id != nil %>
-  <p class="indent comment">
-<% end %>
-  <%= rep.body %></p>
-<% end %>
-<div class="replyform">
-<%= form_for([c.username, c.post, Comment.new]) do |f| %>
-<%= f.label 'Reply as' %> <%= f.select :username_id, @username_selector %><br>
-<%= f.text_area :body, placeholder: 'body', require: true %><br>
-<%= f.hidden_field :post_id, value: c.post.id %>
-<%= f.hidden_field :reply_id, value: c.id %>
-  <%= f.label "Share this to your feed?" %><%= f.check_box :shared %>
-    <%= f.label "Send comment as private message to #{c.username.name}?" %>
-      <%= f.check_box :private %><br>
-<%= f.submit 'Comment' %>
-<% end %>
-</div>
-</div>
-  <% end %>
+<hr>
+<% @po = po %>
+<%= render 'layouts/comment' %>
 
 
-
-<%= form_for([p.username, p, Comment.new]) do |f| %>
-<%= f.label 'Reply as' %> <%= f.select :username_id, @username_selector %><br>
-<%= f.text_area :body, placeholder: 'body', require: true %><br>
-<%= f.hidden_field :post_id, value: p.id %><br>
-  <%= f.label "Share this to your feed?" %><%= f.check_box :shared %><br>
-    <%= f.label "Send comment as private message to #{p.username.name}?" %>
-      <%= f.check_box :private %><br>
-<%= f.submit 'Comment' %>
-<% end %>
+<%= render 'layouts/comment_on_post_form' %>
 </div>
 <% end %>
+</div>
 <%# will_paginate @posts %>

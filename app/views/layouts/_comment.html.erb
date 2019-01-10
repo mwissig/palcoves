@@ -1,0 +1,25 @@
+<div class="comments">
+<% @po.comments.where(reply_id: nil).each do |c| %>
+  <% @divclasses = "comment" %>
+  <% if c.private == true %>
+    <% @divclasses += " private" %>
+  <% end %>
+  <%= "<div class=".html_safe + @divclasses + ">".html_safe %>
+  <p>
+  <%= c.body %>
+<br><i>by <%= c.username.name %></i> at <%= c.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
+</p></div>
+<% @po.comments.where(reply_id: c.id).each do |rep| %>
+<% @divclasses = "comment indent" %>
+<% if rep.private == true %>
+  <% @divclasses += " private" %>
+<% end %>
+  <%= "<div class=".html_safe + @divclasses + ">".html_safe %>
+  <%= rep.body %></p></div>
+<% end %>
+<div>
+<% @co = c %>
+<%= render 'layouts/comment_on_comment_form' %>
+</div>
+<% end %>
+</div>

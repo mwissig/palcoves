@@ -121,9 +121,12 @@ form input[type="submit"]:hover {
 }
 .replyform {
   background-color: pink;
-  height: 1em;
-  overflow: hidden;
-}
-.replyform:hover, .replyform:active {
   height: auto;
+  /* overflow: hidden; */
 }
+.replyform textarea {
+  height: 1em;
+}
+/* .replyform:hover, .replyform:active {
+  height: auto;
+} */
