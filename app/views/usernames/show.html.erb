@@ -1,3 +1,6 @@
+<% @username = Username.friendly.find_by(params[:id]) %>
+<% p @username %>
+<% p "===================================" %>
 <h1><%= @username.name %></h1>
 <p><%= @username.profile %></p>
 <% @posts = @username.posts %>

@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     def new
       if logged_in?
       @user = @current_user
-      @username = @user.usernames.find_by(default: true)
+      # @username = @user.usernames.find_by(default: true)
       @post = Post.new
     end
 
