@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
         @user = @current_user
          @comment.save!
         if @comment.save
-          redirect_to root_path
+          redirect_back(fallback_location: root_path)
         else
           render 'new'
           msg = @comment.errors.full_messages
