@@ -14,6 +14,9 @@
   <div class="post">
     <h2>
   <%= po.title %></h2>
+  <% if po.share_comment != nil %>
+  <p>Shared with comment: <%= po.share_comment %></p>
+  <% end %>
 <p><b><%= po.body %></p>
 <p><i>by <%= po.username.name %></i> at <%= po.created_at.strftime("%-l:%M%P on %b %-d, %Y") %></b>
 </p>

@@ -17,6 +17,17 @@ class CommentsController < ApplicationController
         @user = @current_user
          @comment.save!
         if @comment.save
+          if @comment.shared == true
+            Post.create(
+  username_id: @comment.username_id,
+  title: @comment.post.title,
+  body:  @comment.post.body,
+  share_comment: @comment.body,
+  op_id: @comment.post.id,
+  archive: false,
+  gallery: false
+)
+end
           redirect_back(fallback_location: root_path)
         else
           render 'new'
