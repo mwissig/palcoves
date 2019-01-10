@@ -11,12 +11,14 @@
   <% @username_selector = names.zip(ids) %>
 <% end %>
 <% @posts.each do |p| %>
-  <div class="post"><h2>
+  <div class="post">
+    <h2>
   <%= p.title %></h2>
-<p><%= p.body %></p>
-<p><i>by <%= p.username.name %></i> at <%= p.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
+<p><b><%= p.body %></p>
+<p><i>by <%= p.username.name %></i> at <%= p.created_at.strftime("%-l:%M%P on %b %-d, %Y") %></b>
 </p>
 <hr><% p.comments.each do |c| %>
+<div class="comment">
 <% if c.private == true && c.reply_id == nil %>
 <p class="top private comment">
     <% elsif c.private == false && c.reply_id == nil %>
@@ -45,7 +47,7 @@
 <%= f.submit 'Comment' %>
 <% end %>
 </div>
-<hr>
+</div>
   <% end %>
 
 
