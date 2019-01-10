@@ -12,9 +12,6 @@
           <div class="default username"><%= link_to u.name, username_path(u.name) %>
           </div>
           <% else %>
-          <% p u %>
-          <% p u.posts %>
-          <% p "--------------------------------------------" %>
           <div class="username"><%= link_to u.name, username_path(u.name) %>
             <%= form_for u do |f| %>
 

@@ -72,7 +72,7 @@ class PostsController < ApplicationController
 
 
       def find_username
-      @username = Username.find(params[:username_id])
+      @username = Username.friendly.find_by(params[:id])
      end
 
      def find_user
