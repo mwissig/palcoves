@@ -119,3 +119,11 @@ form input[type="submit"]:hover {
   margin-left: 2em;
   border-left: 1px solid black;
 }
+.replyform {
+  background-color: pink;
+  height: 1em;
+  overflow: hidden;
+}
+.replyform:hover, .replyform:active {
+  height: auto;
+}
