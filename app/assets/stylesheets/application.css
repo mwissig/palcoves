@@ -110,14 +110,16 @@ form input[type="submit"]:hover {
   background-color: rgb(255, 248, 181);
 }
 .comment {
-
+  padding: 3px;
 }
 .private {
   background-color: blue;
 }
 .indent {
   margin-left: 2em;
+  border: none;
   border-left: 1px solid black;
+  border-bottom: 1px solid black;
 }
 .replyform {
   background-color: pink;
