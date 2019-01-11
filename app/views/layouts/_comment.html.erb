@@ -9,7 +9,7 @@
   <%= c.body %>
 <br>
 <% if c.shared == true %>
-Shared 
+Shared
 <% end %>
 <i>by <%= c.username.name %></i> at <%= c.created_at.strftime('%-l:%M%P on %b %-d, %Y') %>
 </p></div>
@@ -20,8 +20,11 @@ Shared
     <% @divclasses.concat(' private') %>
 <% end %>
 <div class="<%= @divclasses %>">
-  <%= rep.body %>
-<br><i>by <%= rep.username.name %></i> at <%= rep.created_at.strftime('%-l:%M%P on %b %-d, %Y') %>
+  <%= rep.body %><br>
+  <% if rep.shared == true %>
+  Shared
+  <% end %>
+<i>by <%= rep.username.name %></i> at <%= rep.created_at.strftime('%-l:%M%P on %b %-d, %Y') %>
 </p>
 
 </div>

@@ -1,0 +1,33 @@
+
+<% if logged_in? %>
+<% ids = [@current_user.usernames.find_by(default: true).id] %>
+  <%     names = ["(Default) " + @current_user.usernames.find_by(default: true).name] %>
+  <% @current_user.usernames.each do |u| %>
+    <% names.push u.name %>
+  <% end %>
+  <% @current_user.usernames.each do |u| %>
+    <% ids.push u.id %>
+  <% end %>
+  <% @username_selector = names.zip(ids) %>
+<% end %>
+
+<div class="post">
+  <h2>
+<%= @po.title %></h2>
+<% if @po.share_comment != nil %>
+<% @op = Post.find_by(id: @po.op_id) %>
+<p>Shared by <%= @po.username.name %> from <%= link_to "original post", username_post_path(@op.username.name, @op) %> by <%= @op.username.name %> with comment: <%= @po.share_comment %></p>
+
+<% end %>
+<p><b><%= @po.body %></p>
+<p><i>by <%= @po.username.name %></i> at <%= @po.created_at.strftime("%-l:%M%P on %b %-d, %Y") %></b>
+</p>
+<hr>
+This post has <%= @po.comments.count %> comments.<br>
+<%# @po = po %>
+<% if @po.share_comment == nil %>
+<%= render 'layouts/comment' %>
+<% end %>
+
+<%= render 'layouts/comment_on_post_form' %>
+</div>

@@ -11,26 +11,8 @@
   <% @username_selector = names.zip(ids) %>
 <% end %>
 <% @posts.each do |po| %>
-  <div class="post">
-    <h2>
-  <%= po.title %></h2>
-  <% if po.share_comment != nil %>
-  <% @op = Post.find_by(id: po.op_id) %>
-  <p>Shared by <%= po.username.name %> from <%= link_to "original post", username_path(@op.username.name) %> by <%= @op.username.name %> with comment: <%= po.share_comment %></p>
-  <% p @op %>
-  <% p @op.id %>
-  <% p "000000000000000000000000000000000000000000000000000000000" %>
-  <% end %>
-<p><b><%= po.body %></p>
-<p><i>by <%= po.username.name %></i> at <%= po.created_at.strftime("%-l:%M%P on %b %-d, %Y") %></b>
-</p>
-<hr>
 <% @po = po %>
-<%= render 'layouts/comment' %>
-
-
-<%= render 'layouts/comment_on_post_form' %>
-</div>
+<%= render 'layouts/show_post' %>
 <% end %>
 </div>
 <%# will_paginate @posts %>
