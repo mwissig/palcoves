@@ -1,5 +1,5 @@
 
-<% if logged_in? %>
+<% if logged_in? && @current_user.usernames.find_by(default: true) != nil %>
 <% ids = [@current_user.usernames.find_by(default: true).id] %>
   <%     names = ["(Default) " + @current_user.usernames.find_by(default: true).name] %>
   <% @current_user.usernames.each do |u| %>

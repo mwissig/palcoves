@@ -8,6 +8,8 @@ class PostsController < ApplicationController
       @user = @current_user
       # @username = @user.usernames.find_by(default: true)
       @post = Post.new
+      p @post
+      p "========================================="
     end
 
       end
@@ -17,14 +19,15 @@ class PostsController < ApplicationController
       @post = Post.new(post_params)
       @user = @current_user
       @post.username_id = @post.username_id.to_i
+
       if @post.op_id == "" || @post.op_id == nil
         @post.op_id = @post.id
       end
        @post.save!
       if @post.save
-        redirect_to root_path
+        redirect_to username_path(@post.username)
       else
-        render 'new'
+        redirect_back(fallback_location: username_post_path(@post.username, @post))
         msg = @post.errors.full_messages
         flash.now[:error] = msg
       end
@@ -72,7 +75,7 @@ class PostsController < ApplicationController
 
 
       def find_username
-      @username = @post.username
+        @username = Username.friendly.find(params[:username_id])
      end
 
      def find_user

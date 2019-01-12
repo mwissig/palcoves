@@ -5,10 +5,14 @@
 <%= f.text_field :name, placeholder: 'create a username', require: true %><br>
 <%= f.text_area :profile, placeholder: 'write a description (you can do this later)' %><br>
 <%= f.file_field :avatar, placeholder: 'upload an avatar' %><br>
+<% if @current_user.usernames.exists? %>
 <%= f.label "Make default?" %><%= f.check_box :default %><br>
+<% else %>
+<%= f.hidden_field :defaul, value: true %>
+
+<% end %>
 <%= f.submit 'Create username' %>
 <% end %>
-
 <% else %>
 Must be logged in
 <% end %>
