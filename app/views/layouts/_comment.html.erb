@@ -4,7 +4,9 @@
   <% if c.present? %>
 <% @divclasses = 'comment' %>
   <% if c.private == true %>
+      <%# if c.username.user == @current_user || Username.where(id: c.recipient_id)[0].user == @current_user %>
     <% @divclasses.concat(' private') %>
+    <%# end %>
   <% end %>
   <% if @show_comments == nil %>
   <% @divclasses.concat(' fade') %>
