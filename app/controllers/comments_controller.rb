@@ -14,8 +14,15 @@ class CommentsController < ApplicationController
     if logged_in?
       @comment = Comment.new(comment_params)
       @user = @current_user
+      if @comment.private == true && @comment.reply_id == nil
+        @comment.recipient_id == @post.username.id
+      end
+      if @comment.private == true && @comment.reply_id != nil
+        @comment.recipient_id == Comment.where(id: @comment.reply_id).ids[0]
+      end
       @comment.save!
       if @comment.save
+
         if @comment.shared == true
           Post.create(
             username_id: @comment.username_id,
