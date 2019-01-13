@@ -8,8 +8,6 @@ class PostsController < ApplicationController
       @user = @current_user
       # @username = @user.usernames.find_by(default: true)
       @post = Post.new
-      p @post
-      p "========================================="
     end
 
       end

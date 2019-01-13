@@ -15,10 +15,10 @@ class CommentsController < ApplicationController
       @comment = Comment.new(comment_params)
       @user = @current_user
       if @comment.private == true && @comment.reply_id == nil
-        @comment.recipient_id == @post.username.id
+        @comment.recipient_id = @post.username.id
       end
       if @comment.private == true && @comment.reply_id != nil
-        @comment.recipient_id == Comment.where(id: @comment.reply_id).ids[0]
+        @comment.recipient_id = Comment.where(id: @comment.reply_id).ids[0]
       end
       @comment.save!
       if @comment.save
