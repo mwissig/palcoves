@@ -4,9 +4,11 @@
   <% if c.present? %>
 <% @divclasses = 'comment' %>
   <% if c.private == true %>
-      <%# if c.username.user == @current_user || Username.where(id: c.recipient_id)[0].user == @current_user %>
+      <% if c.username.user == @current_user || Username.where(id: c.recipient_id)[0].user == @current_user %>
     <% @divclasses.concat(' private') %>
-    <%# end %>
+    <% else %>
+    <% @divclasses.concat(' notpermitted') %>
+    <% end %>
   <% end %>
   <% if @show_comments == nil %>
   <% @divclasses.concat(' fade') %>
@@ -24,7 +26,11 @@ Shared
 <% @divclasses = 'comment' %>
 <% @divclasses.concat(' indent') %>
 <% if rep.private == true %>
-    <% @divclasses.concat(' private') %>
+<% if rep.username.user == @current_user || Username.where(id: rep.recipient_id)[0].user == @current_user %>
+<% @divclasses.concat(' private') %>
+<% else %>
+<% @divclasses.concat(' notpermitted') %>
+<% end %>
 <% end %>
 <div class="<%= @divclasses %>">
   <%= rep.body %><br>

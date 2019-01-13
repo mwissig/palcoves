@@ -121,6 +121,9 @@ form input[type="submit"]:hover {
 .private {
   background-color: rgb(184, 249, 198);
 }
+.notpermitted {
+    background-color: black;
+}
 .indent {
   margin-left: 2em;
 }
