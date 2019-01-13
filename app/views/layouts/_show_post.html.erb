@@ -13,19 +13,36 @@
 
 <div class="post">
   <h2>
-<%= @po.title %></h2>
-<% if @po.share_comment != nil %>
-<% @op = Post.find_by(id: @po.op_id) %>
-<p>Shared by <%= @po.username.name %> from <%= link_to "original post", username_post_path(@op.username.name, @op) %> by <%= @op.username.name %> with comment: <%= @po.share_comment %></p>
+<%= link_to @po.title, username_post_path(@po.username.name, @po) %></h2>
 
-<% end %>
 <p><b><%= @po.body %></p>
 <p><i>by <%= @po.username.name %></i> at <%= @po.created_at.strftime("%-l:%M%P on %b %-d, %Y") %></b>
 </p>
 <hr>
-This post has <%= @po.comments.count %> comments.<br>
+<% if @po.share_comment != nil %>
+<% @op = Post.find_by(id: @po.op_id) %>
+<p>Shared by <%= @po.username.name %> from <%= link_to "original post", username_post_path(@op.username.name, @op) %> by <%= @op.username.name %> with comment: <%= @po.share_comment %></p>
+
+<% else %>
+This post has <%= @po.comments.count %>
+<% if @po.comments.count == 1 %>
+comment
+<% else %>
+comments
+<% end %>
+and was shared <%= @po.comments.where(shared: true).count %>
+<% if @po.comments.where(shared: true).count == 1 %>
+time.
+<% else %>
+times.
+<% end %>
+<% end %>
+<br>
 <%# @po = po %>
-<% if @po.share_comment == nil %>
+<% if @show_comments != nil %>
+  <% if @po.share_comment != nil %>
+    <% @po = Post.find_by(id: @po.op_id) %>
+  <% end %>
 <%= render 'layouts/comment' %>
 <% end %>
 
