@@ -1,5 +1,7 @@
 <div class='comments'>
+
 <% @post_comments.each do |c| %>
+  <% if c.present? %>
 <% @divclasses = 'comment' %>
   <% if c.private == true %>
     <% @divclasses.concat(' private') %>
@@ -38,5 +40,6 @@ Shared
 <%= render 'layouts/comment_on_comment_form' %>
 <% end %>
 </div>
+<% end %>
 <% end %>
 </div>
