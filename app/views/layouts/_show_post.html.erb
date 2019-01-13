@@ -24,7 +24,7 @@
 <p>Shared by <%= @po.username.name %> from <%= link_to "original post", username_post_path(@op.username.name, @op) %> by <%= @op.username.name %> with comment: <%= @po.share_comment %></p>
 
 <% else %>
-This post has <%= @po.comments.count %>
+This post has <%= @po.comments.where(private: false).count %> public 
 <% if @po.comments.count == 1 %>
 comment
 <% else %>
@@ -39,12 +39,18 @@ times.
 <% end %>
 <br>
 <%# @po = po %>
-<% if @show_comments != nil %>
-  <% if @po.share_comment != nil %>
-    <% @po = Post.find_by(id: @po.op_id) %>
-  <% end %>
-<%= render 'layouts/comment' %>
+<% if @po.share_comment != nil %>
+  <% @po = Post.find_by(id: @po.op_id) %>
 <% end %>
+<% if @show_comments != nil %>
+<% @post_comments = @po.comments.where(reply_id: nil) %>
+<% else %>
+<% @post_comments = [@po.comments.where(reply_id: nil).last] %>
+<% end %>
+<%= render 'layouts/comment' %>
+
+
+
 
 <%= render 'layouts/comment_on_post_form' %>
 </div>

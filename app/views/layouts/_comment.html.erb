@@ -1,8 +1,11 @@
 <div class='comments'>
-<% @po.comments.where(reply_id: nil).each do |c| %>
+<% @post_comments.each do |c| %>
 <% @divclasses = 'comment' %>
   <% if c.private == true %>
     <% @divclasses.concat(' private') %>
+  <% end %>
+  <% if @show_comments == nil %>
+  <% @divclasses.concat(' fade') %>
   <% end %>
 <div class="<%= @divclasses %>">
   <p>
@@ -31,7 +34,9 @@ Shared
 <% end %>
 <div>
 <% @co = c %>
+<% if @show_comments != nil %>
 <%= render 'layouts/comment_on_comment_form' %>
+<% end %>
 </div>
 <% end %>
 </div>

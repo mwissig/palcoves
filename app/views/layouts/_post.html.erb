@@ -1,5 +1,5 @@
 <%# will_paginate @posts %>
-<% if logged_in? && @current_user.usernames != nil %>
+<% if logged_in? && @current_user.usernames.present? %>
 <% ids = [@current_user.usernames.find_by(default: true).id] %>
   <%     names = ["(Default) " + @current_user.usernames.find_by(default: true).name] %>
   <% @current_user.usernames.each do |u| %>

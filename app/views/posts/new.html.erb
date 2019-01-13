@@ -1,5 +1,4 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<% if @current_user.usernames.present? %>
 <%= form_for([@username, @post]) do |f| %>
 <%= f.label 'Post as' %> <%= f.select :username_id, @username_selector %><br>
   <%= f.text_field :title, placeholder: 'title', require: true %><br>
@@ -8,4 +7,7 @@
   <%= f.label "Add to archive?" %><%= f.check_box :archive %><br>
     <%= f.label "Add to gallery?" %><%= f.check_box :gallery %><br>
   <%= f.submit 'Post' %>
+<% end %>
+<% else %>
+You must have a username to post
 <% end %>

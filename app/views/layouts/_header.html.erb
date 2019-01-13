@@ -2,7 +2,9 @@
 <li><%= link_to "home", root_path %></li>
 <% if logged_in? %>
   <li><%= link_to "your page", user_path(@current_user) %></li>
+  <% if @current_user.usernames.present? %>
     <li><%= link_to "post", post_path %></li>
+    <% end %>
 <% else %>
 <li><%= link_to "log in", login_path %></li>
 <li><%= link_to "sign up", register_path %></li>

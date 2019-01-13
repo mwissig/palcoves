@@ -124,15 +124,27 @@ form input[type="submit"]:hover {
 .indent {
   margin-left: 2em;
 }
+.fade {
+  background: linear-gradient(rgb(204, 204, 204), white);
+  border: none;
+  max-height: 1em;
+  overflow: hidden;
+}
 .replyform {
-  background-color: pink;
+  background-color: rgb(227, 227, 227);
   height: auto;
   margin-left: 2em;
-      border-left: 2px solid black;
-      padding: 3px;
+  border-left: 2px solid black;
+  padding: 3px;
+  /* font-size: 12px; */
 }
 .replyform textarea {
-  height: 1em;
+  height: 1.5em;
+}
+.replyform form input, .replyform form select, .replyform textarea, .replyform label {
+  font-size: 12px;
+  margin: 2px;
+  padding: 2px 3px;
 }
 /* .replyform:hover, .replyform:active {
   height: auto;
