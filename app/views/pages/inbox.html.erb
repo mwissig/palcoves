@@ -1,2 +1,18 @@
-<h1>Pages#inbox</h1>
-<p>Find me in app/views/pages/inbox.html.erb</p>
+<h1>Inbox</h1>
+<% if logged_in? %>
+
+to you<hr>
+<% @pms.each do |pm| %>
+<% if @current_user == Username.where(id: pm.recipient_id)[0].user %>
+<%= pm.body %><br>
+<% end %>
+<% end %><hr>
+
+from you<hr>
+<% @pms.each do |pm| %>
+<% if @current_user == Username.where(id: pm.username_id)[0].user %>
+<%= pm.body %><br>
+<% end %>
+<% end %>
+
+<% end %>
