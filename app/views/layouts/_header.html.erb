@@ -4,7 +4,13 @@
   <li><%= link_to "your page", user_path(@current_user) %></li>
   <% if @current_user.usernames.present? %>
     <li><%= link_to "post", post_path %></li>
-        <li><%= link_to "inbox", inbox_path %></li>
+        <li><%= link_to "inbox", inbox_path %>
+          <% @notecount = 0 %>
+        <% @current_user.usernames.each do |us| %>
+        <% @notecount += us.notifications.where(read: false).count %>
+        <% end %>
+        ( <%= @notecount %> )
+        </li>
     <li><%= link_to "log out", logout_path, method: :delete %></li>
     <% end %>
 <% else %>

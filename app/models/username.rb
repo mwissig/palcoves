@@ -2,6 +2,7 @@ class Username < ApplicationRecord
   belongs_to :user
   has_many :posts
   has_many :pms
+  has_many :notifications
   has_one_attached :avatar
   before_save { self.name = name.downcase }
   before_save { self.slug = name }

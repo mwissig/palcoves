@@ -33,6 +33,14 @@ class CommentsController < ApplicationController
             archive: false,
             gallery: false
           )
+          Notification.create(
+            kind: "share",
+            username_id: @comment.post.username_id,
+            sender_id: @comment.username_id,
+            post_id: @comment.post.id,
+            body: @comment.body,
+            read: false
+          )
   end
   if @comment.private == true
     if @comment.reply_id != nil
@@ -40,8 +48,15 @@ class CommentsController < ApplicationController
       username_id: @comment.username_id,
       body: @comment.body,
       post_id: @comment.post.id,
-      reply_id: @commment.reply_id,
+      reply_id: @comment.reply_id,
       recipient_id: @comment.recipient_id
+    )
+    Notification.create(
+      kind: "private_message",
+      username_id: @comment.recipient_id,
+      sender_id: @comment.username_id,
+      body: @comment.body,
+      read: false
     )
   else
     Pm.create(
@@ -49,6 +64,13 @@ class CommentsController < ApplicationController
       body: @comment.body,
       post_id: @comment.post.id,
       recipient_id: @comment.recipient_id
+    )
+    Notification.create(
+      kind: "private_message",
+      username_id: @comment.recipient_id,
+      sender_id: @comment.username_id,
+      body: @comment.body,
+      read: false
     )
   end
   end

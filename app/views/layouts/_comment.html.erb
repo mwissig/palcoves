@@ -42,7 +42,12 @@
 <div>
 <% @co = c %>
 <% if @show_comments != nil %>
+
+  <% if @co.private == true && @co.username.user != @current_user && Username.where(id: @co.recipient_id)[0].user != @current_user %>
+  <% else %>
 <%= render 'layouts/comment_on_comment_form' %>
+<% end %>
+
 <% end %>
 </div>
 <% end %>

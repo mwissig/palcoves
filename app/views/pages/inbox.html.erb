@@ -1,6 +1,22 @@
 <h1>Inbox</h1>
 <% if logged_in? %>
 
+notifications<hr>
+<% @current_user.usernames.each do |us| %>
+
+<% us.notifications.each do |note| %>
+<% if note.kind == "share" %>
+Your post was shared with comment: <%= note.body %>
+<% elsif note.kind == "private_message" %>
+Sent you a message: <%= note.body %>
+<% elsif note.kind == "comment" %>
+Commented on your post: <%= note.body %>
+<% end %>
+<% end %>
+<br>
+<% end %>
+<hr>
+
 to you<hr>
 <% @pms.each do |pm| %>
 <% @pm = pm %>
