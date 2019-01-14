@@ -121,11 +121,20 @@ form input[type="submit"]:hover {
 .post {
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 2em auto;
+  grid-template-rows: auto auto;
   border: 2px solid black;
   padding: 0;
   max-width: 70vw;
   margin: 5px auto;
+  -ms-word-break: break-all;
+      word-break: break-all;
+
+      /* Non standard for WebKit */
+      word-break: break-word;
+
+ -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+         hyphens: auto;
 }
 .post_title a {
   color:white !important;
