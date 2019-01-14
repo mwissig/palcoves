@@ -6,11 +6,11 @@ notifications<hr>
 
 <% us.notifications.each do |note| %>
 <% if note.kind == "share" %>
-Your post was shared with comment: <%= note.body %><br>
+<%= Username.find_by(id: note.sender_id).name %> shared your post "<%= link_to Post.find_by(id: note.post_id).title, username_post_path(note.username, Post.find_by(id: note.post_id)) %>" with comment: <%= note.body %><br>
 <% elsif note.kind == "private_message" %>
-Sent you a message: <%= note.body %><br>
+<%= Username.find_by(id: note.sender_id).name %> sent you a message: <%= note.body %><br>
 <% elsif note.kind == "comment" %>
-Commented on your post: <%= note.body %><br>
+<%= Username.find_by(id: note.sender_id).name %> commented on your post "<%= link_to Post.find_by(id: note.post_id).title, username_post_path(note.username, Post.find_by(id: note.post_id)) %>": <%= note.body %><br>
 <% end %>
 <% end %>
 <br>
