@@ -6,7 +6,7 @@
 Shared
 <% end %>
 <i>by <%= @com.username.name %></i> at
-<% if logged_in? && (@current_user.time_zone != nil %>
+<% if logged_in? && @current_user.time_zone != nil %>
 <%= @po.created_at.in_time_zone(@current_user.time_zone).strftime("%-l:%M%P on %b %-d, %Y") %>
 <% else %>
 <%= @po.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
