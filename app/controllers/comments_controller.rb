@@ -34,6 +34,24 @@ class CommentsController < ApplicationController
             gallery: false
           )
   end
+  if @comment.private == true
+    if @comment.reply_id != nil
+    Pm.create(
+      username_id: @comment.username_id,
+      body: @comment.body,
+      post_id: @comment.post.id,
+      reply_id: @commment.reply_id,
+      recipient_id: @comment.recipient_id
+    )
+  else
+    Pm.create(
+      username_id: @comment.username_id,
+      body: @comment.body,
+      post_id: @comment.post.id,
+      recipient_id: @comment.recipient_id
+    )
+  end
+  end
         redirect_back(fallback_location: root_path)
       else
         render 'new'

@@ -20,4 +20,9 @@ class PagesController < ApplicationController
 
   end
   end
+  def inbox
+    if logged_in?
+    @pms = Pm.all
+  end
+  end
 end

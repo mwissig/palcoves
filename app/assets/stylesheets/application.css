@@ -133,6 +133,9 @@ form input[type="submit"]:hover {
   max-height: 1em;
   overflow: hidden;
 }
+.self_pm {
+  background-color: rgb(255, 218, 147);
+}
 .replyform {
   background-color: rgb(227, 227, 227);
   height: auto;

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'pages/inbox'
+  get 'pms/index'
+  get 'pms/show'
   get 'comments/new'
   get 'comments/index'
   get 'comments/edit'
@@ -16,7 +19,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
 
  get 'post' => 'pages#post'
-
+get 'inbox' => 'pages#inbox'
   get 'users' => 'users#index'
   get 'users/edit'
   get  'register' => 'users#new'
@@ -30,6 +33,9 @@ end
 
 resources :usernames do
    delete 'delete' => 'usernames#destroy'
+   resources :pms do
+      delete 'delete' => 'pms#destroy'
+    end
    resources :posts do
       delete 'delete' => 'posts#destroy'
       resources :comments do

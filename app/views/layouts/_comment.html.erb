@@ -5,6 +5,9 @@
   <% if c.present? %>
 <% @divclasses = 'comment' %>
   <% if c.private == true %>
+  <% if c.username.user == Username.where(id: c.recipient_id)[0].user %>
+  <% @divclasses.concat(' self_pm') %>
+  <% end %>
       <% if c.username.user == @current_user || Username.where(id: c.recipient_id)[0].user == @current_user %>
     <% @divclasses.concat(' private') %>
     <% else %>
@@ -14,6 +17,7 @@
   <% if @show_comments == nil %>
   <% @divclasses.concat(' fade') %>
   <% end %>
+
   <% @com = c %>
   <% if c.private == true && c.username.user != @current_user && Username.where(id: c.recipient_id)[0].user != @current_user %>
   <% else %>
