@@ -3,15 +3,17 @@
 
 to you<hr>
 <% @pms.each do |pm| %>
+<% @pm = pm %>
 <% if @current_user == Username.where(id: pm.recipient_id)[0].user %>
-<%= pm.body %><br>
+<%= render 'layouts/pm' %><br>
 <% end %>
 <% end %><hr>
 
 from you<hr>
 <% @pms.each do |pm| %>
+<% @pm = pm %>
 <% if @current_user == Username.where(id: pm.username_id)[0].user %>
-<%= pm.body %><br>
+<%= render 'layouts/pm' %><br>
 <% end %>
 <% end %>
 

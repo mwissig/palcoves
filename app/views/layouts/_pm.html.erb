@@ -1,0 +1,6 @@
+<div class="pm">
+  <p>
+  <%= @pm.body %>
+<br>
+<i>from <%= @pm.username.name %> to <%= Username.where(id: @pm.recipient_id)[0].name %> at <%= @pm.created_at.strftime('%-l:%M%P on %b %-d, %Y') %>
+</i> </p></div>
