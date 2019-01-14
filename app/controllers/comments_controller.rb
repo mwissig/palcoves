@@ -14,10 +14,10 @@ class CommentsController < ApplicationController
     if logged_in?
       @comment = Comment.new(comment_params)
       @user = @current_user
-      if @comment.private == true && @comment.reply_id == nil
+      if @comment.private == true && @comment.reply_id.nil?
         @comment.recipient_id = @post.username.id
       end
-      if @comment.private == true && @comment.reply_id != nil
+      if @comment.private == true && !@comment.reply_id.nil?
         @comment.recipient_id = Comment.where(id: @comment.reply_id)[0].username.id
       end
       @comment.save!
@@ -34,46 +34,54 @@ class CommentsController < ApplicationController
             gallery: false
           )
           Notification.create(
-            kind: "share",
+            kind: 'share',
             username_id: @comment.post.username_id,
             sender_id: @comment.username_id,
             post_id: @comment.post.id,
             body: @comment.body,
             read: false
           )
-  end
-  if @comment.private == true
-    if @comment.reply_id != nil
-    Pm.create(
-      username_id: @comment.username_id,
-      body: @comment.body,
-      post_id: @comment.post.id,
-      reply_id: @comment.reply_id,
-      recipient_id: @comment.recipient_id
-    )
-    Notification.create(
-      kind: "private_message",
-      username_id: @comment.recipient_id,
-      sender_id: @comment.username_id,
-      body: @comment.body,
-      read: false
-    )
-  else
-    Pm.create(
-      username_id: @comment.username_id,
-      body: @comment.body,
-      post_id: @comment.post.id,
-      recipient_id: @comment.recipient_id
-    )
-    Notification.create(
-      kind: "private_message",
-      username_id: @comment.recipient_id,
-      sender_id: @comment.username_id,
-      body: @comment.body,
-      read: false
-    )
-  end
-  end
+        elsif @comment.private == true
+          if !@comment.reply_id.nil?
+            Pm.create(
+              username_id: @comment.username_id,
+              body: @comment.body,
+              post_id: @comment.post.id,
+              reply_id: @comment.reply_id,
+              recipient_id: @comment.recipient_id
+            )
+            Notification.create(
+              kind: 'private_message',
+              username_id: @comment.recipient_id,
+              sender_id: @comment.username_id,
+              body: @comment.body,
+              read: false
+            )
+          else
+            Pm.create(
+              username_id: @comment.username_id,
+              body: @comment.body,
+              post_id: @comment.post.id,
+              recipient_id: @comment.recipient_id
+            )
+            Notification.create(
+              kind: 'private_message',
+              username_id: @comment.recipient_id,
+              sender_id: @comment.username_id,
+              body: @comment.body,
+              read: false
+            )
+          end
+        else
+          Notification.create(
+            kind: "comment",
+            username_id: @comment.post.username_id,
+            sender_id: @comment.username_id,
+            post_id: @comment.post.id,
+            body: @comment.body,
+            read: false
+          )
+        end
         redirect_back(fallback_location: root_path)
       else
         render 'new'
