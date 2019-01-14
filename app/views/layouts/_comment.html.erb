@@ -1,6 +1,7 @@
 <div class='comments'>
 
 <% @post_comments.each do |c| %>
+
   <% if c.present? %>
 <% @divclasses = 'comment' %>
   <% if c.private == true %>
@@ -13,15 +14,11 @@
   <% if @show_comments == nil %>
   <% @divclasses.concat(' fade') %>
   <% end %>
-<div class="<%= @divclasses %>">
-  <p>
-  <%= c.body %>
-<br>
-<% if c.shared == true %>
-Shared
-<% end %>
-<i>by <%= c.username.name %></i> at <%= c.created_at.strftime('%-l:%M%P on %b %-d, %Y') %>
-</p></div>
+  <% @com = c %>
+  <% if c.private == true && c.username.user != @current_user && Username.where(id: c.recipient_id)[0].user != @current_user %>
+  <% else %>
+<%= render 'layouts/show_comment' %>
+  <% end %>
 <% @po.comments.where(reply_id: c.id).each do |rep| %>
 <% @divclasses = 'comment' %>
 <% @divclasses.concat(' indent') %>
@@ -32,15 +29,11 @@ Shared
 <% @divclasses.concat(' notpermitted') %>
 <% end %>
 <% end %>
-<div class="<%= @divclasses %>">
-  <%= rep.body %><br>
-  <% if rep.shared == true %>
-  Shared
-  <% end %>
-<i>by <%= rep.username.name %></i> at <%= rep.created_at.strftime('%-l:%M%P on %b %-d, %Y') %>
-</p>
-
-</div>
+<% @com = rep %>
+<% if rep.private == true && rep.username.user != @current_user && Username.where(id: rep.recipient_id)[0].user != @current_user %>
+<% else %>
+<%= render 'layouts/show_comment' %>
+<% end %>
 <% end %>
 <div>
 <% @co = c %>

@@ -1,0 +1,9 @@
+<div class="<%= @divclasses %>">
+  <p>
+  <%= @com.body %>
+<br>
+<% if @com.shared == true %>
+Shared
+<% end %>
+<i>by <%= @com.username.name %></i> at <%= @com.created_at.strftime('%-l:%M%P on %b %-d, %Y') %>
+</p></div>
