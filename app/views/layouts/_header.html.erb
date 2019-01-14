@@ -9,7 +9,9 @@
         <% @current_user.usernames.each do |us| %>
         <% @notecount += us.notifications.where(read: false).count %>
         <% end %>
-        ( <%= @notecount %> )
+        <% if @notecount > 0 %>
+        <sup class="notecount">(<%= @notecount %>)</sup>
+        <% end %>
         </li>
     <li><%= link_to "log out", logout_path, method: :delete %></li>
     <% end %>

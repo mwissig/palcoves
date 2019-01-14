@@ -58,6 +58,9 @@ header ul li a {
 .content {
   padding: 2em 0;
 }
+.notecount {
+  color: red;
+}
 form {
   display: inline;
   max-width: 70%;
