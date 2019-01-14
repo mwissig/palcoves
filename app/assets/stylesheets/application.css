@@ -15,7 +15,7 @@
  */
 body {
   background-color: white;
-  font-family: sans-serif;
+  font-family: 'PT Sans', sans-serif;
 }
 header, footer {
   position: fixed;
@@ -29,11 +29,30 @@ header, footer {
   display: flex;
   justify-content: space-around;
 }
+a, a:visited {
+  text-decoration: none;
+  color: rgb(40, 40, 40);
+  font-weight: bold;
+}
+a:hover, a:active {
+  color: rgb(60, 0, 0);
+}
+h1, h2 {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+
+}
+
 h1, h2, p {
   margin: auto auto;
 }
 h1, h2 {
   text-align: center;
+  font-family: 'Staatliches', cursive;
+  width: 100%;
+  background-color: black;
+  color: white;
 }
 p {
   max-width: 70%;
@@ -100,10 +119,22 @@ form input[type="submit"]:hover {
   background-color: yellow;
 }
 .post {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 2em auto;
   border: 2px solid black;
-  padding: 5px;
+  padding: 0;
   max-width: 70vw;
   margin: 5px auto;
+}
+.post_title a {
+  color:white !important;
+}
+.post_title a:hover, .post_title a:active {
+color:#e34e4e !important;
+  }
+.post_body {
+  padding: 5px;
 }
 .post textarea {
   height: 1em;

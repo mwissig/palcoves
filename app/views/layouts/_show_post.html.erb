@@ -12,9 +12,9 @@
 <% end %>
 
 <div class="post">
-  <h2>
-<%= link_to @po.title, username_post_path(@po.username.name, @po) %></h2>
-
+  <div class="post_title"><h2>
+<%= link_to @po.title, username_post_path(@po.username.name, @po) %></h2></div>
+<div class="post_body">
 <p><b><%= @po.body %></p>
 <p><i>by <%= @po.username.name %></i> at
   <% if logged_in? && @current_user.time_zone != nil %>
@@ -59,4 +59,5 @@ times.
 
 
 <%= render 'layouts/comment_on_post_form' %>
+</div>
 </div>
