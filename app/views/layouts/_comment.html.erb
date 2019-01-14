@@ -23,6 +23,7 @@
   <% else %>
 <%= render 'layouts/show_comment' %>
   <% end %>
+  <% if @show_comments != nil %>
 <% @po.comments.where(reply_id: c.id).each do |rep| %>
 <% @divclasses = 'comment' %>
 <% @divclasses.concat(' indent') %>
@@ -37,6 +38,7 @@
 <% if rep.private == true && rep.username.user != @current_user && Username.where(id: rep.recipient_id)[0].user != @current_user %>
 <% else %>
 <%= render 'layouts/show_comment' %>
+<% end %>
 <% end %>
 <% end %>
 <div>
