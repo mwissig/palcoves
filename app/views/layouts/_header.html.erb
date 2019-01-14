@@ -5,7 +5,7 @@
   <% if @current_user.usernames.present? %>
     <li><%= link_to "post", post_path %></li>
         <li><%= link_to "inbox", inbox_path %></li>
-    <li><%= link_to "log out", logout_path %></li>
+    <li><%= link_to "log out", logout_path, method: :delete %></li>
     <% end %>
 <% else %>
 <li><%= link_to "log in", login_path %></li>
