@@ -135,7 +135,8 @@ form input[type="submit"]:hover {
  -webkit-hyphens: auto;
     -moz-hyphens: auto;
          hyphens: auto;
-
+border-radius: 5px;
+overflow: hidden;
 }
 .signature {
   height: auto;
@@ -144,6 +145,7 @@ form input[type="submit"]:hover {
   max-height: 200px !important;
   visibility: visible !important;
   position: relative !important;
+  padding: 5px;
   background: black;
   color: white;
   text-align: center;
