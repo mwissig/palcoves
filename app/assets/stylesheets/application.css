@@ -121,7 +121,7 @@ form input[type="submit"]:hover {
 .post {
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto auto auto auto;
   border: 2px solid black;
   padding: 0;
   max-width: 70vw;
@@ -135,6 +135,20 @@ form input[type="submit"]:hover {
  -webkit-hyphens: auto;
     -moz-hyphens: auto;
          hyphens: auto;
+
+}
+.signature {
+  height: auto;
+  width: 100% !important;
+  max-width: 100% !important;
+  max-height: 200px !important;
+  visibility: visible !important;
+  position: relative !important;
+  background: black;
+  color: white;
+  text-align: center;
+  background-size: contain;
+  overflow: hidden;
 }
 .post_title a {
   color:white !important;

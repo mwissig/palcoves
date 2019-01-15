@@ -11,6 +11,14 @@ class UsernamesController < ApplicationController
       @username = Username.new(username_params)
       @username.user_id = @current_user.id
       if @username.save(username_params)
+        Userstyle.create(
+            username_id: @username.id,
+            post_background_color: 'ffffff',
+            page_background_color: 'ffffff',
+            post_text_color: '000000',
+            signature: '',
+            signature_css: ''
+        )
         if @username.default == true && @current_user.usernames.count > 1
           set_default
         end

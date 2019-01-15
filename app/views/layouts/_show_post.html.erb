@@ -10,8 +10,7 @@
   <% end %>
   <% @username_selector = names.zip(ids) %>
 <% end %>
-
-<div class="post">
+<div class="post" style="background-color:#<%= @po.username.userstyle.post_background_color %>;color:#<%= @po.username.userstyle.post_text_color %>">
   <div class="post_title"><h2>
 <%= link_to @po.title, username_post_path(@po.username.name, @po) %></h2></div>
 <div class="post_body">
@@ -43,7 +42,11 @@ time.
 times.
 <% end %>
 <% end %>
-<br>
+</div>
+<div class="signature" style="<%= @po.username.userstyle.signature_css %>max-width:100%;max-h@po.username.userstyle.post_background_coloreight:200px;visibility:visible;position:relative;">
+  <%= @po.username.userstyle.signature %>
+</div>
+<div class="comments">
 <%# @po = po %>
 <% if @po.share_comment != nil %>
   <% @po = Post.find_by(id: @po.op_id) %>

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'userstyles/index'
+  get 'userstyles/new'
+  get 'userstyles/show'
+  get 'userstyles/edit'
   get 'pages/inbox'
   get 'pms/index'
   get 'pms/show'
@@ -36,6 +40,9 @@ resources :usernames do
    resources :pms do
       delete 'delete' => 'pms#destroy'
     end
+    resources :userstyles do
+       delete 'delete' => 'userstyles#destroy'
+     end
    resources :posts do
       delete 'delete' => 'posts#destroy'
       resources :comments do

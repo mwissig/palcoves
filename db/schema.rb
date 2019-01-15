@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_14_203937) do
+ActiveRecord::Schema.define(version: 2019_01_15_204156) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -108,6 +108,17 @@ ActiveRecord::Schema.define(version: 2019_01_14_203937) do
     t.datetime "updated_at", null: false
     t.string "time_zone"
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "userstyles", force: :cascade do |t|
+    t.integer "username_id"
+    t.string "post_background_color"
+    t.string "post_text_color"
+    t.string "page_background_color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "signature"
+    t.string "signature_css"
   end
 
 end

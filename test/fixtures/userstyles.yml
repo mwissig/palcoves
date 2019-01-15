@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username_id: 1
+  post_background_color: MyString
+  post_text_color: MyString
+  page_background_color: MyString
+
+two:
+  username_id: 1
+  post_background_color: MyString
+  post_text_color: MyString
+  page_background_color: MyString
