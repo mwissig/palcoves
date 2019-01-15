@@ -13,9 +13,9 @@ class UsernamesController < ApplicationController
       if @username.save(username_params)
         Userstyle.create(
             username_id: @username.id,
-            post_background_color: 'ffffff',
-            page_background_color: 'ffffff',
-            post_text_color: '000000',
+            post_background_color: '#ffffff',
+            page_background_color: '#ffffff',
+            post_text_color: '#000000',
             signature: '',
             signature_css: ''
         )

@@ -10,7 +10,7 @@
   <% end %>
   <% @username_selector = names.zip(ids) %>
 <% end %>
-<div class="post" style="background-color:#<%= @po.username.userstyle.post_background_color %>;color:#<%= @po.username.userstyle.post_text_color %>">
+<div class="post" style="background-color:<%= @po.username.userstyle.post_background_color %>;color:<%= @po.username.userstyle.post_text_color %>">
   <div class="post_title"><h2>
 <%= link_to @po.title, username_post_path(@po.username.name, @po) %></h2></div>
 <div class="post_body">
