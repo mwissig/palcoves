@@ -54,7 +54,17 @@ class CommentsController < ApplicationController
               kind: 'private_message',
               username_id: @comment.recipient_id,
               sender_id: @comment.username_id,
+              comment_id: @comment.id,
               body: @comment.body,
+              read: false
+            )
+            Notification.create(
+              kind: "reply comment",
+              username_id: Comment.find_by(id: @comment.reply_id).username.id,
+              sender_id: @comment.username_id,
+              post_id: @comment.post.id,
+              body: @comment.body,
+              comment_id: @comment.id,
               read: false
             )
           else
@@ -73,6 +83,7 @@ class CommentsController < ApplicationController
             )
           end
         else
+                    if @comment.reply_id.nil?
           Notification.create(
             kind: "comment",
             username_id: @comment.post.username_id,
@@ -81,6 +92,17 @@ class CommentsController < ApplicationController
             body: @comment.body,
             read: false
           )
+        else
+          Notification.create(
+            kind: "reply comment",
+            username_id: Comment.find_by(id: @comment.reply_id).username.id,
+            sender_id: @comment.username_id,
+            post_id: @comment.post.id,
+            body: @comment.body,
+            comment_id: @comment.id,
+            read: false
+          )
+        end
         end
         redirect_back(fallback_location: root_path)
       else

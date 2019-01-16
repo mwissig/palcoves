@@ -5,7 +5,6 @@
 <%= f.text_area :body, placeholder: 'body', require: true %><br>
 <%= f.hidden_field :post_id, value: @co.post.id %>
 <%= f.hidden_field :reply_id, value: @co.id %>
-  <%= f.label "Share this to your feed?" %><%= f.check_box :shared %>
     <%= f.label "Send comment as private message to #{@co.username.name}?" %>
       <%= f.check_box :private %>
 <%= f.submit 'Comment' %>

@@ -47,13 +47,7 @@ h1, h2 {
   text-decoration: none;
   color: white;
   font-weight: bold;
-
-}
-
-h1, h2 {
   margin: auto auto;
-}
-h1, h2 {
   text-align: center;
   font-family: 'Staatliches', cursive;
   width: 100%;
@@ -61,7 +55,7 @@ h1, h2 {
   color: white;
 }
 p {
-  
+
 }
 footer {
   top: auto;
@@ -238,6 +232,9 @@ color:#e34e4e !important;
   border-radius: 5px;
   max-width: 70%
 }
+.notification {
+  border-bottom: 1px solid black;
+}
 .comments {
   background-color: white;
 }
@@ -249,6 +246,64 @@ color:#e34e4e !important;
   margin: 2px;
   padding: 2px 3px;
 }
+.notebody {
+  margin-left: 2em;
+}
+.pagination_nav {
+
+}
+.digg_pagination {
+  text-align: center;
+  background-color: white;
+  border-radius: 5px;
+  max-width: 70%;
+  width: auto;
+  margin: 5px auto;
+  background: white;
+  cursor: default;
+  /* self-clearing method: */ }
+  .digg_pagination a, .digg_pagination span, .digg_pagination em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px; }
+  .digg_pagination .disabled {
+    color: #999999;
+    border: 1px solid #dddddd; }
+  .digg_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background: black;
+    color: white;
+    border: 1px solid black; }
+  .digg_pagination a {
+    text-decoration: none;
+    color: black;
+    border: 1px solid black; }
+    .digg_pagination a:hover, .digg_pagination a:focus {
+      color: #000033;
+      border-color: #000033; }
+  .digg_pagination .page_info {
+    background: black;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center; }
+    .digg_pagination .page_info b {
+      color: #000033;
+      background: #6aa6ed;
+      padding: 0.1em 0.25em; }
+  .digg_pagination:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+  * html .digg_pagination {
+    height: 1%; }
+  *:first-child + html .digg_pagination {
+    overflow: hidden; }
 /* .replyform:hover, .replyform:active {
   height: auto;
 } */

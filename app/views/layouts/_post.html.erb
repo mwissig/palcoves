@@ -1,4 +1,11 @@
-<%# will_paginate @posts %>
+<div class="digg_pagination">
+<% if @userpage == true %>
+<%= will_paginate @username.posts.order("created_at DESC").paginate(:page => params[:page], :per_page => 5) %>
+<% else %>
+<%= will_paginate @posts %>
+<% end %>
+</div>
+
 <% if logged_in? && @current_user.usernames.present? %>
 <% ids = [@current_user.usernames.find_by(default: true).id] %>
   <%     names = ["(Default) " + @current_user.usernames.find_by(default: true).name] %>
@@ -15,4 +22,11 @@
 <%= render 'layouts/show_post' %>
 <% end %>
 </div>
-<%# will_paginate @posts %>
+
+<div class="digg_pagination">
+<% if @userpage == true %>
+<%= will_paginate @username.posts.order("created_at DESC").paginate(:page => params[:page], :per_page => 5) %>
+<% else %>
+<%= will_paginate @posts %>
+<% end %>
+</div>

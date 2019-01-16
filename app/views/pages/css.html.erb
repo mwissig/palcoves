@@ -1,9 +1,29 @@
 <h1>Using CSS</h1>
 <div class="box">
-  <p>CSS stands for Cascading Style Sheets. It's what web sites use to create shapes, colors, and animation. You can use CSS to change the appearance of your signature.</p>
+  <p>CSS stands for Cascading Style Sheets. It's what web sites use to create shapes, colors, and animation. It's called a "sheet" because it is normally stored on a separate page from the rest of the code, but it can also be used on the same page, which is how we are using it here. Combined with HTML, you can use CSS to create your own web site from scratch.</p>
+<h2>On this site, you can use CSS to change the appearance of your signature.</h2>
   <p>For example, you can change the color of the text using the "color" property:</p><p> <code style="color:red">color:red;</code></p>
   <p>And the color of the background using the "background-color" property:</p><p><code style="background-color:green">background-color:green;</code><p>
   <p>You can combine tags by stringing them one after another like this:</p><p><code style="color:white;background-color:green">color:white;background-color:green;</code></p>
-  <p>You can use <a href="https://www.w3schools.com/colors/colors_names.asp" target="_blank">color names</a> or <a href="https://www.w3schools.com/cssref/css_colors_legal.asp" target="_blank">other methods for creating custom colors.</a></p>
+    <p>You can use <a href="https://www.w3schools.com/colors/colors_names.asp" target="_blank">these valid color names</a> or <a href="https://www.w3schools.com/cssref/css_colors_legal.asp" target="_blank">other methods for creating custom colors.</a></p>
+    <p><i><b>A note on color:</b><br>The colors you use in the rest of your style settings are hex or hexademical colors, which are six digit numbers followed by a # sign, written in a base 16 numbering system, where the numbers 10-16 are represented by the letters A-F.
+      The first two digits represent the amount of red, the second two digits represent the amount of green, and the last two represent the amount of blue in the resulting color. RBG color works similarly, but on a scale of 0 to 255 for each color. For RBGA colors, the A represents transparency, which can be set on a scale from 0 (transparent) to 1 (opaque).</i></p>
+  <p>We have a few different fonts from Google Fonts you can use as well. Only <a href="https://www.w3schools.com/cssref/css_websafe_fonts.asp" target="_blank">standard fonts</a> and these fonts will work.</p>
+  <p>These are our custom fonts:
+    <ul>
+<li style="font-family:'Staatliches',cursive;">font-family:'Staatliches',cursive;</li>
+<li style="font-family:'Lobster',cursive;">font-family:'Lobster',cursive;</li>
+<li style="font-family:'Monoton',cursive;">font-family:'Monoton',cursive;</li>
+<li style="font-family:'Press Start 2P',cursive;">font-family:'Press Start 2P',cursive;</li>
+<li style="font-family:'Cormorant Garamond',serif;">font-family:'Cormorant Garamond',serif;</li>
+<li style="font-family:'Open Sans Condensed',sans-serif;">font-family:'Open Sans Condensed',sans-serif;</li>
+<li style="font-family:'Gochi Hand',cursive;">font-family:'Gochi Hand',cursive;</li>
+<li style="font-family:'Rock Salt',cursive;">font-family:'Rock Salt',cursive;</li>
+</ul>
+  <p>Make sure you end each tag with a semicolon. It's ok to use spaces in or between the tags.</p>
+  <p>There are lots of online generators for creating shapes and patterns. For example, <a href="https://appearate.azurewebsites.net/Plaid" target="_blank">this one makes plaid.</a></p>
+    <p><div style="background-color:#E2DEFF;background-image:repeating-linear-gradient(100deg, transparent, transparent 12px, rgba(245,254,255,0.5) 12px, rgba(245,254,255,0.5) 24px), repeating-linear-gradient(190deg, transparent, transparent 12px, rgba(245,254,255,0.5) 12px, rgba(245,254,255,0.5) 24px);">background-color:#E2DEFF; background-image:repeating-linear-gradient(100deg, transparent, transparent 12px, rgba(245,254,255,0.5) 12px, rgba(245,254,255,0.5) 24px), repeating-linear-gradient(190deg, transparent, transparent 12px, rgba(245,254,255,0.5) 12px, rgba(245,254,255,0.5) 24px);
+</div>
+<p>The plaid pattern is made by layering gradients over one another.</p>
 <p>There are lots of other properties you can change to create complex effects. <a href="https://www.w3schools.com/css/default.asp" target="_blank">Check out W3Schools for more info.</a></p>
 </div>
