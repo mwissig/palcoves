@@ -228,6 +228,13 @@ color:#e34e4e !important;
   margin-top: 5px;
   border-top: 2px solid black;
 }
+.styleform {
+  margin: 5px auto;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  max-width: 70%
+}
 .comments {
   background-color: white;
 }

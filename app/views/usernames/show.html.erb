@@ -1,6 +1,10 @@
 
 <h1><%= @username.name %></h1>
 <p><%= @username.profile %></p>
+<% if logged_in? %>
+<% if @username.user == @current_user %>
+<% end %>
+<div class="styleform">
 Set colors using hex colors wihtout the #<br>
 <%= simple_form_for([@username, @username.userstyle]) do |f| %>
 <%= f.input :post_text_color, require: true, as: :minicolors %><br>
@@ -10,5 +14,7 @@ Set colors using hex colors wihtout the #<br>
       <%= f.label 'Custom css for signature' %><%= f.text_field :signature_css %><br>
     <%= f.submit 'Set styles' %>
     <% end %>
+  </div>
+<% end %>
 <% @posts = @username.posts %>
 <%= render 'layouts/post' %>

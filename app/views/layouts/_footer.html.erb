@@ -1,1 +1,9 @@
-<footer>footer</footer>
+<footer>      <% if logged_in? %>
+      you are logged in as <%= @current_user.email %>
+      <% if @current_user.usernames.find_by(default: true) != nil %>
+       with default username <%= @current_user.usernames.find_by(default: true).name %>
+    <% end %>
+.
+      <% else %>
+      you are not logged in
+      <% end %></footer>

@@ -32,15 +32,7 @@
         <% flash.clear %>
       <% end %>
 
-      <% if logged_in? %>
-      you are logged in as <%= @current_user.email %>
-      <% if @current_user.usernames.find_by(default: true) != nil %>
-       with default username <%= @current_user.usernames.find_by(default: true).name %>
-    <% end %>
-. <%= link_to('log out?', logout_path, method: :delete) %>
-      <% else %>
-      you are not logged in
-      <% end %>
+
     <%= yield %>
   </div>
         <%= render 'layouts/footer' %>
