@@ -1,0 +1,6 @@
+<h1>Pages#search</h1>
+<p>Find me in app/views/pages/search.html.erb</p>
+<%= form_tag('/results', method: 'get') do %>
+  <%= text_field_tag(:q) %><br>
+  <%= submit_tag("Search") %> Search tags
+<% end %>

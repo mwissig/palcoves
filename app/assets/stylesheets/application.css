@@ -252,6 +252,12 @@ color:#e34e4e !important;
 .pagination_nav {
 
 }
+.tag {
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  padding: 1px 3px;
+}
 .digg_pagination {
   text-align: center;
   background-color: white;

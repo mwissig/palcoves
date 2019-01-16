@@ -1,7 +1,21 @@
 Rails.application.routes.draw do
+  get 'pages/results'
+  get 'search' => 'pages#search'
+  get 'results' => 'pages#results'
   get 'css' => 'pages#css'
+  get 'inbox' => 'pages#inbox'
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
 
-  get 'pages/inbox'
+ get 'post' => 'pages#post'
+  get 'users' => 'users#index'
+  get 'users/edit'
+  get  'register' => 'users#new'
+  get 'users/show'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'pages#home'
+
   get 'pms/index'
   get 'pms/show'
 
@@ -19,19 +33,6 @@ Rails.application.routes.draw do
   get 'usernames/index'
   get 'usernames/edit'
   get 'usernames/show'
-  
-  get 'login' => 'sessions#new'
-  post 'login' => 'sessions#create'
-  delete 'logout' => 'sessions#destroy'
-
- get 'post' => 'pages#post'
-get 'inbox' => 'pages#inbox'
-  get 'users' => 'users#index'
-  get 'users/edit'
-  get  'register' => 'users#new'
-  get 'users/show'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'pages#home'
 
   resources :users do
  delete 'delete' => 'users#destroy'
@@ -42,6 +43,9 @@ resources :usernames do
    resources :pms do
       delete 'delete' => 'pms#destroy'
     end
+    resources :notifications do
+       delete 'delete' => 'notifications#destroy'
+     end
     resources :userstyles do
        delete 'delete' => 'userstyles#destroy'
      end

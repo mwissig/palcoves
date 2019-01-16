@@ -22,7 +22,14 @@
 <%= @po.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
 <% end %>
 </b>
-</p>
+</p
+<hr>
+<% if @po.tags != nil %>
+<% @tagarray = @po.tags.split(" ") %>
+<% @tagarray.each do |tag| %>
+<span class="tag"> <%= link_to tag, results_path(q: tag) %></span>&nbsp
+<% end %>
+<% end %>
 <hr>
 <% if @po.share_comment != nil %>
 <% @op = Post.find_by(id: @po.op_id) %>

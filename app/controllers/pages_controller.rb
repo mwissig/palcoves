@@ -17,10 +17,12 @@ class PagesController < ApplicationController
           ids.push u.id
         end
         @username_selector = names.zip(ids)
+  end
+  end
 
-  end
-  end
   def inbox
     @pms = Pm.all
   end
+
+  def search; end
 end
