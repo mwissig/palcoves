@@ -6,6 +6,7 @@
 <% if @username.user == @current_user %>
 <% end %>
 <div class="styleform">
+  <h2>Edit your post styles</h2>
 <%= simple_form_for([@username, @username.userstyle]) do |f| %>
 <%= f.input :post_text_color, require: true, as: :minicolors %><br>
 <%= f.input :post_background_color, require: true, as: :minicolors %><br>
