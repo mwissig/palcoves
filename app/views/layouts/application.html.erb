@@ -9,8 +9,13 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=PT+Sans|Staatliches" rel="stylesheet">
   </head>
-
-  <body>
+  <% if logged_in? %>
+    <% if @current_user.usernames.count > 0 %>
+  <body style="background:<%= @current_user.usernames.find_by(default: true).userstyle.page_background_color %>;">
+    <% end %>
+    <% else %>
+    <body>
+<% end %>
     <%= render 'layouts/header' %>
     <div class="content">
 
