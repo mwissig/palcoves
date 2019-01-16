@@ -1,3 +1,4 @@
+<div class="userpage" style="background-color:<%= @username.userstyle.page_background_color %>">
 <% @userpage = true %>
 <h1><%= @username.name %></h1>
 <p><%= @username.profile %></p>
@@ -17,3 +18,4 @@
 <% end %>
 <% @posts = @username.posts %>
 <%= render 'layouts/post' %>
+</div>
