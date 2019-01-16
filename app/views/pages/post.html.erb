@@ -1,4 +1,6 @@
-<%= form_for([@username, @post]) do |f| %>
+<div class="box">
+<% if logged_in? %>
+ <%= form_for([@username, @post]) do |f| %>
 <%= f.label 'Post as' %> <%= f.select :username_id, @username_selector %><br>
   <%= f.text_field :title, placeholder: 'title', require: true %><br>
   <%= f.text_area :body, placeholder: 'body', require: true %><br>
@@ -7,3 +9,7 @@
     <%= f.label "Add to gallery?" %><%= f.check_box :gallery %><br>
   <%= f.submit 'Post' %>
 <% end %>
+<% else %>
+You must be logged in to post.
+<% end %>
+</div>

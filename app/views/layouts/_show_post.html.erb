@@ -54,7 +54,7 @@ times.
 <% if @show_comments != nil %>
 <% @post_comments = @po.comments.where(reply_id: nil) %>
 <% else %>
-<% @post_comments = [@po.comments.where(reply_id: nil).last] %>
+<% @post_comments = [@po.comments.where(reply_id: nil, private: false).last] %>
 <% end %>
 <%= render 'layouts/comment' %>
 

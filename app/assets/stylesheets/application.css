@@ -50,7 +50,7 @@ h1, h2 {
 
 }
 
-h1, h2, p {
+h1, h2 {
   margin: auto auto;
 }
 h1, h2 {
@@ -61,8 +61,7 @@ h1, h2 {
   color: white;
 }
 p {
-  max-width: 70%;
-  margin: 0 auto;
+  
 }
 footer {
   top: auto;
@@ -117,6 +116,10 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
   background-color: rgb(247, 197, 141);
   color: black;
+}
+code {
+  border: 1px solid gray;
+  padding: 2px 3px;
 }
 .username {
   border: 2px solid black;
@@ -228,7 +231,7 @@ color:#e34e4e !important;
   margin-top: 5px;
   border-top: 2px solid black;
 }
-.styleform {
+.styleform, .notifications, .box {
   margin: 5px auto;
   background-color: white;
   padding: 5px;

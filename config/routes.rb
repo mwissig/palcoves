@@ -1,23 +1,25 @@
 Rails.application.routes.draw do
-  get 'userstyles/index'
-  get 'userstyles/new'
-  get 'userstyles/show'
-  get 'userstyles/edit'
+  get 'css' => 'pages#css'
+
   get 'pages/inbox'
   get 'pms/index'
   get 'pms/show'
+
   get 'comments/new'
   get 'comments/index'
   get 'comments/edit'
   get 'comments/show'
+
   get 'posts/new'
   get 'posts/edit'
   get 'posts/index'
   get 'posts/show'
+
   get 'usernames/new'
   get 'usernames/index'
   get 'usernames/edit'
   get 'usernames/show'
+  
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'

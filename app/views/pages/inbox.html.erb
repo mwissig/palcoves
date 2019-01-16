@@ -1,6 +1,6 @@
 <h1>Inbox</h1>
 <% if logged_in? %>
-
+<div class="notifications">
 notifications<hr>
 <% @current_user.usernames.each do |us| %>
 
@@ -32,5 +32,5 @@ from you<hr>
 <%= render 'layouts/pm' %><br>
 <% end %>
 <% end %>
-
+</div>
 <% end %>
