@@ -1,14 +1,18 @@
 <div class="<%= @divclasses %>">
+  <div class="avatarbox"><div class="avatar" style="background-color:<%= @com.username.userstyle.post_background_color %>"></div></div>
+  <div class="commentbody">
   <p>
   <%= @com.body %>
 <br>
 <% if @com.shared == true %>
 Shared
 <% end %>
+<hr style=" border-bottom: 2px solid <%= @com.username.userstyle.post_background_color %>;">
 <i>by <%= @com.username.name %></i> at
 <% if logged_in? && @current_user.time_zone != nil %>
 <%= @com.created_at.in_time_zone(@current_user.time_zone).strftime("%-l:%M%P on %b %-d, %Y") %>
 <% else %>
 <%= @com.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
 <% end %>
-</p></div>
+</p>
+</div></div>
