@@ -222,6 +222,15 @@ color:#e34e4e !important;
   padding: 3px;
   /* font-size: 12px; */
 }
+.postcommentform{
+  background-color: white;
+  padding: 5px;
+  margin-top: 5px;
+  border-top: 2px solid black;
+}
+.comments {
+  background-color: white;
+}
 .replyform textarea {
   height: 1.5em;
 }

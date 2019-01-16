@@ -1,4 +1,4 @@
-<% if @current_user.usernames.present? %>
+<div class="postcommentform"><% if @current_user.usernames.present? %>
 <%= form_for([@po.username, @po, Comment.new]) do |f| %>
 <%= f.label 'Reply as' %> <%= f.select :username_id, @username_selector %><br>
 <%= f.text_area :body, placeholder: 'body', require: true %><br>
@@ -12,3 +12,4 @@
 <% else %>
 You must create a username to post or comment
 <% end %>
+</div>
