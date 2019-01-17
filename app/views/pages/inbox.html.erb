@@ -1,9 +1,9 @@
 <h1>Inbox</h1>
 <% if logged_in? %>
 <div class="notifications">
-notifications<hr>
+<h2>notifications</h2>
+<%= link_to "Mark All Read", markallread_pages_path, class: "button" %>
 <% @current_user.usernames.each do |us| %>
-
 <% us.notifications.where(read: false).each do |note| %>
 <div class="notification">
 <% if note.kind == "share" %>
@@ -29,17 +29,16 @@ notifications<hr>
 
 
 <% end %>
-<hr>
 
-to you<hr>
+<h2>to you</h2>
 <% @pms.each do |pm| %>
 <% @pm = pm %>
 <% if @current_user == Username.where(id: pm.recipient_id)[0].user %>
 <%= render 'layouts/pm' %><br>
 <% end %>
-<% end %><hr>
+<% end %><h2>
 
-from you<hr>
+from you</h2>
 <% @pms.each do |pm| %>
 <% @pm = pm %>
 <% if @current_user == Username.where(id: pm.username_id)[0].user %>

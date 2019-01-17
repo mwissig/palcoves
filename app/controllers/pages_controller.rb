@@ -22,7 +22,24 @@ class PagesController < ApplicationController
 
   def inbox
     @pms = Pm.all
+    if logged_in?
+    @notifications = Notification.where("username.user = ?", @current_user)
+    @unread_notifs = @notifications.where(read: false)
   end
+
+      def markallread
+        if logged_in?
+          @current_user.usernames.each do |u|
+            u.notifications.where(read: false).each do |note|
+              note.read = true
+              note.save!
+            end
+          end
+        redirect_back(fallback_location: inbox_path)
+      end
+  end
+end
+
 
   def search; end
 end

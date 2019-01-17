@@ -28,11 +28,16 @@ Rails.application.routes.draw do
   get 'posts/edit'
   get 'posts/index'
   get 'posts/show'
-
   get 'usernames/new'
   get 'usernames/index'
   get 'usernames/edit'
   get 'usernames/show'
+
+  resources :pages do
+    collection do
+      get :markallread
+    end
+  end
 
   resources :users do
  delete 'delete' => 'users#destroy'

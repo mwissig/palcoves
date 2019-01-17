@@ -1,3 +1,5 @@
 <% @po = @post %>
+<div class="userpage" style="background-color:<%= @po.username.userstyle.page_background_color %>">
 <% @show_comments = true %>
 <%= render 'layouts/show_post' %>
+</div>

@@ -55,6 +55,12 @@ class NotificationsController < ApplicationController
       redirect_to root_path
     end
 
+def markallread
+  @markread.each do |note|
+    note.read = true
+    note.save!
+  end
+end
       private
 
       def notification_params
