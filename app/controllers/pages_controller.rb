@@ -40,6 +40,9 @@ class PagesController < ApplicationController
   end
 end
 
+def followtag
+@follow = Follow.new
+end
 
   def search; end
 end

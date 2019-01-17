@@ -4,7 +4,6 @@
 <p><%= @username.profile %></p>
 <% if logged_in? %>
 <% if @username.user == @current_user %>
-<% end %>
 <div class="styleform">
   <h2>Edit your post styles</h2>
 <%= simple_form_for([@username, @username.userstyle]) do |f| %>
@@ -16,6 +15,50 @@
     <%= f.submit 'Set styles' %>
     <% end %>
   </div>
+  <% else %>
+  <div class="styleform">
+    <% if logged_in? %>
+    <% if @current_user.usernames.find_by(default: true).follows.where(recipient_id: @username.id) == nil %>
+    <% names = ["(Default) " + @current_user.usernames.find_by(default: true).name] %>
+    <% ids = [@current_user.usernames.find_by(default: true).id] %>
+    <% else %>
+    <% names = [] %>
+    <% ids = [] %>
+    <% end %>
+      <% @current_user.usernames.each do |u| %>
+        <% if !u.follows.where(recipient_id: @username.id).exists? %>
+        <% names.push u.name %>
+        <% end %>
+      <% end %>
+      <% @current_user.usernames.each do |u| %>
+        <% if !u.follows.where(recipient_id: @username.id).exists? %>
+        <% ids.push u.id %>
+        <% end %>
+      <% end %>
+      <% @username_selector = names.zip(ids) %>
+    <% end %>
+
+    <% if @current_user.usernames.present? && @username_selector != [] %>
+    Follow user as
+    <% @your_username = @current_user.usernames.find_by(default: true) %>
+    <%= form_for([@your_username, Follow.new]) do |f| %>
+    <%= f.hidden_field :recipient_id, value: @username.id %>
+    <%= f.select :username_id, options_for_select(@username_selector) %>
+    <%= f.text_field :body, placeholder: 'Message', required: true %>
+    <%= f.submit("Follow") %> ?
+    <% end %>
+      <% end %>
+<% @current_user.usernames.each do |us| %>
+<% us.follows.each do |fo| %>
+<% if fo.recipient_id == @username.id %>
+<br>You follow this user as <%= us.name %>
+<% end %>
+<% end %>
+<% end %>
+
+  </div>
+<% end %>
+
 <% end %>
 <% @posts = @username.posts %>
 <%= render 'layouts/post' %>

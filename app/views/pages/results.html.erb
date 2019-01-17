@@ -1,9 +1,30 @@
+<% if logged_in? %>
+<% names = ["(Default) " + @current_user.usernames.find_by(default: true).name] %>
+<% ids = [@current_user.usernames.find_by(default: true).id] %>
+  <% @current_user.usernames.each do |u| %>
+    <% names.push u.name %>
+  <% end %>
+  <% @current_user.usernames.each do |u| %>
+    <% ids.push u.id %>
+  <% end %>
+  <% @username_selector = names.zip(ids) %>
+<% end %>
+
 <h1>Search Results</h1>
 <div class="box">You searched for the tag "<%= @results %>" and got <%= @final_results.count %>
 <% if @final_results.count == 1 %>
 result.
 <% else %>
   results.
+<% end %>
+<% if @current_user.usernames.present? %>
+Follow tag as
+<% @username = @current_user.usernames.find_by(default: true) %>
+<%= form_for([@username, Follow.new]) do |f| %>
+<%= f.hidden_field :tag, value: @results %>
+<%= f.select :username_id, options_for_select(@username_selector) %>
+<%= f.submit("Follow") %> ?
+<% end %>
 <% end %>
 </div>
 <% @final_results.each do |res| %>

@@ -89,7 +89,7 @@ hr {
 }
 form {
   display: inline;
-  max-width: 70%;
+  max-width: 50%;
   margin: 0 auto;
 }
 form input, textarea, select {
@@ -103,7 +103,7 @@ form input, textarea, select {
     font-size: 16px;
 }
 textarea {
-  width: 70%;
+  width: 50%;
   height: 10em;
 }
 form input[type="submit"], .button, button {
@@ -126,7 +126,7 @@ code {
   border: 2px solid black;
   margin: 5px;
   padding: 5px;
-  width: 70%;
+  width: 50%;
   margin: 5px auto;
 }
 .default {
@@ -138,7 +138,7 @@ code {
   grid-template-rows: auto auto auto auto;
   border: 2px solid black;
   padding: 0;
-  max-width: 70vw;
+  max-width: 50%;
   margin: 5px auto;
   -ms-word-break: break-all;
       word-break: break-all;
@@ -242,7 +242,13 @@ color:#e34e4e !important;
   background-color: white;
   padding: 5px;
   border-radius: 5px;
-  max-width: 70%
+  max-width: 50%
+}
+.styleform {
+  max-width: 20%;
+  position: fixed;
+  top: 3em;
+  left: 1em;
 }
 .notification {
   border-bottom: 1px solid black;
@@ -269,6 +275,9 @@ color:#e34e4e !important;
 .pagination_nav {
 
 }
+.notifications button {
+  margin: 3px auto;
+}
 .notification form, .notification form input {
   display: inline;
   float: right;
@@ -283,7 +292,7 @@ color:#e34e4e !important;
   text-align: center;
   background-color: white;
   border-radius: 5px;
-  max-width: 70%;
+  max-width: 50%;
   width: auto;
   margin: 5px auto;
   background: white;

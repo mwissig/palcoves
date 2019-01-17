@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'pages/results'
+
   get 'search' => 'pages#search'
   get 'results' => 'pages#results'
+  post 'results' => 'pages#search'
   get 'css' => 'pages#css'
   get 'inbox' => 'pages#inbox'
   get 'login' => 'sessions#new'
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
   get 'posts/edit'
   get 'posts/index'
   get 'posts/show'
+
   get 'usernames/new'
   get 'usernames/index'
   get 'usernames/edit'
@@ -54,6 +56,9 @@ resources :usernames do
     resources :userstyles do
        delete 'delete' => 'userstyles#destroy'
      end
+     resources :follows do
+        delete 'delete' => 'follows#destroy'
+      end
    resources :posts do
       delete 'delete' => 'posts#destroy'
       resources :comments do
