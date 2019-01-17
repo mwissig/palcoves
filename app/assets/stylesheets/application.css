@@ -106,10 +106,13 @@ textarea {
   width: 70%;
   height: 10em;
 }
-form input[type="submit"] {
+form input[type="submit"], .button, button {
   background-color: black;
   color: white;
   border-radius: 5px;
+}
+.button a:link, .button a:visited {
+  color: white !important;
 }
 form input[type="submit"]:hover {
   background-color: rgb(247, 197, 141);
@@ -255,11 +258,20 @@ color:#e34e4e !important;
   margin: 2px;
   padding: 2px 3px;
 }
+.notegrid {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+}
 .notebody {
   margin-left: 2em;
 }
 .pagination_nav {
 
+}
+.notification form, .notification form input {
+  display: inline;
+  float: right;
 }
 .tag {
   background-color: white;
