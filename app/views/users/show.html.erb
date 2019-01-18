@@ -8,10 +8,10 @@
     <% if @current_user.usernames.count > 0 %>
       <% @current_user.usernames.each do |u| %>
         <% if u.default == true %>
-          <div class="default username"><%= link_to u.name, username_path(u.name) %>
+          <div class="default username"><%= link_to u.name + "'s profile", username_path(u.name) %>
           </div>
           <% else %>
-          <div class="username"><%= link_to u.name, username_path(u.name) %>
+          <div class="username"><%= link_to u.name + "'s profile", username_path(u.name) %>
             <%= form_for u do |f| %>
 
               <%= f.hidden_field :name, value: u.name %>

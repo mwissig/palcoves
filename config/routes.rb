@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+    get 'usernames/:id/archive' => 'usernames#archive', :as => :archive
+    get 'usernames/:id/gallery' => 'usernames#gallery', :as => :gallery
   get 'search' => 'pages#search'
   get 'results' => 'pages#results'
   post 'results' => 'pages#search'

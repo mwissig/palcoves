@@ -1,10 +1,16 @@
 class UsernamesController < ApplicationController
 
-    before_action :find_username, only: %i[show edit update]
+    before_action :find_username, only: %i[show edit update archive gallery]
     def new
       @user = @current_user
       @username = Username.new
       end
+      def archive
+        @posts = Post.where(username_id: @username, archive: true)
+       end
+      def gallery
+        @posts = Post.where(username_id: @username, gallery: true)
+       end
 
     def create
       if logged_in?

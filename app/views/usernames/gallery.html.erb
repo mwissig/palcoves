@@ -1,0 +1,5 @@
+<% @userpage = true %>
+<div class="userpage" style="background-color:<%= @username.userstyle.page_background_color %>">
+<h1><%= @username.name %>'s Gallery</h1>
+<%= render 'layouts/post' %>
+</div>

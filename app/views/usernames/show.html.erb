@@ -1,6 +1,10 @@
 <div class="userpage" style="background-color:<%= @username.userstyle.page_background_color %>">
+
 <% @userpage = true %>
+<h2>User Page</h2>
 <h1><%= @username.name %></h1>
+<h2><%= button_to "Archive", archive_path(@username.name), method: :get %></h2>
+<h2><%= button_to "Gallery", gallery_path(@username.name), method: :get %></h2>
 <p><%= @username.profile %></p>
 <% if logged_in? %>
 <% if @username.user == @current_user %>
