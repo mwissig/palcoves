@@ -48,7 +48,7 @@
     <%= form_for([@your_username, Follow.new]) do |f| %>
     <%= f.hidden_field :recipient_id, value: @username.id %>
     <%= f.select :username_id, options_for_select(@username_selector) %>
-    <%= f.text_field :body, placeholder: 'Message', required: true %>
+    <%= f.text_field :body, placeholder: 'Message', required: true, minlength: 12 %>
     <%= f.submit("Follow") %> ?
     <% end %>
       <% end %>

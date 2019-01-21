@@ -3,7 +3,7 @@
   <%= f.email_field :email, placeholder: 'email', require: true %>
   <%= f.label 'time zone' %>
   <%= f.input :time_zone, require: true %>
-  <%= f.password_field :password, placeholder: 'Password', require: true %>
-  <%= f.password_field :password_confirmation, placeholder: 'Password confirmation', require: true %>
+  <%= f.password_field :password, placeholder: 'Password', require: true, minlength: 6 %>
+  <%= f.password_field :password_confirmation, placeholder: 'Password confirmation', require: true, minlength: 6 %>
   <%= f.submit 'Register' %>
 <% end %>

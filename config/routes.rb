@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+ get '/:token/confirm_email/', :to => "users#confirm_email", as: 'confirm_email'
     get 'usernames/:id/archive' => 'usernames#archive', :as => :archive
     get 'usernames/:id/gallery' => 'usernames#gallery', :as => :gallery
   get 'search' => 'pages#search'
@@ -45,6 +45,9 @@ Rails.application.routes.draw do
 
   resources :users do
  delete 'delete' => 'users#destroy'
+ member do
+  get :confirm_email
+end
 end
 
 resources :usernames do

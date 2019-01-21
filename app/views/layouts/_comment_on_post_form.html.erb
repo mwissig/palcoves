@@ -1,7 +1,7 @@
 <div class="postcommentform"><% if @current_user.usernames.present? %>
 <%= form_for([@po.username, @po, Comment.new]) do |f| %>
 <%= f.label 'Reply as' %> <%= f.select :username_id, @username_selector %><br>
-<%= f.text_area :body, placeholder: 'body', require: true %><br>
+<%= f.text_area :body, placeholder: 'body', require: true, minlength: 12 %><br>
 <%= f.hidden_field :post_id, value: @po.id %><br>
   <%= f.label "Share this to your feed?" %><%= f.check_box :shared %><br>
     <%= f.label "Send comment as private message to #{@po.username.name}?" %>

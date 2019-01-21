@@ -2,7 +2,7 @@
   <% if @current_user.usernames.present? %>
 <%= form_for([@co.username, @co.post, Comment.new]) do |f| %>
 <%= f.label 'Reply as' %> <%= f.select :username_id, @username_selector %>
-<%= f.text_area :body, placeholder: 'body', require: true %><br>
+<%= f.text_area :body, placeholder: 'body', require: true, minlength: 12 %><br>
 <%= f.hidden_field :post_id, value: @co.post.id %>
 <%= f.hidden_field :reply_id, value: @co.id %>
     <%= f.label "Send comment as private message to #{@co.username.name}?" %>

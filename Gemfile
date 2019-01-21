@@ -31,6 +31,7 @@ gem 'simple_form'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 gem 'jquery-minicolors-rails'
+gem "figaro"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'jquery-ui-rails'
@@ -53,6 +54,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem "better_errors"
   gem "binding_of_caller"
+  # gem "letter_opener"
 end
 
 group :test do

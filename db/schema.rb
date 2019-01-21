@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_17_185650) do
+ActiveRecord::Schema.define(version: 2019_01_18_021223) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -117,6 +117,8 @@ ActiveRecord::Schema.define(version: 2019_01_17_185650) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "time_zone"
+    t.boolean "email_confirmed", default: false
+    t.string "confirm_token"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
