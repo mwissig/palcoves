@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :usernames, dependent: :destroy
   before_save { self.email = email.downcase }
   has_secure_password
+  validates :time_zone, presence: true, length: { minimum: 3 }
   validates :password, presence: true, length: { maximum: 32, minimum: 6 }
   validates :email, presence: true, length: { maximum: 100 }
   validates :password, confirmation: { case_sensitive: true }

@@ -1,0 +1,78 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, or any plugin's
+// vendor/assets/javascripts directory can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file. JavaScript code in this file should be added after the last require_* statement.
+//
+// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
+// about supported directives.
+//
+//= require rails-ujs
+//= require activestorage
+//= require turbolinks
+//= require_tree .
+//= require jquery
+//= require jquery.minicolors
+//= require jquery.minicolors.simple_form
+//= require jquery-ui
+
+function updateUsernameCounter(){
+    var charCount = $("#create-username").val().length + 1;
+            $("#username-char-count").css("color", "red");
+    $("#username-char-count").html(charCount);
+    if (charCount >= 4 || charcount <= 100 ) {
+        $("#username-char-count").css("color", "green");
+     } else {
+        $("#username-char-count").css("color", "red");
+     }
+ };
+
+ function updatePostTitleCounter(){
+     var charCount = $("#create-post-title").val().length + 1;
+             $("#post-title-char-count").css("color", "red");
+     $("#post-title-char-count").html(charCount);
+     if (charCount >= 3 || charcount <= 256 ) {
+         $("#post-title-char-count").css("color", "green");
+      } else {
+         $("#post-title-char-count").css("color", "red");
+      }
+  };
+
+  function updatePostBodyCounter(){
+      var charCount = $("#create-post-body").val().length + 1;
+              $("#post-body-char-count").css("color", "red");
+      //The text in the p element with id char-limit is equivelent to num of chars
+      $("#post-body-char-count").html(charCount);
+      if (charCount >= 12) {
+          $("#post-body-char-count").css("color", "green");
+       } else {
+          $("#post-body-char-count").css("color", "red");
+       }
+   };
+
+   function updateCommentBodyCounter(id){
+       var charCount = $("#create-comment-body-" + id).val().length + 1;
+               $("#comment-body-char-count-" + id).css("color", "red");
+       //The text in the p element with id char-limit is equivelent to num of chars
+       $("#comment-body-char-count-" + id).html(charCount);
+       if (charCount >= 12) {
+           $("#comment-body-char-count-" + id).css("color", "green");
+        } else {
+           $("#comment-body-char-count-" + id).css("color", "red");
+        }
+    };
+
+    function updateCommentCommentCounter(id){
+        var charCount = $("#create-comment-comment-" + id).val().length + 1;
+                $("#comment-comment-char-count-" + id).css("color", "red");
+        //The text in the p element with id char-limit is equivelent to num of chars
+        $("#comment-comment-char-count-" + id).html(charCount);
+        if (charCount >= 12) {
+            $("#comment-comment-char-count-" + id).css("color", "green");
+         } else {
+            $("#comment-comment-char-count-" + id).css("color", "red");
+         }
+     };

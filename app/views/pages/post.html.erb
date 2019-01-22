@@ -2,9 +2,9 @@
 <% if logged_in? %>
  <%= form_for([@username, @post]) do |f| %>
 <%= f.label 'Post as' %> <%= f.select :username_id, @username_selector %><br>
-  <%= f.text_field :title, placeholder: 'title', require: true, minlength: 3 %><br>
-  <%= f.text_area :body, placeholder: 'body', require: true, minlength: 12 %><br>
-  <%= f.file_field :image, placeholder: 'upload an image' %><br>
+  <%= f.text_field :title, placeholder: 'title', require: true, minlength: 3, require: true, :id => "create-post-title", :onkeydown => "updatePostTitleCounter()" %><span id="post-title-char-count"></span><br>
+  <%= f.text_area :body, placeholder: 'body', require: true, minlength: 12, require: true, :id => "create-post-body", :onkeydown => "updatePostBodyCounter()" %><span id="post-body-char-count"></span><br>
+  <%# f.file_field :image, placeholder: 'upload an image' %><br>
     <%= f.text_field :tags, placeholder: 'tags, separated by spaces' %><br>
   <%= f.label "Add to archive?" %><%= f.check_box :archive %><br>
     <%= f.label "Add to gallery?" %><%= f.check_box :gallery %><br>
