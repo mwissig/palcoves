@@ -3,9 +3,30 @@
 <% @userpage = true %>
 <h2>User Page</h2>
 <h1><%= @username.name %></h1>
-<h2><%= button_to "Archive", archive_path(@username.name), method: :get %></h2>
-<h2><%= button_to "Gallery", gallery_path(@username.name), method: :get %></h2>
-<p><%= @username.profile %></p>
+
+
+<div class="box userinfo">
+  <h2><%= @username.name %></h2>
+  <p><%= simple_format(@username.profile) %></p>
+  <h2><%= button_to "Archive", archive_path(@username.name), method: :get %></h2>
+    <div class="archivepreview">
+      <% @archiveprev.each do |ar| %>
+      <div class="arEach">
+          <%= link_to ar.title.truncate(25, separator: ' '), username_post_path(ga.username.name, ar) %>
+      </div>
+      <% end %>
+    </div>
+  <h2><%= button_to "Gallery", gallery_path(@username.name), method: :get %></h2>
+      <div class="gallerypreview">
+        <% @galleryprev.each do |ga| %>
+        <div class="arEach">
+          <%= link_to ga.title.truncate(25, separator: ' '), username_post_path(ga.username.name, ga) %>
+        </div>
+        <% end %>
+      </div>
+
+</div>
+
 <% if logged_in? %>
 <% if @username.user == @current_user %>
 <div class="styleform">

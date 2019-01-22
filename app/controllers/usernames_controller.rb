@@ -58,6 +58,8 @@ class UsernamesController < ApplicationController
     def show
       @username = Username.friendly.find(params[:id])
       @posts = @username.posts.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+      @archiveprev = @username.posts.order("created_at DESC").where(archive: true).limit(6)
+      @galleryprev =  @username.posts.order("created_at DESC").where(gallery: true).limit(6)
     end
 
     def index

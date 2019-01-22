@@ -265,9 +265,17 @@ color:#e34e4e !important;
 }
 .styleform {
   max-width: 20%;
+  width: 20%;
   position: fixed;
   top: 3em;
   left: 1em;
+}
+.userinfo {
+  max-width: 20%;
+    width: 20%;
+  position: fixed;
+  top: 3em;
+  right: 1em;
 }
 .notification {
   border-bottom: 1px solid black;
