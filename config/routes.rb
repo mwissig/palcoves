@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  get 'password_resets/edit'
  get '/:token/confirm_email/', :to => "users#confirm_email", as: 'confirm_email'
     get 'usernames/:id/archive' => 'usernames#archive', :as => :archive
     get 'usernames/:id/gallery' => 'usernames#gallery', :as => :gallery
@@ -71,5 +73,7 @@ resources :usernames do
        end
     end
  end
+
+resources :password_resets,     only: [:new, :create, :edit, :update]
 
 end
