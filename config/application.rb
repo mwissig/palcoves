@@ -17,3 +17,7 @@ module Socialmedia
     # the framework and any gems in your application.
   end
 end
+
+Raven.configure do |config|
+  config.dsn = 'https://efa44199c3a544029d814af05093c9d6:b28f50af2b314bd6a366fda48870ae41@sentry.io/1376455'
+end
