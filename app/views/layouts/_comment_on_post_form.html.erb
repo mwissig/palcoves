@@ -1,6 +1,6 @@
 <div class="postcommentform">
 <% if logged_in? %>
-<% if @current_user.usernames.exists? %>
+<% if @current_user.usernames.present? %>
 <%= form_for([@po.username, @po, Comment.new]) do |f| %>
 <%= f.label 'Reply as' %> <%= f.select :username_id, @username_selector %><br>
 <%= f.text_area :body, placeholder: 'body', require: true, minlength: 12 %><br>
