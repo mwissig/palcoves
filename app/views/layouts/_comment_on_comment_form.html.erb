@@ -1,4 +1,5 @@
-<div class="replyform">
+<div class="right rep" onclick="expandCommentCommentBox(<%= @co.id.to_s %>)">Reply to Comment</div>
+<div class="replyform", id="replyform-<%= @co.id.to_s %>">
   <% if @current_user.usernames.present? %>
 <%= form_for([@co.username, @co.post, Comment.new]) do |f| %>
 <%= f.label 'Reply as' %> <%= f.select :username_id, @username_selector %>

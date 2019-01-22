@@ -183,10 +183,10 @@ color:#e34e4e !important;
 .post textarea {
   height: 1em;
 }
-.post textarea:hover, .post textarea:active {
+/* .post textarea:hover, .post textarea:active {
   height: 3em;
   background-color: rgb(255, 248, 181);
-}
+} */
 .comment {
   display: grid;
   grid-template-columns: 40px auto;
@@ -229,6 +229,11 @@ color:#e34e4e !important;
   margin-left: 2em;
   border-left: 2px solid black;
   padding: 3px;
+    height: 0;
+  visibility: hidden;
+  transition-property: all;
+  transition-duration: .5s;
+  transition-timing-function: ease-in-out;
   /* font-size: 12px; */
 }
 .postcommentform{
@@ -236,6 +241,20 @@ color:#e34e4e !important;
   padding: 5px;
   margin-top: 5px;
   border-top: 2px solid black;
+  visibility: hidden;
+  height: 0;
+  transition-property: all;
+  transition-duration: .5s;
+  transition-timing-function: ease-in-out;
+}
+.right {
+  width: 100%;
+  margin-left: 2em;
+  border-left: 2px solid black;
+  padding: 0 5px;
+}
+.rep {
+    background-color: rgb(227, 227, 227);
 }
 .styleform, .notifications, .box {
   margin: 5px auto;
@@ -343,3 +362,11 @@ color:#e34e4e !important;
 /* .replyform:hover, .replyform:active {
   height: auto;
 } */
+.comment-textarea {
+  width: 95%;
+  height: 4em !important;
+}
+.show {
+  visibility: visible;
+  height: auto;
+}

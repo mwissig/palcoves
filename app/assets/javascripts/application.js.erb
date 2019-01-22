@@ -76,3 +76,11 @@ function updateUsernameCounter(){
             $('#comment-comment-char-count-' + id).css('color', 'red');
          }
      };
+
+     function expandCommentBox(id) {
+       document.getElementById('postcommentform-' + id).classList.toggle('show');
+     }
+
+     function expandCommentCommentBox(id) {
+       document.getElementById('replyform-' + id).classList.toggle('show');
+     }
