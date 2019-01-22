@@ -20,59 +20,59 @@
 //= require jquery-ui
 
 function updateUsernameCounter(){
-    var charCount = $("#create-username").val().length + 1;
-            $("#username-char-count").css("color", "red");
-    $("#username-char-count").html(charCount);
+    var charCount = $('#create-username').val().length + 1;
+            $('#username-char-count').css('color', 'red');
+    $('#username-char-count').html(charCount);
     if (charCount >= 4 || charcount <= 100 ) {
-        $("#username-char-count").css("color", "green");
+        $('#username-char-count').css('color', 'green');
      } else {
-        $("#username-char-count").css("color", "red");
+        $('#username-char-count').css('color', 'red');
      }
  };
 
  function updatePostTitleCounter(){
-     var charCount = $("#create-post-title").val().length + 1;
-             $("#post-title-char-count").css("color", "red");
-     $("#post-title-char-count").html(charCount);
+     var charCount = $('#create-post-title').val().length + 1;
+             $('#post-title-char-count').css('color', 'red');
+     $('#post-title-char-count').html(charCount);
      if (charCount >= 3 || charcount <= 256 ) {
-         $("#post-title-char-count").css("color", "green");
+         $('#post-title-char-count').css('color', 'green');
       } else {
-         $("#post-title-char-count").css("color", "red");
+         $('#post-title-char-count').css('color', 'red');
       }
   };
 
   function updatePostBodyCounter(){
-      var charCount = $("#create-post-body").val().length + 1;
-              $("#post-body-char-count").css("color", "red");
+      var charCount = $('#create-post-body').val().length + 1;
+              $('#post-body-char-count').css('color', 'red');
       //The text in the p element with id char-limit is equivelent to num of chars
-      $("#post-body-char-count").html(charCount);
+      $('#post-body-char-count').html(charCount);
       if (charCount >= 12) {
-          $("#post-body-char-count").css("color", "green");
+          $('#post-body-char-count').css('color', 'green');
        } else {
-          $("#post-body-char-count").css("color", "red");
+          $('#post-body-char-count').css('color', 'red');
        }
    };
 
    function updateCommentBodyCounter(id){
-       var charCount = $("#create-comment-body-" + id).val().length + 1;
-               $("#comment-body-char-count-" + id).css("color", "red");
+       var charCount = $('#create-comment-body-' + id).val().length + 1;
+               $('#comment-body-char-count-' + id).css('color', 'red');
        //The text in the p element with id char-limit is equivelent to num of chars
-       $("#comment-body-char-count-" + id).html(charCount);
+       $('#comment-body-char-count-' + id).html(charCount);
        if (charCount >= 12) {
-           $("#comment-body-char-count-" + id).css("color", "green");
+           $('#comment-body-char-count-' + id).css('color', 'green');
         } else {
-           $("#comment-body-char-count-" + id).css("color", "red");
+           $('#comment-body-char-count-' + id).css('color', 'red');
         }
     };
 
     function updateCommentCommentCounter(id){
-        var charCount = $("#create-comment-comment-" + id).val().length + 1;
-                $("#comment-comment-char-count-" + id).css("color", "red");
+        var charCount = $('#create-comment-comment-' + id).val().length + 1;
+                $('#comment-comment-char-count-' + id).css('color', 'red');
         //The text in the p element with id char-limit is equivelent to num of chars
-        $("#comment-comment-char-count-" + id).html(charCount);
+        $('#comment-comment-char-count-' + id).html(charCount);
         if (charCount >= 12) {
-            $("#comment-comment-char-count-" + id).css("color", "green");
+            $('#comment-comment-char-count-' + id).css('color', 'green');
          } else {
-            $("#comment-comment-char-count-" + id).css("color", "red");
+            $('#comment-comment-char-count-' + id).css('color', 'red');
          }
      };
