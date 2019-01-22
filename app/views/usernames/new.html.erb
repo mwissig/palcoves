@@ -8,7 +8,7 @@
 <% if @current_user.usernames.exists? %>
 <%= f.label "Make default?" %><%= f.check_box :default %><br>
 <% else %>
-<%= f.hidden_field :defaul, value: true %>
+<%= f.hidden_field :default, value: true %>
 
 <% end %>
 <%= f.submit 'Create username' %>

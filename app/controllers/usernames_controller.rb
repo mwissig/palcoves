@@ -25,7 +25,7 @@ class UsernamesController < ApplicationController
             signature: '',
             signature_css: ''
         )
-        if @username.default == true && @current_user.usernames.count > 1
+        if @username.default == true || @current_user.usernames.count == 1
           set_default
         end
         redirect_to user_path(@current_user)
@@ -71,7 +71,7 @@ class UsernamesController < ApplicationController
   end
 
   def set_default
-    @username = Username.friendly.find(params[:id])
+    @username ||= Username.friendly.find(params[:id])
     @current_user.usernames.each do |u|
       if u == @username
         u.default = true
