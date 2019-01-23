@@ -40,7 +40,11 @@ class PagesController < ApplicationController
 
     end
     tagposts = @tagged_posts.uniq!
+      if tagposts != nil
     @posts = Post.all.where(id: tagposts.map(&:id)).order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+  else
+    @posts = Post.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+  end
   else
         @posts = Post.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
   end
