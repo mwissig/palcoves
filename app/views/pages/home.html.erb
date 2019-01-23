@@ -1,6 +1,6 @@
   <% if logged_in? && @current_user.usernames.present? %>
 <div class="box userinfo">
-  <h2>Follows</h2>
+  <h2>Your Follows</h2>
   <ul class="follows">
 <% @current_user.usernames.each do |us| %>
   <% us.follows. each do |fol| %>
@@ -10,6 +10,14 @@
     <li>You follow the tag "<%= link_to fol.tag, results_path(q: fol.tag) %>" as <%= link_to Username.find_by(id: fol.username_id).name, username_path(Username.find_by(id: fol.username_id).name) %></li>
     <% end %>
   <% end %>
+<% end %>
+</ul>
+<h2>Users Following You</h2>
+<ul class="follows">
+<% @current_user.usernames.each do |us| %>
+<% Follow.all.where(recipient_id: @current_user.id).distinct.each do |fol| %>
+  <li><%= link_to Username.find_by(id: fol.username_id).name, username_path(Username.find_by(id: fol.username_id).name) %> follows your username <%= link_to Username.find_by(id: fol.recipient_id).name, username_path(Username.find_by(id: fol.username_id).name) %></li>
+<% end %>
 <% end %>
 </ul>
 </div>
