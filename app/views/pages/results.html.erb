@@ -27,7 +27,6 @@ Follow tag as
 <% end %>
 <% end %>
 </div>
-<% @final_results.each do |res| %>
-<% @po = res %>
-<%= render 'layouts/show_post' %>
-<% end %>
+<div class="posts">
+<%= render 'layouts/post' %>
+</div>

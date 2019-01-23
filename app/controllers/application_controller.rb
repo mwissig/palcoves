@@ -43,7 +43,10 @@ class ApplicationController < ActionController::Base
 
 
             @final_results.uniq!
+            @posts = Post.all.where(id: @final_results.map(&:id)).distinct.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+
               end
+
               def followtag
                 Follow.create(
                   username_id: params[:username_id],
@@ -60,5 +63,5 @@ class ApplicationController < ActionController::Base
             Raven.user_context(id: session[:current_user_id]) # or anything else in session
             Raven.extra_context(params: params.to_unsafe_h, url: request.url)
           end
-          
+
 end
