@@ -12,15 +12,15 @@
     <div class="archivepreview">
       <% @archiveprev.each do |ar| %>
       <div class="arEach">
-          <%= link_to ar.title.truncate(25, separator: ' '), username_post_path(ar.username.name, ar) %>
+          <%= link_to ar.title.truncate(35, separator: ' '), username_post_path(ar.username.name, ar) %>
       </div>
       <% end %>
     </div>
   <h2><%= button_to "Gallery", gallery_path(@username.name), method: :get %></h2>
       <div class="gallerypreview">
         <% @galleryprev.each do |ga| %>
-        <div class="arEach">
-          <%= link_to ga.title.truncate(25, separator: ' '), username_post_path(ga.username.name, ga) %>
+        <div class="galEach">
+          <%= link_to ga.title.truncate(35, separator: ' '), username_post_path(ga.username.name, ga) %>
         </div>
         <% end %>
       </div>

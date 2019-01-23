@@ -374,6 +374,19 @@ color:#e34e4e !important;
   width: 95%;
   height: 4em !important;
 }
+.gallerypreview {
+  display: grid;
+  grid-template-columns: 9.5vw 9.5vw;
+  grid-auto-rows: 5vw 5vw 5vw;
+  overflow: hidden;
+  grid-gap: 5px;
+  margin: 5px auto;
+}
+.galEach {
+  background-color: rgb(200, 200, 200);
+  border-radius: 5px;
+  padding: 5px;
+}
 .show {
   visibility: visible;
   height: auto;
