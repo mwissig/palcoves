@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'browse' => 'pages#browse'
   get 'password_resets/new'
   get 'password_resets/edit'
  get '/:token/confirm_email/', :to => "users#confirm_email", as: 'confirm_email'

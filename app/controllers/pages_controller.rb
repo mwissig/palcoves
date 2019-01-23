@@ -1,7 +1,55 @@
 class PagesController < ApplicationController
   def home
     @posts = Post.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+    if logged_in?
+    @tags = []
+    @tagged_posts = []
+    @current_user.usernames.each do |us|
+      Follow.all.where(username_id: us.id).each do |fol|
+        @tags.push(fol)
+      end
+    end
+    @tags.uniq!
+    @tags.each do |tag|
+      if tag.recipient_id == nil
+        post_by_tags = Post.pluck(:tags)
+
+        matches = []
+
+      post_by_tags.each do |t|
+        if t != nil
+          matches << t if t.downcase.include?(tag.tag)
+        end
+      end
+
+      matches.each do |match|
+        x = Post.where(tags: match)
+        x.each do |y|
+          @tagged_posts << y
+        end
+      end
+
+
+
+      else
+        @followed_accts = Post.all.where(username_id: tag.recipient_id)
+        @followed_accts.each do |post|
+        @tagged_posts << post
+        end
+      end
+
+    end
+    tagposts = @tagged_posts.uniq!
+    @posts = Post.all.where(id: tagposts.map(&:id)).order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+  else
+        @posts = Post.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
   end
+  end
+
+def browse
+  @posts = Post.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+end
+
   def post
     if logged_in?
     @post = Post.new
