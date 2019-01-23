@@ -6,10 +6,10 @@ class UsernamesController < ApplicationController
       @username = Username.new
       end
       def archive
-        @posts = Post.where(username_id: @username, archive: true)
+        @posts = Post.where(username_id: @username, archive: true).order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
        end
       def gallery
-        @posts = Post.where(username_id: @username, gallery: true)
+        @posts = Post.where(username_id: @username, gallery: true).order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
        end
 
     def create
