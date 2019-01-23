@@ -1,4 +1,17 @@
-
+<div class="box userinfo">
+  <h2>Follows</h2>
+  <ul class="follows">
+<% @current_user.usernames.each do |us| %>
+  <% us.follows. each do |fol| %>
+    <% if fol.tag == nil %>
+  <li>You follow the user <%= link_to Username.find_by(id: fol.recipient_id).name, username_path(Username.find_by(id: fol.recipient_id).name) %> as <%= link_to Username.find_by(id: fol.username_id).name, username_path(Username.find_by(id: fol.username_id).name) %></li>
+    <% else %>
+    <li>You follow the tag "<%= link_to fol.tag, results_path(q: fol.tag) %>" as <%= link_to Username.find_by(id: fol.username_id).name, username_path(Username.find_by(id: fol.username_id).name) %></li>
+    <% end %>
+  <% end %>
+<% end %>
+</ul>
+</div>
 <div class="posts">
 <%= render 'layouts/post' %>
 </div>
