@@ -16,6 +16,15 @@ class FollowsController < ApplicationController
     @user = @current_user
      @follow.save!
     if @follow.save
+      if @follow.tag == nil
+      Notification.create(
+        kind: 'follow',
+        username_id: @follow.recipient_id,
+        sender_id: @follow.username_id,
+        body: @follow.body,
+        read: false
+      )
+    end
       redirect_back(fallback_location: root_path)
     else
       redirect_back(fallback_location: username_follow_path(@follow.username, @follow))
