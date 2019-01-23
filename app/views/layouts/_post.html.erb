@@ -1,9 +1,7 @@
 <div class="digg_pagination">
-<% if @userpage == true %>
-<%= will_paginate @username.posts.order("created_at DESC").paginate(:page => params[:page], :per_page => 5) %>
-<% else %>
+
 <%= will_paginate @posts %>
-<% end %>
+
 </div>
 
 <% if logged_in? && @current_user.usernames.present? %>
@@ -24,9 +22,5 @@
 </div>
 
 <div class="digg_pagination">
-<% if @userpage == true %>
-<%= will_paginate @username.posts.order("created_at DESC").paginate(:page => params[:page], :per_page => 5) %>
-<% else %>
 <%= will_paginate @posts %>
-<% end %>
 </div>
