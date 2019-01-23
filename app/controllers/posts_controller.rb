@@ -23,6 +23,7 @@ class PostsController < ApplicationController
       end
        @post.save!
       if @post.save
+        flash[:success] = "Post created"
         redirect_to username_path(@post.username)
       else
         redirect_back(fallback_location: username_post_path(@post.username, @post))

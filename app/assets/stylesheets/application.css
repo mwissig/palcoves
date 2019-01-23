@@ -256,7 +256,7 @@ color:#e34e4e !important;
 .rep {
     background-color: rgb(227, 227, 227);
 }
-.styleform, .notifications, .box {
+.styleform, .notifications, .box, .flash-messages-container {
   margin: 5px auto;
   background-color: white;
   padding: 5px;

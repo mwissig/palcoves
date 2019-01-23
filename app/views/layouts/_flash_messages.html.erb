@@ -5,6 +5,10 @@
         <div class="flash-message" data-type="<%= name %>" >
           <%= msg %>
         </div>
+        <% else %>
+        <div class="flash-message" data-type="info" >
+          <%= msg %>
+        </div>
       <% end %>
     <% end %>
   </div>
