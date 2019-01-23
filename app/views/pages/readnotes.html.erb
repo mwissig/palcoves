@@ -1,0 +1,7 @@
+<h1>Notifications Marked Read</h1>
+<div class="notifications">
+<% @notifications.each do |note| %>
+<% @note = note %>
+  <%= render 'layouts/notifications' %>
+<% end %>
+</div>

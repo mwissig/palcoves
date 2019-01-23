@@ -1,0 +1,18 @@
+<div class="leftside">
+<% if @note.kind == "share" %>
+<%= Username.find_by(id: @note.sender_id).name %> shared your post "<%= link_to Post.find_by(id: @note.post_id).title, username_post_path(@note.username, Post.find_by(id: @note.post_id)) %>" with comment:
+<div class="notebody"><b> <%= @note.body %></b></div>
+<% elsif @note.kind == "private_message" %>
+<%= Username.find_by(id: @note.sender_id).name %> sent you a message:
+<div class="notebody"><b> <%= @note.body %></b></div>
+<% elsif @note.kind == "comment" %>
+<%= Username.find_by(id: @note.sender_id).name %> commented on your post "<%= link_to Post.find_by(id: @note.post_id).title, username_post_path(@note.username, Post.find_by(id: @note.post_id)) %>":
+<div class="notebody"><b> <%= @note.body %></b></div>
+<% elsif @note.kind == "reply comment" %>
+<%= Username.find_by(id: @note.sender_id).name %> replied to your comment "<%= link_to Comment.find_by(id: @note.comment_id).body.truncate(25, separator: ' '), username_post_path(@note.username, Post.find_by(id: @note.post_id)) %>":
+<div class="notebody"><b> <%= @note.body %></b></div>
+<% elsif @note.kind == "follow" %>
+<%= Username.find_by(id: @note.sender_id).name %> followed you and says:
+<div class="notebody"><b> <%= @note.body %></b></div>
+<% end %>
+</div>

@@ -68,6 +68,9 @@ end
     @unread_notifs = @notifications.where(read: false)
   end
 
+  def oldposts
+  end
+
       def markallread
         if logged_in?
           @current_user.usernames.each do |u|
@@ -80,6 +83,21 @@ end
       end
   end
 end
+
+def readnotes
+   if logged_in? && @current_user.usernames.present?
+     @notifs = []
+     @current_user.usernames.each do |us|
+       if Notification.find_by(username_id: us.id) != nil
+    @notifs << Notification.find_by(username_id: us.id)
+  end
+  end
+  @my_notifs = Notification.all.where(id: @notifs.map(&:id))
+    @notifications = @my_notifs.where(read: true).order("created_at DESC").paginate(:page => params[:page], :per_page => 50)
+  end
+end
+
+
 
 def followtag
 @follow = Follow.new

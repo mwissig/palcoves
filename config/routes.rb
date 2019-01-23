@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'inbox/read' => 'pages#readnotes'
+  get 'oldposts' => 'pages#oldposts'
   get 'browse' => 'pages#browse'
   get 'password_resets/new'
   get 'password_resets/edit'

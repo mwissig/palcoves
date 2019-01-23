@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
             @follow = Follow.new
 
             if @current_user != nil
-                          @usernmae = @current_user.usernames.find_by(default: true).name
+                          @username = @current_user.usernames.find_by(default: true).name
             names = ["(Default) " + @current_user.usernames.find_by(default: true).name]
             ids = [@current_user.usernames.find_by(default: true).id]
               @current_user.usernames.each do |u|
