@@ -157,6 +157,9 @@ overflow: hidden;
   height: 100%;
   margin: 0;
 }
+.bottomhalf {
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+}
 .signature {
   height: auto;
   width: 100% !important;
