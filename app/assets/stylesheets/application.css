@@ -135,7 +135,7 @@ code {
 .post {
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto;
   border: 2px solid black;
   padding: 0;
   max-width: 50%;
