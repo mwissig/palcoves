@@ -84,3 +84,12 @@ function updateUsernameCounter(){
      function expandCommentCommentBox(id) {
        document.getElementById('replyform-' + id).classList.toggle('show');
      }
+
+     function formatText(tag) {
+   var Field = document.getElementById('create-post-body');
+   var val = Field.value;
+   var selected_txt = val.substring(Field.selectionStart, Field.selectionEnd);
+   var before_txt = val.substring(0, Field.selectionStart);
+   var after_txt = val.substring(Field.selectionEnd, val.length);
+   Field.value += '[' + tag + ']' + '[/' + tag + ']';
+}
