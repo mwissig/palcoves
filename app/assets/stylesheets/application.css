@@ -183,6 +183,9 @@ color:#e34e4e !important;
 .post_body {
   padding: 5px;
 }
+.post_body img {
+  max-width: 100%;
+}
 .post textarea {
   height: 1em;
 }
@@ -322,7 +325,7 @@ color:#e34e4e !important;
   display: grid;
   width: auto;
   margin: 0 auto;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto auto auto autopost_body;
 }
 .bbcode div {
   border-bottom: solid 1px gray;
