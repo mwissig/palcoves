@@ -318,11 +318,20 @@ color:#e34e4e !important;
   border-radius: 5px;
   padding: 1px 3px;
 }
+.bbcode {
+  display: grid;
+  width: auto;
+  margin: 0 auto;
+  grid-template-columns: auto auto;
+}
+.bbcode div {
+  border-bottom: solid 1px gray;
+}
 .digg_pagination {
   text-align: center;
   background-color: white;
   border-radius: 5px;
-  max-width: 50%;
+  max-width: 100%;
   width: auto;
   margin: 5px auto;
   background: white;

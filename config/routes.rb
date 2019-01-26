@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'bbcode' => 'pages#bbcode'
   get 'inbox/read' => 'pages#readnotes'
   get 'oldposts' => 'pages#oldposts'
   get 'browse' => 'pages#browse'

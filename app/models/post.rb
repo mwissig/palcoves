@@ -1,3 +1,4 @@
+require 'bb-ruby'
 class Post < ApplicationRecord
   belongs_to :username
   has_one_attached :image

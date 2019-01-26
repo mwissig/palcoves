@@ -19,7 +19,8 @@
   <% else %>
   <div class="post_body" style="background-color:<%= @po.username.userstyle.post_background_color %>;color:<%= @po.username.userstyle.post_text_color %>">
   <% end %>
-<b><%= simple_format(@po.body) %></b></p>
+<%= @po.body.gsub(/\n/,'[br]').bbcode_to_html.html_safe %>
+<br>
 
 <% if @po.tags != nil %>
 <% @tagarray = @po.tags.split(" ") %>
