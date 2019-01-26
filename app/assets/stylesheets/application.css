@@ -322,7 +322,7 @@ color:#e34e4e !important;
   display: grid;
   width: auto;
   margin: 0 auto;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto auto;
 }
 .bbcode div {
   border-bottom: solid 1px gray;

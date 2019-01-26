@@ -5,7 +5,7 @@
   <%= f.text_field :title, placeholder: 'title', require: true, minlength: 3, require: true, :id => "create-post-title", :onkeydown => "updatePostTitleCounter()" %><span id="post-title-char-count"></span><br>
   You may use <%= link_to "BBcode", bbcode_path %> in this field.<br>
       Insert: <input type="button" value="link" onclick="formatText ('url');" />
-    <input type="button" value="image" onclick="formatText ('image');" />
+    <input type="button" value="image" onclick="formatText ('img');" />
   <input type="button" value="youtube" onclick="formatText ('youtube');" /><br>
 <!-- <input type="button" value="dailymotion" onclick="formatText ('dailymotion');" />
 <input type="button" value="vimeo" onclick="formatText ('vimeo');" /> <br> -->
