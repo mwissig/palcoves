@@ -282,6 +282,8 @@ color:#e34e4e !important;
   position: fixed;
   top: 3em;
   right: 1em;
+  max-height: 95%;
+  overflow-y: scroll;
 }
 .notification {
   border-bottom: 1px solid black;
