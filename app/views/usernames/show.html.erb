@@ -7,7 +7,7 @@
 
 <div class="box userinfo">
   <h2><%= @username.name %></h2>
-  <p><%= simple_format(@username.profile) %></p>
+  <p><%= @username.profile.gsub(/\n/,'[br]').bbcode_to_html.gsub('[marquee]','<marquee>').gsub('[/marquee]','</marquee>').html_safe %></p>
   <h2><%= button_to "Archive", archive_path(@username.name), method: :get %></h2>
     <div class="archivepreview">
       <% @archiveprev.each do |ar| %>
@@ -39,10 +39,16 @@
       <%= f.label 'Custom CSS for Signature' %><%= f.text_field :signature_css %><%= link_to "What's CSS and how do I use it?", css_path %><br>
     <%= f.submit 'Set styles' %>
     <% end %>
+    <h2>Change your description</h2>
+    <%= form_for(@username) do |f| %>
+      You may use <%= link_to "BBcode", bbcode_path %> in this field.<br>
+      <%= f.text_area :profile, placeholder: 'write a description' %><br>
+        <%= f.submit 'Change description' %>
+        <% end %>
   </div>
   <% else %>
   <div class="styleform">
-    <% if logged_in? %>
+    <% if logged_in? && @current_user.usernames.present? %>
     <% if @current_user.usernames.find_by(default: true).follows.where(recipient_id: @username.id) == nil %>
     <% names = ["(Default) " + @current_user.usernames.find_by(default: true).name] %>
     <% ids = [@current_user.usernames.find_by(default: true).id] %>
