@@ -42,7 +42,10 @@
     <h2>Change your description</h2>
     <%= form_for(@username) do |f| %>
       You may use <%= link_to "BBcode", bbcode_path %> in this field.<br>
-      <%= f.text_area :profile, placeholder: 'write a description' %><br>
+      Insert: <input type="button" value="link" onclick="formatText ('url');" />
+    <input type="button" value="image" onclick="formatText ('img');" />
+  <input type="button" value="youtube" onclick="formatText ('youtube');" /><br>
+      <%= f.text_area :profile, placeholder: 'write a description', :id => "create-post-body" %><br>
         <%= f.submit 'Change description' %>
         <% end %>
   </div>
