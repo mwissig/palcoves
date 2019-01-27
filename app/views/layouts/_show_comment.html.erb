@@ -3,12 +3,16 @@
   <div class="commentbody">
   <p>
   <%= @com.body %>
-<hr style=" border-bottom: 2px solid <%= @com.username.userstyle.post_background_color %>;">
+<hr style=" border-bottom: 2px solid <%= @com.username.userstyle.post_background_color %>;"><i>
+<% if @com.private == true %>
+Private message to <%= link_to Username.find_by(id: @com.recipient_id).name, username_path(Username.find_by(id: @com.recipient_id).name) %>
+<% end %>
 <% if @com.shared == true %>
 Shared
 <% end %>
 
-<i>by <%= link_to @com.username.name, username_path(@com.username.name) %></i> at
+
+by <%= link_to @com.username.name, username_path(@com.username.name) %></i> at
 <% if logged_in? && @current_user.time_zone != nil %>
 <%= @com.created_at.in_time_zone(@current_user.time_zone).strftime("%-l:%M%P on %b %-d, %Y") %>
 <% else %>
