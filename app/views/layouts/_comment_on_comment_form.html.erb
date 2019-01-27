@@ -1,6 +1,6 @@
 <div class="right rep" onclick="expandCommentCommentBox(<%= @co.id.to_s %>)">Reply to Comment</div>
 <div class="replyform", id="replyform-<%= @co.id.to_s %>">
-  <% if @current_user.usernames.present? %>
+  <% if logged_in? && @current_user.usernames.present? %>
 <%= form_for([@co.username, @co.post, Comment.new]) do |f| %>
 <%= f.label 'Reply as' %> <%= f.select :username_id, @username_selector %>
 <%= f.text_area :body, placeholder: 'body', minlength: 12, require: true, :id => "create-comment-comment-#{@co.id.to_s}", :onkeydown => "updateCommentCommentCounter(#{@co.id.to_s})" %><span id="comment-comment-char-count-<%= @co.id.to_s %>"></span><br>
