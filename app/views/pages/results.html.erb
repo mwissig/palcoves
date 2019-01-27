@@ -17,7 +17,7 @@ result.
 <% else %>
   results.
 <% end %>
-<% if @current_user.usernames.present? %>
+<% if logged_in? && @current_user.usernames.present? %>
 Follow tag as
 <% @username = @current_user.usernames.find_by(default: true) %>
 <%= form_for([@username, Follow.new]) do |f| %>
