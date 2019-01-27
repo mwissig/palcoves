@@ -10,7 +10,7 @@
 <%= f.label 'Reply as' %> <%= f.select :username_id, @username_selector %><span id="comment-body-char-count-<%= @po.id.to_s %>"></span><br>
 <%= f.text_area :body, placeholder: 'body', minlength: 12, require: true, :class => "comment-textarea", :id => "create-comment-body-#{@po.id.to_s}", :onkeydown => "updateCommentBodyCounter(#{@po.id.to_s})" %><br>
 <%= f.hidden_field :post_id, value: @po.id %>
-  <%= f.label "Share this to your feed?" %><%= f.check_box :shared %>
+  <%= f.label "Share this?" %><%= f.check_box :shared %>
     <%= f.label "Send comment as private message to #{@po.username.name}?" %>
       <%= f.check_box :private %><br>
 <%= f.submit 'Comment' %>
