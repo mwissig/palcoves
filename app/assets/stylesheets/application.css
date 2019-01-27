@@ -277,9 +277,30 @@ color:#e34e4e !important;
   left: 1em;
     max-height: calc(100% - 7em);
       overflow-y: scroll;
+
 }
 .styleform textarea {
   width: 90%;
+}
+/* width */
+::-webkit-scrollbar {
+  width: .5em;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+  border: 1px solid gray;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: black;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: gray;
 }
 .userinfo {
   max-width: 22%;
