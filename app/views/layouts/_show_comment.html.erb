@@ -3,11 +3,11 @@
   <div class="commentbody">
   <p>
   <%= @com.body %>
-<br>
+<hr style=" border-bottom: 2px solid <%= @com.username.userstyle.post_background_color %>;">
 <% if @com.shared == true %>
 Shared
 <% end %>
-<hr style=" border-bottom: 2px solid <%= @com.username.userstyle.post_background_color %>;">
+
 <i>by <%= link_to @com.username.name, username_path(@com.username.name) %></i> at
 <% if logged_in? && @current_user.time_zone != nil %>
 <%= @com.created_at.in_time_zone(@current_user.time_zone).strftime("%-l:%M%P on %b %-d, %Y") %>
