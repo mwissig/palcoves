@@ -15,7 +15,7 @@
 <h2>Users Following You</h2>
 <ul class="follows">
 <% @current_user.usernames.each do |us| %>
-<% Follow.all.where(recipient_id: @current_user.id).distinct.each do |fol| %>
+<% Follow.all.where(recipient_id: us.id).distinct.each do |fol| %>
   <li><%= link_to Username.find_by(id: fol.username_id).name, username_path(Username.find_by(id: fol.username_id).name) %> follows your username <%= link_to Username.find_by(id: fol.recipient_id).name, username_path(Username.find_by(id: fol.username_id).name) %></li>
 <% end %>
 <% end %>
