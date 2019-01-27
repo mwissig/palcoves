@@ -56,8 +56,11 @@ end
   end
 
   def destroy
-  @follow = Follow.find(params[:follow_id])
-  @follow.destroy
+  @follow = Follow.find(params[:id])
+
+  if @follow.present?
+        @follow.destroy
+      end
   redirect_to root_path
 end
 

@@ -5,10 +5,13 @@
 <% @current_user.usernames.each do |us| %>
   <% us.follows. each do |fol| %>
     <% if fol.tag == nil %>
-  <li>You follow the user <%= link_to Username.find_by(id: fol.recipient_id).name, username_path(Username.find_by(id: fol.recipient_id).name) %> as <%= link_to Username.find_by(id: fol.username_id).name, username_path(Username.find_by(id: fol.username_id).name) %></li>
+  <li>You follow the user <%= link_to Username.find_by(id: fol.recipient_id).name, username_path(Username.find_by(id: fol.recipient_id).name) %> as <%= link_to Username.find_by(id: fol.username_id).name, username_path(Username.find_by(id: fol.username_id).name) %>
     <% else %>
-    <li>You follow the tag "<%= link_to fol.tag, results_path(q: fol.tag) %>" as <%= link_to Username.find_by(id: fol.username_id).name, username_path(Username.find_by(id: fol.username_id).name) %></li>
+    <li>You follow the tag "<%= link_to fol.tag, results_path(q: fol.tag) %>" as <%= link_to Username.find_by(id: fol.username_id).name, username_path(Username.find_by(id: fol.username_id).name) %>
     <% end %>
+    <% @follow = fol %>
+      <%= button_to "unfollow", username_follow_path(Username.find_by(id: fol.username_id).name, fol), method: :delete %></li>
+    </li>
   <% end %>
 <% end %>
 </ul>
@@ -16,7 +19,8 @@
 <ul class="follows">
 <% @current_user.usernames.each do |us| %>
 <% Follow.all.where(recipient_id: us.id).distinct.each do |fol| %>
-  <li><%= link_to Username.find_by(id: fol.username_id).name, username_path(Username.find_by(id: fol.username_id).name) %> follows your username <%= link_to Username.find_by(id: fol.recipient_id).name, username_path(Username.find_by(id: fol.username_id).name) %></li>
+  <li><%= link_to Username.find_by(id: fol.username_id).name, username_path(Username.find_by(id: fol.username_id).name) %> follows your username <%= link_to Username.find_by(id: fol.recipient_id).name, username_path(Username.find_by(id: fol.username_id).name) %>
+</li>
 <% end %>
 <% end %>
 </ul>
