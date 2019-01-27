@@ -282,7 +282,7 @@ color:#e34e4e !important;
   position: fixed;
   top: 3em;
   right: 1em;
-  max-height: 95%;
+  max-height: calc(100% - 5em);
   overflow-y: scroll;
 }
 .notification {
