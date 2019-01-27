@@ -19,8 +19,12 @@
   <h2><%= button_to "Gallery", gallery_path(@username.name), method: :get %></h2>
       <div class="gallerypreview">
         <% @galleryprev.each do |ga| %>
-        <div class="galEach">
+        <div class="galEach" style="background-color:<%= @username.userstyle.post_background_color %>;color:<%= @username.userstyle.post_text_color %>;">
+          <div class="galtop">
+          <%= ga.body.truncate(100, separator: ' ').gsub(/\n/,'[br]').bbcode_to_html.gsub('[marquee]','<marquee>').gsub('[/marquee]','</marquee>').html_safe %><br>
+        </div><div class="galbot">
           <%= link_to ga.title.truncate(35, separator: ' '), username_post_path(ga.username.name, ga) %>
+        </div>
         </div>
         <% end %>
       </div>

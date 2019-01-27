@@ -423,16 +423,34 @@ color:#e34e4e !important;
 }
 .gallerypreview {
   display: grid;
-  grid-template-columns: 9.5vw 9.5vw;
-  grid-auto-rows: 5vw 5vw 5vw;
+  grid-template-columns: 45% 45%;
+  grid-auto-rows: auto auto auto;
   overflow: hidden;
   grid-gap: 5px;
   margin: 5px auto;
 }
 .galEach {
-  background-color: rgb(200, 200, 200);
+  border-radius: 5px;
+  /* padding: 5px; */
+    overflow: hidden;
+}
+.galtop {
   border-radius: 5px;
   padding: 5px;
+  height: auto;
+  max-height: 6em;
+  overflow: hidden;
+}
+.galbot {
+  text-align: center;
+  text-transform: uppercase;
+  background-color: black;
+  height: auto;
+  position: relative;
+  bottom: 0px;
+}
+.galbot a {
+  color: white;
 }
 .show {
   visibility: visible;
