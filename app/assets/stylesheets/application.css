@@ -494,7 +494,9 @@ color:#e34e4e !important;
 .pointer {
   cursor: pointer;
 }
-
+iframe {
+  max-width: 100%;
+}
 @media only screen and (max-width: 750px) {
 .styleform, .userinfo, .notifications, .box, .flash-messages-container, form, .post, .username, .modalfg {
   width: 98%;
