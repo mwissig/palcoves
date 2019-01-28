@@ -47,7 +47,7 @@
 <br>
 
 <% else %>
-<small>by <%= link_to @po.username.name, username_path(@po.username.name) %> at
+<small>by <%= link_to @po.username.name, username_path(@po.username.name), :style=> 'color:' + @po.username.userstyle.post_text_color %> at
   <% if logged_in? && @current_user.time_zone != nil %>
 <%= @po.created_at.in_time_zone(@current_user.time_zone).strftime("%-l:%M%P on %b %-d, %Y") %></small>
 <% else %>
