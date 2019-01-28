@@ -77,9 +77,14 @@ times.</small>
 <% end %>
 <% end %>
 </div>
-<div class="signature" style="<%= @po.username.userstyle.signature_css %>max-width:100%;max-h@po.username.userstyle.post_background_coloreight:200px;visibility:visible;position:relative;">
+<div class="signature" style="<%= @po.username.userstyle.signature_css %>max-width:100% !important;max-height:200px !important;visibility:visible !important;position:relative !important;">
   <%= @po.username.userstyle.signature %>
 </div>
+<style>
+.comments a {
+  color: black !important;
+}
+</style>
 <div class="comments">
 <%# @po = po %>
 <% if @po.share_comment != nil %>
