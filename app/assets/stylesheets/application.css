@@ -152,6 +152,9 @@ code {
 border-radius: 5px;
 overflow: hidden;
 }
+.post iframe {
+  max-width: 100%;
+}
 .userpage {
   width: 100%;
   height: 100%;
@@ -498,6 +501,10 @@ color:#e34e4e !important;
   max-width: 98%;
 
 }
+.post iframe {
+  max-width: 98%;
+}
+
 .styleform, .userinfo {
   position: relative;
   margin: 0 auto;
