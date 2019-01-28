@@ -21,6 +21,8 @@
     <%= f.label "Add to gallery?" %><%= f.check_box :gallery %><br>
     <%= f.submit 'Edit Post' %>
     <% end %>
+    <br>
+      <span class="pointer" onclick="showEditModal(<%= @po.id %>)">Close this</span>
   </div>
 </div>
   <% end %>
