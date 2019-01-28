@@ -421,6 +421,9 @@ color:#e34e4e !important;
   width: 95%;
   height: 4em !important;
 }
+.shorttextarea {
+  height: 4em;
+}
 .gallerypreview {
   display: grid;
   grid-template-columns: 45% 45%;

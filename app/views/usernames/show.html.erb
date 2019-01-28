@@ -36,11 +36,14 @@
 <div class="styleform">
   <h2>Edit your post styles</h2>
 <%= simple_form_for([@username, @username.userstyle]) do |f| %>
-<%= f.input :post_text_color, require: true, as: :minicolors %><br>
-<%= f.input :post_background_color, require: true, as: :minicolors %><br>
-<%= f.input :page_background_color, require: true, as: :minicolors %><br>
-    <%= f.label 'Signature Text' %><%= f.text_field :signature %><br>
-      <%= f.label 'Custom CSS for Signature' %><%= f.text_field :signature_css %><%= link_to "What's CSS and how do I use it?", css_path %><br>
+<%= f.input :post_text_color, require: true, as: :minicolors %>
+<%= f.input :post_background_color, require: true, as: :minicolors %>
+<%= f.input :page_background_color, require: true, as: :minicolors %>
+    <%= f.label 'Signature Text' %><%= f.text_area :signature, :class => "shorttextarea" %><br>
+      <%= f.label 'Custom CSS for Signature' %><br>
+            <%= link_to "What's CSS and how do I use it?", css_path %><br>
+      <%= f.text_area :signature_css, :class => "shorttextarea" %><br>
+
     <%= f.submit 'Set styles' %>
     <% end %>
     <h2>Change your description</h2>
