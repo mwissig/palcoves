@@ -1,0 +1,26 @@
+<% if logged_in? %>
+<div class="modalbg" id="postEditModal-<%= @po.id %>">
+  <div class="modalfg">
+  <%= form_for([@po.username, @po]) do |f| %>
+    <% if @po.created_at.to_time > Time.now - 600 %>
+      <%= f.text_field :title, placeholder: 'title', require: true, minlength: 3, require: true, :id => "create-post-title", :onkeydown => "updatePostTitleCounter()" %><span id="post-title-char-count"></span><br>
+      You may use <%= link_to "BBcode", bbcode_path %> in this field.<br>
+      Insert: <input type="button" value="link" onclick="formatText ('url');" />
+      <input type="button" value="image" onclick="formatText ('img');" />
+      <input type="button" value="youtube" onclick="formatText ('youtube');" /><br>
+      <!-- <input type="button" value="dailymotion" onclick="formatText ('dailymotion');" />
+      <input type="button" value="vimeo" onclick="formatText ('vimeo');" /> <br> -->
+      <%= f.text_area :body, placeholder: 'body', require: true, minlength: 12, require: true, :id => "create-post-body", :onkeydown => "updatePostBodyCounter()" %><span id="post-body-char-count"></span><br>
+      <%# f.file_field :image, placeholder: 'upload an image' %>
+      <% else %>
+        You can no longer edit the content of this post.
+      <% end %>
+      <%= f.label "Edit your tags" %>
+    <%= f.text_field :tags, placeholder: 'tags, separated by spaces' %><br>
+    <%= f.label "Add to archive?" %><%= f.check_box :archive %><br>
+    <%= f.label "Add to gallery?" %><%= f.check_box :gallery %><br>
+    <%= f.submit 'Edit Post' %>
+    <% end %>
+  </div>
+</div>
+  <% end %>

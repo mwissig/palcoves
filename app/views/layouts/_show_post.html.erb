@@ -10,7 +10,7 @@
   <% end %>
   <% @username_selector = names.zip(ids) %>
 <% end %>
-<div class="post">
+<div class="post" id="post<%= @po.id %>">
   <div class="post_title"><h2>
 <%= link_to @po.title, username_post_path(@po.username.name, @po) %></h2></div>
 <% if @po.share_comment != nil %>
@@ -23,11 +23,18 @@
 <br>
 
 <% if @po.tags != nil %>
-<% @tagarray = @po.tags.split(" ") %>
-<% @tagarray.each do |tag| %>
-<span class="tag"> <%= link_to tag, results_path(q: tag) %></span>&nbsp
-<% end %>
-<% end %>
+  <% @tagarray = @po.tags.split(" ") %>
+  <% @tagarray.each do |tag| %>
+  <span class="tag"> <%= link_to tag, results_path(q: tag) %></span>&nbsp
+  <% end %>
+  <% if @po.username.user == @current_user %>
+    <%= render 'layouts/post_edit_modal' %>
+    <br>
+      <span class="pointer" onclick="showEditModal(<%= @po.id %>)">Edit</span>
+    <% end %>
+  <% end %>
+
+
 </div><div class="bottomhalf" style="background-color:<%= @po.username.userstyle.post_background_color %>;color:<%= @po.username.userstyle.post_text_color %>">
 <% if @po.share_comment != nil %>
 

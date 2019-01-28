@@ -93,3 +93,8 @@ function updateUsernameCounter(){
    var after_txt = val.substring(Field.selectionEnd, val.length);
    Field.value += '[' + tag + ']' + '[/' + tag + ']';
 }
+
+function showEditModal(id) {
+  document.getElementById('postEditModal-' + id).classList.toggle('show');
+  console.log(id);
+}
