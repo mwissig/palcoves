@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
 
 
             @final_results.uniq!
-            @posts = Post.all.where(id: @final_results.map(&:id)).distinct.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+            @posts = Post.all.where(id: @final_results.map(&:id)).distinct.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
 
               end
 
