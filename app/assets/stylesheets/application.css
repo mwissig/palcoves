@@ -461,15 +461,16 @@ color:#e34e4e !important;
 }
 .modalbg {
   width: 100%;
-  height: 100vh !important;
+  height: 100% !important;
   background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
   visibility: hidden;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+  bottom: 0;
   z-index: 2000;
 }
 .modalfg {
