@@ -57,7 +57,7 @@ class UsernamesController < ApplicationController
 
     def show
       @username = Username.friendly.find(params[:id])
-      @posts = Post.all.where(username_id: @username.id).order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+      @posts = Post.all.where("created_at > ?", Time.now - 2419200).where(username_id: @username.id).order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
       @archiveprev = @username.posts.order("created_at DESC").where(archive: true).limit(6)
       @galleryprev =  @username.posts.order("created_at DESC").where(gallery: true).limit(6)
     end

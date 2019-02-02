@@ -1,6 +1,7 @@
 <% if logged_in? %>
 <div class="modalbg" id="postEditModal-<%= @po.id %>">
   <div class="modalfg">
+          <div class="closeModal pointer" onclick="showEditModal(<%= @po.id %>)"><i class="fas fa-window-close"></i></div>
   <%= form_for([@po.username, @po]) do |f| %>
     <% if @po.created_at.to_time > Time.now - 600 %>
       <%= f.text_field :title, placeholder: 'title', require: true, minlength: 3, require: true, :id => "create-post-title", :onkeydown => "updatePostTitleCounter()" %><span id="post-title-char-count"></span><br>
@@ -22,7 +23,9 @@
     <%= f.submit 'Edit Post' %>
     <% end %>
     <br>
-      <span class="pointer" onclick="showEditModal(<%= @po.id %>)">Close this</span>
+<%= link_to username_post_path(@po.username, @po), method: :delete, data: { confirm: "Are you sure you want to delete the post '" + @po.title + "'?" }  do %>
+Delete this post?<i class="fas fa-trash-alt"></i>
+<% end %>
   </div>
 </div>
   <% end %>

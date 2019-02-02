@@ -491,8 +491,15 @@ color:#e34e4e !important;
   width: 95%;
   height: 6em;
 }
+.modalfg a {
+  color: black !important;
+}
 .pointer {
   cursor: pointer;
+}
+.closeModal {
+  position: relative;
+float: right;
 }
 iframe {
   max-width: 100%;

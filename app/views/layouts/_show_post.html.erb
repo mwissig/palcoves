@@ -38,7 +38,7 @@
   <% if @po.username.user == @current_user %>
     <%= render 'layouts/post_edit_modal' %>
     <br>
-      <span class="pointer" onclick="showEditModal(<%= @po.id %>)">Edit</span>
+      <div class="pointer closeModal" onclick="showEditModal(<%= @po.id %>)"><i class="fas fa-edit"></i></div>
     <% end %>
   <% end %>
 

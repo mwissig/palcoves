@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @posts = Post.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+    @posts = Post.all.where("created_at > ?", Time.now - 2419200).order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
     if logged_in?
       @tags = []
       @tagged_posts = []
@@ -33,14 +33,14 @@ class PagesController < ApplicationController
       end
 
     end
-        @posts = Post.all.where(id: @tagged_posts.map(&:id)).distinct.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+        @posts = Post.all.where(id: @tagged_posts.map(&:id)).distinct.where("created_at > ?", Time.now - 2419200).order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
   else
-        @posts = Post.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+        @posts = Post.all.where("created_at > ?", Time.now - 2419200).order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
   end
   end
 
 def browse
-  @posts = Post.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+  @posts = Post.all.where("created_at > ?", Time.now - 2419200).order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
 end
 
   def post
@@ -69,6 +69,7 @@ end
   end
 
   def oldposts
+    @posts = Post.all.where("created_at <= ?", Time.now - 2419200).where(username_id: @username.id).order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
   end
 
       def markallread
