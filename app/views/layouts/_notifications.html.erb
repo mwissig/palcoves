@@ -31,7 +31,7 @@ Deleted post
 
 <% elsif @note.kind == "reply comment" %>
  replied to your comment "
- <% if Post.find_by(id: @note.post_id) != nil && Comment.find_by(reply_id: @note.comment_id).body.truncate(25, separator: ' ') != nil %>
+ <% if Post.find_by(id: @note.post_id) != nil && Comment.find_by(reply_id: @note.comment_id) != nil %>
  <%= link_to Comment.find_by(reply_id: @note.comment_id).body.truncate(25, separator: ' '), username_post_path(@note.username, Post.find_by(id: @note.post_id)) %>
 <% else %>
 Deleted comment
