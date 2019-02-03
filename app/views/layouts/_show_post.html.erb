@@ -22,9 +22,13 @@
   <div class="post_title"><h2>
 <%= link_to @po.title, username_post_path(@po.username.name, @po) %></h2></div>
 <% if @po.share_comment != nil %>
-<% @op = Post.find_by(id: @po.op_id) %>
-<div class="post_body" style="background-color:<%= @op.username.userstyle.post_background_color %>;color:<%= @op.username.userstyle.post_text_color %>">
-  <% else %>
+  <% if Post.find_by(id: @po.op_id) != nil %>
+    <% @op = Post.find_by(id: @po.op_id) %>
+    <% else %>
+    <% @op = @po %>
+    <% end %>
+    <div class="post_body" style="background-color:<%= @op.username.userstyle.post_background_color %>;color:<%= @op.username.userstyle.post_text_color %>">
+    <% else %>
   <div class="post_body" style="background-color:<%= @po.username.userstyle.post_background_color %>;color:<%= @po.username.userstyle.post_text_color %>">
   <% end %>
 <%= @po.body.gsub(/\n/,'[br]').bbcode_to_html.gsub('[marquee]','<marquee>').gsub('[/marquee]','</marquee>').html_safe %>
@@ -45,14 +49,22 @@
 
 </div><div class="bottomhalf" style="background-color:<%= @po.username.userstyle.post_background_color %>;color:<%= @po.username.userstyle.post_text_color %>">
 <% if @po.share_comment != nil %>
-
+  <% if Post.find_by(id: @po.op_id) != nil %>
 <small>Shared by <%= link_to @po.username.name, username_path(@po.username.name), :style=> 'color:' + @po.username.userstyle.post_text_color %> from <%= link_to "original post", username_post_path(@op.username.name, @op), :style=> 'color:' + @po.username.userstyle.post_text_color %> by <%= link_to @op.username.name, username_path(@op.username.name), :style=> 'color:' + @po.username.userstyle.post_text_color %>  at
   <% if logged_in? && @current_user.time_zone != nil %>
 <%= @po.created_at.in_time_zone(@current_user.time_zone).strftime("%-l:%M%P on %b %-d, %Y") %>
+
 <% else %>
 <%= @po.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
 <% end %> with comment:<br><b><%= @po.share_comment %></b></small>
 <br>
+<% else %>
+<small>Shared by <%= link_to @po.username.name, username_path(@po.username.name), :style=> 'color:' + @po.username.userstyle.post_text_color %> from deleted post
+<% end %>
+     at
+  <% if logged_in? && @current_user.time_zone != nil %>
+<%= @po.created_at.in_time_zone(@current_user.time_zone).strftime("%-l:%M%P on %b %-d, %Y") %></small>
+<% end %>
 
 <% else %>
 <small>by <%= link_to @po.username.name, username_path(@po.username.name), :style=> 'color:' + @po.username.userstyle.post_text_color %> at
@@ -92,14 +104,19 @@ times.</small>
 <% end %>
 <% if @show_comments != nil %>
 <% @post_comments = @po.comments.where(reply_id: nil) %>
+<% elsif @po == nil %>
+<% @post_comments = nil %>
 <% else %>
 <% @post_comments = [@po.comments.where(reply_id: nil, private: false).last] %>
 <% end %>
+  <% if @po == nil %>
+  <% else %>
 <%= render 'layouts/comment' %>
 
 
 
 
 <%= render 'layouts/comment_on_post_form' %>
+<% end %>
 </div>
 </div>
