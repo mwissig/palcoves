@@ -1,0 +1,5 @@
+<br>
+<%= @us.posts.count %> posts |
+<%= @us.comments.count %> comments |
+follows <%= @us.follows.count %> |
+followed by <%= Follow.where(recipient_id: @us.id).count %>
