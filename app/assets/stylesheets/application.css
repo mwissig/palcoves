@@ -37,6 +37,7 @@ header, footer {
   background-color: black;
   color: white;
   display: flex;
+  line-height: 2.5em;
   justify-content: space-around;
 }
 a, a:visited {
@@ -71,6 +72,7 @@ header ul li {
   background-color: white;
   border-radius: 5px;
   padding: 5px 10px;
+  margin: 5px;
   color: black;
 }
 header ul li a {
@@ -125,10 +127,13 @@ code {
 .username {
   border: 2px solid black;
   margin: 5px;
+  border-radius: 5px;
   padding: 5px;
-  width: 50%;
+  max-width: 100%;
+  width: 90%;
   margin: 5px auto;
 }
+
 .default {
   background-color: yellow;
 }
@@ -270,7 +275,8 @@ color:#e34e4e !important;
   background-color: white;
   padding: 5px;
   border-radius: 5px;
-  max-width: 50%
+  max-width: 70%;
+    border: 2px solid black;
 }
 .styleform {
   max-width: 22%;
@@ -517,5 +523,12 @@ iframe {
   top: auto;
   left: auto;
   right: auto;
+}
+
+header {
+  height: 4em;
+}
+.content {
+  padding-top: 4em;
 }
 }
