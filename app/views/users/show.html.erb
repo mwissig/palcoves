@@ -8,7 +8,10 @@
     <% if @current_user.usernames.count > 0 %>
       <% @current_user.usernames.each do |u| %>
         <% if u.default == true %>
-          <div class="default username"><%= link_to u.name + "'s profile", username_path(u.name) %>
+          <div class="default username"><%= link_to u.name + "'s profile", username_path(u.name) %><br>
+            <%= u.posts.count %> posts |
+    <%= u.comments.count %> comments |
+        <%= u.follows.count %> follows
           </div>
           <% else %>
           <div class="username"><%= link_to u.name + "'s profile", username_path(u.name) %>
@@ -18,7 +21,10 @@
               <%# f.hidden_field :id, value: u.id %>
               <%= f.hidden_field :default, value: true %>
               <%= f.submit "Make default" %>
-            <% end %>
+            <% end %><br>
+            <%= u.posts.count %> posts |
+    <%= u.comments.count %> comments |
+        <%= u.follows.count %> follows
           </div>
           <% end %>
       <% end %>
