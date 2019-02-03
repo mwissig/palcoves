@@ -510,6 +510,27 @@ float: right;
 iframe {
   max-width: 100%;
 }
+.stats {
+  display: inline;
+  list-style: none;
+  margin: 1em;
+    line-height: 2.5px;
+    display: flex;
+flex-wrap: wrap;
+}
+.userstats {
+  width: 95%;
+
+}
+.stats li {
+  display: inline;
+  padding: 0.5em 0.6em;
+  background-color: white;
+  border: 2px solid gray;
+  border-radius: 5px;
+  margin: 5px;
+  line-height: 2.5px;
+}
 @media only screen and (max-width: 750px) {
 .styleform, .userinfo, .notifications, .box, .flash-messages-container, form, .post, .username, .modalfg {
   width: 98%;

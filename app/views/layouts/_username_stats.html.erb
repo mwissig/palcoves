@@ -1,5 +1,19 @@
-<br>
-<%= @us.posts.count %> posts |
-<%= @us.comments.count %> comments |
-follows <%= @us.follows.count %> |
-followed by <%= Follow.where(recipient_id: @us.id).count %>
+<div class="userstats">
+<ul class="stats">
+  <li><%= @us.posts.count %> posts </li>
+  <li><%= @us.comments.count %> comments </li>
+<li>follows <%= @us.follows.count %></li><li>
+followed by <%= Follow.where(recipient_id: @us.id).count %> </li>
+<li><% @pcc = 0 %>
+
+<% @us.posts.each do |post| %>
+<% @pcc += post.comments.count %>
+<% end %>
+posts commented on <%= @pcc %> times
+</li>
+<li>sent <%= @us.pms.count %> private messages</li>
+<li>revieved <%= Pm.where(recipient_id: @us.id).count %> private messages</li>
+  <li>saved <%= @us.posts.where(archive: true).count %> posts to archive</li>
+    <li>saved <%= @us.posts.where(gallery: true).count %> posts to gallery</li>
+</ul>
+</div>
