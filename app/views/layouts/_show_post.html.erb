@@ -58,18 +58,23 @@
 <%= @po.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
 <% end %> with comment:<br><b><%= @po.share_comment %></b></small>
 <br>
+<% if @po.username.user == @current_user %>
 <div class="closeModal pointer">
 <%= link_to username_post_path(@po.username, @po), method: :delete, data: { confirm: "Are you sure you want to delete the post '" + @po.title + "'?" }  do %>
 Delete this post?<i class="fas fa-trash-alt"></i>
 <% end %>
 </div>
+<% end %>
+
 <% else %>
 <small>Shared by <%= link_to @po.username.name, username_path(@po.username.name), :style=> 'color:' + @po.username.userstyle.post_text_color %> from deleted post
-  <div class="closeModal pointer">
-  <%= link_to username_post_path(@po.username, @po), method: :delete, data: { confirm: "Are you sure you want to delete the post '" + @po.title + "'?" }  do %>
-  Delete this post?<i class="fas fa-trash-alt"></i>
-  <% end %>
-  </div>
+<% if @po.username.user == @current_user %>
+<div class="closeModal pointer">
+<%= link_to username_post_path(@po.username, @po), method: :delete, data: { confirm: "Are you sure you want to delete the post '" + @po.title + "'?" }  do %>
+Delete this post?<i class="fas fa-trash-alt"></i>
+<% end %>
+</div>
+<% end %>
 
 <% end %>
      at
