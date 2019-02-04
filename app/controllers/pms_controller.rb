@@ -9,10 +9,10 @@ class PmsController < ApplicationController
             @username = Username.friendly.find(params[:username_id])
             @sender = Username.friendly.find(params[:id])
             @msgs = []
-            Pm.where(username_id: @username.id).each do |pm|
+            Pm.where(username_id: @username.id, recipient_id: @sender.id).each do |pm|
               @msgs << pm
             end
-            Pm.where(recipient_id: @username.id).each do |pm|
+            Pm.where(recipient_id: @username.id, username_id: @sender.id).each do |pm|
               @msgs << pm
             end
             @messages = Pm.all.where(id: @msgs.map(&:id))
