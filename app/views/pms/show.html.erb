@@ -9,12 +9,12 @@
 <% if msg.username_id == @sender.id %>
   <div class ="msgFrom" style="background-color:<%= @sender.userstyle.post_background_color %>;color:<%= @sender.userstyle.post_text_color %>;">
     <%= link_to @sender.name, username_path(@sender) %> said
-    "<%= msg.body %>" sent at <%= msg.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
+    "<%= msg.body.gsub(/\n/,'[br]').bbcode_to_html.gsub('[marquee]','<marquee>').gsub('[/marquee]','</marquee>').html_safe %>" sent at <%= msg.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
   </div>
 <% elsif msg.username_id == @username.id %>
   <div class ="msgTo" style="background-color:<%= @username.userstyle.post_background_color %>;color:<%= @username.userstyle.post_text_color %>;">
     <%= link_to @username.name, username_path(@username) %> said
-    "<%= msg.body %>" sent at <%= msg.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
+    "<%= msg.body.gsub(/\n/,'[br]').bbcode_to_html.gsub('[marquee]','<marquee>').gsub('[/marquee]','</marquee>').html_safe %>" sent at <%= msg.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
   </div>
 <% end %>
 
