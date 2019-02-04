@@ -78,9 +78,10 @@ class UsernamesController < ApplicationController
   end
 
   def confirm_merge
+    if logged_in?
     @username_to_save = Username.friendly.find(params[:username_id])
     @username_to_delete = Username.friendly.find(params[:delete_id])
-
+    if @username_to_save.user == @current_user && @username_to_delete.user == @current_user
     @username_to_delete.comments.each do |comment|
       comment.username_id = @username_to_save.id
       comment.save!
@@ -124,6 +125,10 @@ class UsernamesController < ApplicationController
   else
     redirect_to root_path
   end
+else
+      redirect_to root_path
+end
+end
 end
 
   def set_default
