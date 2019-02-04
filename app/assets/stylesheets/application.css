@@ -532,6 +532,9 @@ flex-wrap: wrap;
   border-right: 1px solid black;
   padding: 3px;
 }
+.msgFrom img, .msgTo img {
+  max-width: 100%;
+}
 .stats li {
   display: inline;
   padding: 0.5em 0.6em;
