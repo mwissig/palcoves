@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'bbcode' => 'pages#bbcode'
   get 'inbox/read' => 'pages#readnotes'
   get 'oldposts' => 'pages#oldposts'
@@ -6,6 +7,8 @@ Rails.application.routes.draw do
   get 'password_resets/new'
   get 'password_resets/edit'
  get '/:token/confirm_email/', :to => "users#confirm_email", as: 'confirm_email'
+ get '/usernames/:username_id/merge/:id' => 'usernames#merge', :as => :merge
+  get '/usernames/:username_id/confirm_merge' => 'usernames#confirm_merge', :as => :confirm_merge
     get 'usernames/:id/archive' => 'usernames#archive', :as => :archive
     get 'usernames/:id/gallery' => 'usernames#gallery', :as => :gallery
   get 'search' => 'pages#search'
@@ -57,6 +60,9 @@ end
 end
 
 resources :usernames do
+  collection do
+    get :merge
+  end
    delete 'delete' => 'usernames#destroy'
    resources :pms do
       delete 'delete' => 'pms#destroy'

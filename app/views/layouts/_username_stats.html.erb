@@ -12,7 +12,7 @@ followed by <%= Follow.where(recipient_id: @us.id).count %> </li>
 posts commented on <%= @pcc %> times
 </li>
 <li>sent <%= @us.pms.count %> private messages</li>
-<li>revieved <%= Pm.where(recipient_id: @us.id).count %> private messages</li>
+<li>recieved <%= Pm.where(recipient_id: @us.id).count %> private messages</li>
   <li>saved <%= @us.posts.where(archive: true).count %> posts to archive</li>
     <li>saved <%= @us.posts.where(gallery: true).count %> posts to gallery</li>
 </ul>

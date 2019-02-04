@@ -13,4 +13,7 @@ class Username < ApplicationRecord
   validates :name, presence: true, length: { maximum: 100, minimum: 3 }, format: {  with: /\A[-_, a-zA-Z0-9]+\Z/, message: "username contains invalid characters" }
   extend FriendlyId
   friendly_id :name, use: :slugged
+
+
+
 end

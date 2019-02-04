@@ -9,18 +9,59 @@
       <% @current_user.usernames.each do |u| %>
         <% if u.default == true %>
           <div class="default username"><%= link_to u.name + "'s profile", username_path(u.name) %>
+
               <% @us = u %>
 <%= render 'layouts/username_stats' %>
+<%  names = [] %>
+<%  ids = [] %>
+<%  @current_user.usernames.each do |us| %>
+  <% if u != us %>
+  <%  names.push us.name %>
+  <% end %>
+<%  end %>
+<%  @current_user.usernames.each do |us| %>
+  <% if u != us %>
+  <%  ids.push us.id %>
+    <% end %>
+<%  end %>
+<% @username_selector = names.zip(ids) %>
+<% if @username_selector != [] %>
+<br>Merge with
+<%= form_tag merge_path(u), method: 'get' do %>
+<%= select_tag :delete_id, options_for_select(@username_selector) %>
+<%= submit_tag "Merge" %>
+<% end %>
+<% end %>
           </div>
+
           <% else %>
           <div class="username"><%= link_to u.name + "'s profile", username_path(u.name) %>
             <%= form_for u do |f| %>
 
               <%= f.hidden_field :name, value: u.name %>
-              <%# f.hidden_field :id, value: u.id %>
               <%= f.hidden_field :default, value: true %>
               <%= f.submit "Make default" %>
             <% end %>
+
+            <%  names = [] %>
+            <%  ids = [] %>
+            <%  @current_user.usernames.each do |us| %>
+              <% if u != us %>
+              <%  names.push us.name %>
+              <% end %>
+            <%  end %>
+            <%  @current_user.usernames.each do |us| %>
+              <% if u != us %>
+              <%  ids.push us.id %>
+                <% end %>
+            <%  end %>
+            <% @username_selector = names.zip(ids) %>
+<br>Merge with
+<%= form_tag merge_path(u), method: 'get' do %>
+<%= select_tag :delete_id, options_for_select(@username_selector) %>
+<%= submit_tag "Merge" %>
+<% end %>
+  <br>
             <% @us = u %>
 <%= render 'layouts/username_stats' %>
           </div>

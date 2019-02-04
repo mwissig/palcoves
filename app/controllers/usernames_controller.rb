@@ -69,8 +69,62 @@ class UsernamesController < ApplicationController
     def destroy
     @username = Username.friendly.find(params[:id])
     @username.destroy
+        redirect_to user_path(@current_user)
+  end
+
+  def merge
+    @username_to_save = Username.friendly.find(params[:username_id])
+    @username_to_delete = Username.find(params[:delete_id])
+  end
+
+  def confirm_merge
+    @username_to_save = Username.friendly.find(params[:username_id])
+    @username_to_delete = Username.friendly.find(params[:delete_id])
+
+    @username_to_delete.comments.each do |comment|
+      comment.username_id = @username_to_save.id
+      comment.save!
+    end
+    @username_to_delete.follows.each do |follow|
+      follow.username_id = @username_to_save.id
+      @follow.save!
+    end
+    Follow.all.where(recipient_id: @username_to_delete.id).each do |follow|
+      follow.recipient_id = @username_to_save.id
+      follow.save!
+    end
+    @username_to_delete.pms.each do |pm|
+      pm.username_id = @username_to_save.id
+      pm.save!
+    end
+    Pm.all.where(recipient_id: @username_to_delete.id).each do |pm|
+      pm.recipient_id = @username_to_save.id
+      pm.save!
+    end
+    @username_to_delete.notifications.each do |notification|
+      notification.username_id = @username_to_save.id
+      notification.save!
+    end
+    Notification.all.where(sender_id: @username_to_delete.id).each do |note|
+      note.sender_id = @username_to_save.id
+      note.save!
+    end
+    @username_to_delete.posts.each do |post|
+      post.username_id = @username_to_save.id
+      post.save!
+    end
+    if @username_to_delete.default == true
+      @username_to_save.default = true
+      @username_to_save.save!
+    end
+    @username_to_delete.userstyle.destroy
+    @username_to_delete.destroy
+    if logged_in?
+    redirect_to user_path(@current_user)
+  else
     redirect_to root_path
   end
+end
 
   def set_default
     @username ||= Username.friendly.find(params[:id])

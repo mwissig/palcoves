@@ -1,0 +1,12 @@
+<h1>Merge Usernames</h1>
+<div class="box">
+<p>Are you sure you want to merge <%= @username_to_save.name %> with  <%= @username_to_delete.name %>?</p>
+<p>
+The username <%= @username_to_delete.name %> will be deleted and all posts, comments, follows, pms and notifications will be transferred to the username  <%= @username_to_save.name %>.
+
+<%= form_tag confirm_merge_path(@username_to_save, @username_to_delete), method: 'get'  do %>
+<%= hidden_field_tag :delete_id, value = @username_to_delete.name %>
+<%= submit_tag "Merge" %>
+
+<% end %>
+</div>
