@@ -21,8 +21,8 @@
     <% ids.push u.id %>
   <% end %>
   <% @username_selector = names.zip(ids) %>
-  <% @username = @current_user.usernames.find_by(default: true) %>
-  <%= form_for([@username, Pm.new]) do |f| %>
+  <% @thusername = @current_user.usernames.find_by(default: true) %>
+  <%= form_for([@thusername, Pm.new]) do |f| %>
   <%= f.hidden_field :recipient_id, value: @username.id %>
   <%= f.text_field :body, placeholder: 'body', minlength: 12, require: true %><br>
   <%= f.select :username_id, options_for_select(@username_selector) %>
