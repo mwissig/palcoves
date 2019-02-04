@@ -10,6 +10,29 @@
   <h2><%= @username.name %></h2>
   <p><%= @username.profile.gsub(/\n/,'[br]').bbcode_to_html.gsub('[marquee]','<marquee>').gsub('[/marquee]','</marquee>').html_safe %></p>
 </div>
+
+<% if logged_in? %>
+<% names = ["(Default) " + @current_user.usernames.find_by(default: true).name] %>
+<% ids = [@current_user.usernames.find_by(default: true).id] %>
+  <% @current_user.usernames.each do |u| %>
+    <% names.push u.name %>
+  <% end %>
+  <% @current_user.usernames.each do |u| %>
+    <% ids.push u.id %>
+  <% end %>
+  <% @username_selector = names.zip(ids) %>
+  <% @username = @current_user.usernames.find_by(default: true) %>
+  <%= form_for([@username, Pm.new]) do |f| %>
+  <%= f.hidden_field :recipient_id, value: @username.id %>
+  <%= f.text_field :body, placeholder: 'body', minlength: 12, require: true %><br>
+  <%= f.select :username_id, options_for_select(@username_selector) %>
+  <%= f.submit("Send PM") %>
+  <% end %>
+<%# button_to "Send a Private Message", username_pm_path(@username.name, Username.find_by(id: @note.sender_id).name), method: :get %>
+
+<% end %>
+
+
   <h2><%= button_to "Archive", archive_path(@username.name), method: :get %></h2>
     <div class="archivepreview">
       <% @archiveprev.each do |ar| %>

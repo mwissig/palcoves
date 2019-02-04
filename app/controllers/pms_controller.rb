@@ -33,7 +33,7 @@ def create
             read: false
           )
     end
-    redirect_back(fallback_location: root_path)
+    redirect_to username_pm_path(@pm.username.name, Username.find_by(id: @pm.recipient_id).name);
     else
       render 'new'
       msg = @pm.errors.full_messages
