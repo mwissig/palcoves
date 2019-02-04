@@ -13,8 +13,8 @@
 <% @usernames.uniq! %>
 <% @usernames.each do |us| %>
 <%= link_to us.name, username_path(us) %> (<%= link_to "show conversation", username_pm_path(@username, us) %>)<br>
-  <% if  @pms_to_me.order("created_at DESC").where(username_id: @usernames.map(&:id)).first != nil %>
-    <% @lastpm = @pms_to_me.order("created_at DESC").where(username_id: @usernames.map(&:id)).first %>
+  <% if  @pms_to_me.order("created_at DESC").where(username_id: us.id).where(username_id: @usernames.map(&:id)).first != nil %>
+    <% @lastpm = @pms_to_me.order("created_at DESC").where(username_id: us.id).where(username_id: @usernames.map(&:id)).first %>
 Most recent message: "<%= @lastpm.body %>" sent at <%= @lastpm.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
 <% end %>
     <br>
