@@ -43,6 +43,10 @@
               <%= f.submit "Make default" %>
             <% end %>
 
+  <br>
+            <% @us = u %>
+<%= render 'layouts/username_stats' %>
+
             <%  names = [] %>
             <%  ids = [] %>
             <%  @current_user.usernames.each do |us| %>
@@ -61,9 +65,6 @@
 <%= select_tag :delete_id, options_for_select(@username_selector) %>
 <%= submit_tag "Merge" %>
 <% end %>
-  <br>
-            <% @us = u %>
-<%= render 'layouts/username_stats' %>
           </div>
           <% end %>
       <% end %>
