@@ -1,2 +1,23 @@
-<h1>Pms#show</h1>
-<p>Find me in app/views/pms/show.html.erb</p>
+<h1><%= @username.name %>'s conversation with<%= @sender.name %></h1>
+<div class="box">
+<% if logged_in? %>
+  <% if @username.user == @current_user %>
+<h2><%= @username.name %>'s conversation with<%= @sender.name %></h2>
+
+<% @conversation.each do |msg| %>
+<% if msg.username_id = @username.id %>
+<div class ="msgFrom">
+<%= msg.body %>
+</div>
+<% else %>
+<div class ="msgTo">
+<%= msg.body %>
+</div>
+<% end %>
+<% end %>
+
+<% else %>
+You are unauthorized to see this page.
+<% end %>
+<% end %>
+</div>

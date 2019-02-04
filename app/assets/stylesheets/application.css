@@ -522,6 +522,12 @@ flex-wrap: wrap;
   width: 95%;
 
 }
+.msgFrom {
+  background-color: gray;
+}
+.msgFrom {
+  background-color: red;
+}
 .stats li {
   display: inline;
   padding: 0.5em 0.6em;

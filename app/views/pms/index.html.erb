@@ -1,2 +1,22 @@
-<h1>Pms#index</h1>
-<p>Find me in app/views/pms/index.html.erb</p>
+<h1>Your private messages</h1>
+<div class="box">
+  <% if logged_in? %>
+  <% if @username.user == @current_user %>
+<h2>You have messages from</h2>
+<% @usernames = [] %>
+<% @pms_to_me.each do |pm| %>
+  <% @usernames << Username.find_by(id: pm.username_id) %><br>
+<% end %>
+<% @usernames.uniq! %>
+<% @usernames.each do |us| %>
+<%= link_to us.name, username_path(us) %> (<%= link_to "show conversation", username_pm_path(@username, us) %>)<br>
+    <% @lastpm = @pms_to_me.order("created_at DESC").where(username_id: @usernames.map(&:id)).first %>
+Most recent message: "<%= @lastpm.body %>" sent at <%= @lastpm.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
+
+    <br>
+<% end %>
+<% else %>
+You are unauthorized to see this page.
+<% end %>
+<% end %>
+</div>
