@@ -22,20 +22,10 @@
 
 <% end %>
 
-<h2>to you</h2>
-<% @pms.each do |pm| %>
-<% @pm = pm %>
-<% if @current_user == Username.where(id: pm.recipient_id)[0].user %>
-<%= render 'layouts/pm' %><br>
+<h2>Private messages</h2>
+<% @current_user.usernames.each do |us| %>
+<%= link_to "Private messages for " + us.name, username_pms_path(us.name) %><br>
 <% end %>
-<% end %><h2>
 
-from you</h2>
-<% @pms.each do |pm| %>
-<% @pm = pm %>
-<% if @current_user == Username.where(id: pm.username_id)[0].user %>
-<%= render 'layouts/pm' %><br>
-<% end %>
-<% end %>
 </div>
 <% end %>

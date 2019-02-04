@@ -1,21 +1,31 @@
-<h1><%= @username.name %>'s conversation with<%= @sender.name %></h1>
+<h1><%= @username.name %>'s conversation with <%= @sender.name %></h1>
 <div class="box">
 <% if logged_in? %>
   <% if @username.user == @current_user %>
-<h2><%= @username.name %>'s conversation with<%= @sender.name %></h2>
+<h2><%= @username.name %>'s conversation with <%= @sender.name %></h2>
 
 <% @conversation.each do |msg| %>
-<% if msg.username_id = @username.id %>
-<div class ="msgFrom">
-<%= msg.body %>
-</div>
-<% else %>
-<div class ="msgTo">
-<%= msg.body %>
-</div>
-<% end %>
+
+<% if msg.username_id == @sender.id %>
+  <div class ="msgFrom" style="background-color:<%= @sender.userstyle.post_background_color %>;color:<%= @sender.userstyle.post_text_color %>;">
+    <%= link_to @sender.name, username_path(@sender) %> said
+    "<%= msg.body %>" sent at <%= msg.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
+  </div>
+<% elsif msg.username_id == @username.id %>
+  <div class ="msgTo" style="background-color:<%= @username.userstyle.post_background_color %>;color:<%= @username.userstyle.post_text_color %>;">
+    <%= link_to @username.name, username_path(@username) %> said
+    "<%= msg.body %>" sent at <%= msg.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>
+  </div>
 <% end %>
 
+
+<% end %>
+<%= form_for([@username, @pm]) do |f| %>
+  <%= f.text_area :body, placeholder: 'body', minlength: 12, require: true %><br>
+  <%= f.hidden_field :username_id, value: @username.id %>
+    <%= f.hidden_field :recipient_id, value: @sender.id %>
+    <%= f.submit "Send" %>
+    <% end %>
 <% else %>
 You are unauthorized to see this page.
 <% end %>

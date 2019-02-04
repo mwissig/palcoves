@@ -523,10 +523,14 @@ flex-wrap: wrap;
 
 }
 .msgFrom {
-  background-color: gray;
+  margin-left: 2em;
+  border-left: 1px solid black;
+  padding: 3px;
 }
-.msgFrom {
-  background-color: red;
+.msgTo {
+  margin-right: 2em;
+  border-right: 1px solid black;
+  padding: 3px;
 }
 .stats li {
   display: inline;
