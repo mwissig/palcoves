@@ -7,6 +7,9 @@
 <% @pms_to_me.each do |pm| %>
   <% @usernames << Username.find_by(id: pm.username_id) %><br>
 <% end %>
+<% @pms_from_me.each do |pm| %>
+  <% @usernames << Username.find_by(id: pm.recipient_id) %><br>
+<% end %>
 <% @usernames.uniq! %>
 <% @usernames.each do |us| %>
 <%= link_to us.name, username_path(us) %> (<%= link_to "show conversation", username_pm_path(@username, us) %>)<br>

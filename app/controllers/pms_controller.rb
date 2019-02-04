@@ -1,7 +1,8 @@
 class PmsController < ApplicationController
   def index
-        @username = Username.friendly.find(params[:username_id])
+    @username = Username.friendly.find(params[:username_id])
     @pms_to_me = Pm.where(recipient_id: @username.id)
+    @pms_from_me = Pm.where(username_id: @username.id)
   end
 
   def show
