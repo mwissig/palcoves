@@ -1,11 +1,20 @@
-<% if logged_in? %>
+<% if logged_in? && @current_user.usernames.present? %>
+<% if @current_user.usernames.find_by(default: true).follows.where(tag: @results) == nil %>
 <% names = ["(Default) " + @current_user.usernames.find_by(default: true).name] %>
 <% ids = [@current_user.usernames.find_by(default: true).id] %>
+<% else %>
+<% names = [] %>
+<% ids = [] %>
+<% end %>
   <% @current_user.usernames.each do |u| %>
+    <% if !u.follows.where(tag: @results).exists? %>
     <% names.push u.name %>
+    <% end %>
   <% end %>
   <% @current_user.usernames.each do |u| %>
+    <% if !u.follows.where(tag: @results).exists? %>
     <% ids.push u.id %>
+    <% end %>
   <% end %>
   <% @username_selector = names.zip(ids) %>
 <% end %>

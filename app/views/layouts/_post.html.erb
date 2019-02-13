@@ -1,8 +1,8 @@
+<% if @posts != nil %>
 <div class="digg_pagination">
-
 <%= will_paginate @posts %>
-
 </div>
+
 
 <% if logged_in? && @current_user.usernames.present? %>
 <% ids = [@current_user.usernames.find_by(default: true).id] %>
@@ -24,3 +24,4 @@
 <div class="digg_pagination">
 <%= will_paginate @posts %>
 </div>
+<% end %>
