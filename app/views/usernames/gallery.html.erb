@@ -1,5 +1,37 @@
 <% @userpage = true %>
 <div class="userpage" style="background-color:<%= @username.userstyle.page_background_color %>">
+  <h1> </h1>
 <h1><%= @username.name %>'s Gallery</h1>
-<%= render 'layouts/post' %>
+
+
+<% if @posts != nil %>
+<div class="digg_pagination">
+<%= will_paginate @posts %>
+</div>
+
+<div class="gallery">
+<% if logged_in? && @current_user.usernames.present? %>
+<% ids = [@current_user.usernames.find_by(default: true).id] %>
+  <%     names = ["(Default) " + @current_user.usernames.find_by(default: true).name] %>
+  <% @current_user.usernames.each do |u| %>
+    <% names.push u.name %>
+  <% end %>
+  <% @current_user.usernames.each do |u| %>
+    <% ids.push u.id %>
+  <% end %>
+  <% @username_selector = names.zip(ids) %>
+<% end %>
+<% @posts.each do |po| %>
+<% @po = po %>
+<%= render 'layouts/show_post' %>
+<% end %>
+</div>
+
+<div class="digg_pagination">
+<%= will_paginate @posts %>
+</div>
+<% end %>
+
+
+
 </div>
