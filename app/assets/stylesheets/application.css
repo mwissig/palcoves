@@ -273,6 +273,7 @@ color:#e34e4e !important;
 }
 .styleform, .notifications, .box, .flash-messages-container {
   margin: 5px auto;
+  margin-top: 2em;
   background-color: white;
   padding: 5px;
   border-radius: 5px;
@@ -514,10 +515,12 @@ iframe {
 .stats {
   display: inline;
   list-style: none;
-  margin: 1em;
+  margin: 0.5em;
     line-height: 2.5px;
     display: flex;
 flex-wrap: wrap;
+width: 98%;
+padding: 0;
 }
 .userstats {
   width: 95%;
@@ -573,7 +576,9 @@ flex-wrap: wrap;
   max-width: 98%;
 
 }
-
+.styleform, .userinfo, .notifications, .box, .flash-messages-container, {
+  margin-top: 4em;
+}
 .styleform, .userinfo {
   position: relative;
   margin: 0 auto;

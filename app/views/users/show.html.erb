@@ -4,7 +4,9 @@
 
   <% if @user == @current_user %>
 
-  Your accounts<br>
+<h2>  <%= @current_user.email %>'s usernames</h2>
+<center>
+  <%= link_to "Create a new username", new_username_path %></center>
     <% if @current_user.usernames.count > 0 %>
       <% @current_user.usernames.each do |u| %>
         <% if u.default == true %>
@@ -71,7 +73,7 @@
     <% else %>
     You have no usernames<br>
     <% end %>
-<%= link_to "make a username?", new_username_path %>
+
   <% else %>
     This page is private
   <% end %>

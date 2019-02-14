@@ -1,9 +1,14 @@
+<div class="box">
 <h1>New account</h1>
+<p>Thank you for signing up for Palcoves! We need a little bit of information from you to set up your account.</p>
 <%= simple_form_for User.new do |f| %>
-  <%= f.email_field :email, placeholder: 'email', require: true %>
-  <%= f.label 'time zone' %>
+<small>Please enter a valid email address. We will not share this information with anyone.</small><br>
+  <%= f.email_field :email, placeholder: 'Enter your email address', require: true %><br>
+  <small>We will send you a confirmation email to activate your account. Please click the link in that email! You will be able to create a username after your account is activated.</small><br>
   <%= f.input :time_zone, require: true %>
-  <%= f.password_field :password, placeholder: 'Password', require: true, minlength: 6 %>
-  <%= f.password_field :password_confirmation, placeholder: 'Password confirmation', require: true, minlength: 6 %>
+  <small>We need your time zone to give you accurate times and dates.</small><br>
+  <%= f.password_field :password, placeholder: 'Create a password', require: true, minlength: 6 %><br>
+  <%= f.password_field :password_confirmation, placeholder: 'Repeat password to confirm', require: true, minlength: 6 %><br>
   <%= f.submit 'Register' %>
 <% end %>
+</div>
