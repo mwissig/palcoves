@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'usernames/:id/old' => 'usernames#old', :as => :old
   get 'bbcode' => 'pages#bbcode'
   get 'inbox/read' => 'pages#readnotes'
   get 'oldposts' => 'pages#oldposts'

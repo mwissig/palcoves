@@ -1,5 +1,9 @@
 <% @po = @post %>
 <div class="userpage" style="background-color:<%= @po.username.userstyle.page_background_color %>">
 <% @show_comments = true %>
+<% if @post.username.user == @current_user || @post.created_at < Time.now - 2419200 || @post.archive == true || @post.gallery == true %>
 <%= render 'layouts/show_post' %>
+<% else %>
+You are not authorized to view this post
+<% end %>
 </div>

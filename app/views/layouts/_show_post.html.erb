@@ -45,7 +45,17 @@
       <div class="pointer closeModal" onclick="showEditModal(<%= @po.id %>)"><i class="fas fa-edit"></i></div>
     <% end %>
   <% end %>
-
+<div class="icons">
+  <% if @po.created_at < Time.now - 2419200 %>
+<i class="fas fa-clock" title="Expired"></i>
+<% end %>
+  <% if @po.archive == true %>
+<i class="fas fa-file-alt" title="Archive"></i>
+<% end %>
+<% if @po.gallery == true %>
+<i class="fas fa-images" title="Gallery"></i>
+<% end %>
+</div>
 
 </div><div class="bottomhalf" style="background-color:<%= @po.username.userstyle.post_background_color %>;color:<%= @po.username.userstyle.post_text_color %>">
 <% if @po.share_comment != nil %>

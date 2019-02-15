@@ -10,7 +10,7 @@
     <% if @current_user.usernames.count > 0 %>
       <% @current_user.usernames.each do |u| %>
         <% if u.default == true %>
-          <div class="default username"><%= link_to u.name + "'s profile", username_path(u.name) %>
+          <div class="default username"><%= link_to u.name + "'s profile & new posts", username_path(u.name) %> | <%= link_to u.name + "'s expired posts", old_path(u.name) %> | <%= link_to u.name + "'s gallery", gallery_path(u.name) %> | <%= link_to u.name + "'s archive", archive_path(u.name) %>
 
               <% @us = u %>
 <%= render 'layouts/username_stats' %>
@@ -42,19 +42,20 @@
           </div>
 
           <% else %>
-          <div class="username"><%= link_to u.name + "'s profile", username_path(u.name) %>
-            <%= form_for u do |f| %>
+          <div class="username"><%= link_to u.name + "'s profile & new posts", username_path(u.name) %> | <%= link_to u.name + "'s expired posts", old_path(u.name) %> | <%= link_to u.name + "'s gallery", gallery_path(u.name) %> | <%= link_to u.name + "'s archive", archive_path(u.name) %>
 
-              <%= f.hidden_field :name, value: u.name %>
-              <%= f.hidden_field :default, value: true %>
-              <%= f.submit "Make default" %>
-            <% end %>
 
   <br>
 
             <% @us = u %>
 <%= render 'layouts/username_stats' %>
 <hr>
+<%= form_for u do |f| %>
+
+  <%= f.hidden_field :name, value: u.name %>
+  <%= f.hidden_field :default, value: true %>
+  <%= f.submit "Make " + u.name + " your default account" %>
+<% end %><br>
 <%= form_for u do |f| %>
 <%= f.text_field :name, value: u.name %>
 <%= f.submit "Change name" %>

@@ -607,6 +607,9 @@ padding: 0;
   height: 0;
   visibility: hidden;
 }
+.icons {
+  float: left;
+}
 @media only screen and (max-width: 750px) {
 .styleform, .userinfo, .notifications, .box, .flash-messages-container, form, .post, .username, .modalfg {
   width: 98%;

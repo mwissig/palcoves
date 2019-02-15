@@ -1,0 +1,12 @@
+<div class="userpage" style="background-color:<%= @username.userstyle.page_background_color %>">
+
+<% @userpage = true %>
+<h2>Old Posts</h2>
+<h1><%= @username.name %>'s expired posts</h1>
+<% if logged_in? && @username.user == @current_user %>
+
+<%= render 'layouts/post' %>
+<% else %>
+You are not authorized to view this page
+<% end %>
+</div>
