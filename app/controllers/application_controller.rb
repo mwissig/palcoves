@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
 
                 @final_results.uniq!
 
-                @usernames = Username.where(id: @final_results.map(&:id)).distinct.order("name DESC").paginate(:page => params[:page], :per_page => 20)
+                @usernames = Username.where(id: @final_results.map(&:id)).distinct.order("name ASC").paginate(:page => params[:page], :per_page => 20)
 
               end
 
