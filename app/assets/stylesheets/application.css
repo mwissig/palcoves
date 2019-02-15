@@ -273,7 +273,6 @@ color:#e34e4e !important;
 }
 .styleform, .notifications, .box, .flash-messages-container {
   margin: 5px auto;
-  margin-top: 2em;
   background-color: white;
   padding: 5px;
   border-radius: 5px;
@@ -591,14 +590,19 @@ padding: 0;
   padding: 0 1em;
   text-align: center;
 }
+.collapse {
+  height: auto;
+  overflow: visible;
+}
+.expander {
+  height: 0;
+  visibility: hidden;
+}
 @media only screen and (max-width: 750px) {
 .styleform, .userinfo, .notifications, .box, .flash-messages-container, form, .post, .username, .modalfg {
   width: 98%;
   max-width: 98%;
 
-}
-.styleform, .userinfo, .notifications, .box, .flash-messages-container, {
-  margin-top: 4em;
 }
 .styleform, .userinfo {
   position: relative;
@@ -609,10 +613,10 @@ padding: 0;
 }
 
 header {
-  height: 4em;
+  height: 5em;
 }
 .content {
-  padding-top: 4em;
+  padding-top: 6em;
 }
 .archive {
   padding: 0;
@@ -628,7 +632,15 @@ header {
 .archive .post .post_body {
   padding: 1em;
 }
-
+.collapse {
+  height: 1em;
+  overflow: hidden;
+}
+.expander {
+  visibility: visible;
+  float: right;
+  margin: 0 .5em;
+}
 }
 
 

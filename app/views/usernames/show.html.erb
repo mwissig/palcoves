@@ -6,8 +6,9 @@
 
 
 <div class="box userinfo">
-  <div class="usernameprofile" style="background-color:<%= @username.userstyle.post_background_color %>;color:<%= @username.userstyle.post_text_color %>">
-  <h2><%= @username.name %></h2>
+  <div class="usernameprofile collapse" id="profile" style="background-color:<%= @username.userstyle.post_background_color %>;color:<%= @username.userstyle.post_text_color %>">
+  <h2><%= @username.name %>  <span class="expander"><i class="fas fa-expand-arrows-alt" onclick="expand('profile')"></i></span></h2>
+
   <p><%= @username.profile.gsub(/\n/,'[br]').bbcode_to_html.gsub('[marquee]','<marquee>').gsub('[/marquee]','</marquee>').html_safe %></p>
 </div>
 
@@ -33,8 +34,8 @@
 <% end %>
 
 
-  <h2><%= button_to "Archive", archive_path(@username.name), method: :get %></h2>
-    <div class="archivepreview">
+  <h2><%= button_to "Archive", archive_path(@username.name), method: :get %><span class="expander"><i class="fas fa-expand-arrows-alt" onclick="expand('arch')"></i></span></h2>
+    <div class="archivepreview collapse" id='arch'>
       <% @archiveprev.each do |ar| %>
       <div class="arEach">
           <%= link_to ar.title.truncate(35, separator: ' '), username_post_path(ar.username.name, ar) %><br>
@@ -42,8 +43,8 @@
       </div>
       <% end %>
     </div>
-  <h2><%= button_to "Gallery", gallery_path(@username.name), method: :get %></h2>
-      <div class="gallerypreview">
+  <h2><%= button_to "Gallery", gallery_path(@username.name), method: :get %> <span class="expander"><i class="fas fa-expand-arrows-alt" onclick="expand('gall')"></i></span></h2>
+      <div class="gallerypreview collapse" id='gall'>
         <% @galleryprev.each do |ga| %>
         <div class="galEach" style="background-color:<%= @username.userstyle.post_background_color %>;color:<%= @username.userstyle.post_text_color %>;">
           <div class="galtop">
@@ -59,8 +60,8 @@
 
 <% if logged_in? %>
 <% if @username.user == @current_user %>
-<div class="styleform">
-  <h2>Edit your post styles</h2>
+<div class="styleform collapse" id='style'>
+  <h2>Edit your post styles <span class="expander"><i class="fas fa-expand-arrows-alt" onclick="expand('style')"></i></span></h2>
 <%= simple_form_for([@username, @username.userstyle]) do |f| %>
 <%= f.input :post_text_color, require: true, as: :minicolors %>
 <%= f.input :post_background_color, require: true, as: :minicolors %>

@@ -1,6 +1,6 @@
   <% if logged_in? && @current_user.usernames.present? %>
-<div class="box userinfo">
-  <h2>Your Follows</h2>
+<div class="box userinfo collapse" id="follows">
+  <h2>Your Follows <span class="expander"><i class="fas fa-expand-arrows-alt" onclick="expand('follows')"></i></span></h2>
   <ul class="follows">
 <% @current_user.usernames.each do |us| %>
   <% us.follows. each do |fol| %>

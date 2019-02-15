@@ -96,5 +96,8 @@ function updateUsernameCounter(){
 
 function showEditModal(id) {
   document.getElementById('postEditModal-' + id).classList.toggle('show');
-  console.log(id);
+}
+
+function expand(id) {
+  document.getElementById(id).classList.toggle('collapse');
 }
