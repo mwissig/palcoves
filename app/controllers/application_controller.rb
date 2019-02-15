@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
             if @searchtype == "People"
 
               usernames_by_name = Username.pluck(:name)
-              usernames_by_profile = Username.pluck(:profile)
+              # usernames_by_profile = Username.pluck(:profile)
               matches = []
               @final_results = []
               usernames_by_name.each do |u|
@@ -40,21 +40,21 @@ class ApplicationController < ActionController::Base
                 matches << u if u.downcase.include?(query)
                 end
               end
-              usernames_by_profile.each do |u|
-                if u != nil
-                matches << u if u.downcase.include?(query)
-                end
-              end
+              # usernames_by_profile.each do |u|
+              #   if u != nil
+              #   matches << u if u.downcase.include?(query)
+              #   end
+              # end
 
               matches.each do |match|
                 x = Username.where(name: match)
-                z = Username.where(profile: match)
+                # z = Username.where(profile: match)
                 x.each do |y|
                   @final_results << y
                 end
-                z.each do |y|
-                  @final_results << y
-                end
+                # z.each do |y|
+                #   @final_results << y
+                # end
               end
 
                 @final_results.uniq!

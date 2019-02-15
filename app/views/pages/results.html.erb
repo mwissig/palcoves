@@ -46,6 +46,12 @@
   <% end %>
 
 <% if @searchtype == "People" && @usernames != nil %>
+You searched for users whose names include "<%= @results %>" and got <%= @final_results.count %>
+<% if @final_results.count == 1 %>
+result.
+<% else %>
+results.
+<% end %>
   <% @usernames.each do |u| %>
   <div class="usernameprofile collapse" id="profile" style="background-color:<%= u.userstyle.post_background_color %>;color:<%= u.userstyle.post_text_color %>">
   <h2><%= link_to u.name, username_path(u.name) %>  <span class="expander"><i class="fas fa-expand-arrows-alt" onclick="expand('profile')"></i></span></h2>
