@@ -1,4 +1,17 @@
-<div class="box"><h2>List of valid bbcode tags</h2>
+<div class="box"><h1>BBCode</h1>
+<p>BBCode is a markup language used on messageboards that allows users to use HTML for formatting in a way that doesn't compromise site security. Many of them are identical to the HTML tag that would be used for the same purpose, but using square brackets instead of angle brackets.</p>
+<p>This means that you can use it to post images and videos, and change things like the size and color of text in your posts.</p>
+<p>Most of these work by surrounding the text in an opening tag and a closing tag, for example:</p>
+<p>
+<code>[b]Text[/b]</code> creates bold text that looks like this: <b>Text</b>
+</p>
+<p>Some tags require text inside the tag itself. For example:</p>
+  <p><code>[url]http://www.google.com[/url]</code> creates a link to google.com where the link text is the URL itself: <a href="http://www.google.com">http://www.google.com</a></p>
+  <p>
+  <code>[url=http://www.google.com]Google[/url]</code> creates a link to google.com where the link text is the word Google: <a href="http://www.google.com">Google</a></p>
+  <p>For all URLs, the leading http:// or https:// must be included or the link will not work correctly.</p>
+<p>Currently, images have to be hosted externally (upload them to a site like Tinypic, Imgur, etc) because we use a free hosting service that doesn't include space for uploaded files.</p>
+  <h2>List of valid bbcode tags</h2>
   From the <a href="https://github.com/cpjolicoeur/bb-ruby">bbruby gem</a> by Craig P Jolicoeur.
   <div class='bbcode'>
     <div> Opening tag </div><div> Content between tags </div><div>Closing tag</div><div> Effect </div>
@@ -31,7 +44,7 @@
   <div> [img]          </div> <div> full url of image  </div><div>  [/img] </div><div>  image</div>
   <div> [youtube]      </div> <div> full url of youtube video  </div><div>  [/youtube] </div><div>  youtube video</div>
   <div> [gvideo]       </div> <div> full url of google video  </div><div>  [/gvideo] </div><div>  google video</div>
-  <div> [vimeo]        </div> <div> full url of viemo video </div><div>  [/vimeo] </div><div>  vimeo video</div>
+  <div> [vimeo]        </div> <div> full url of vimeo video </div><div>  [/vimeo] </div><div>  vimeo video</div>
   <div> [email]        </div> <div> email address </div><div>  [/email] </div><div>  email</div>
   <!-- <div> [align]        </div> <div> text  </div><div>  [/] </div><div>  align</div> -->
   <div> [left]         </div> <div> text  </div><div>  [/left] </div><div>  left align text</div>
