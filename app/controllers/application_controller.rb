@@ -22,16 +22,54 @@ class ApplicationController < ActionController::Base
               end
               @username_selector = names.zip(ids)
             end
-
+            @searchtype = params[:t]
             @results = params[:q]
             query = params[:q].downcase
-            post_by_tags = Post.pluck(:tags)
             matches = []
             @final_results = []
 
+
+            if @searchtype == "People"
+
+              usernames_by_name = Username.pluck(:name)
+              usernames_by_profile = Username.pluck(:profile)
+              matches = []
+              @final_results = []
+              usernames_by_name.each do |u|
+                if u != nil
+                matches << u if u.downcase.include?(query)
+                end
+              end
+              usernames_by_profile.each do |u|
+                if u != nil
+                matches << u if u.downcase.include?(query)
+                end
+              end
+
+              matches.each do |match|
+                x = Username.where(name: match)
+                z = Username.where(profile: match)
+                x.each do |y|
+                  @final_results << y
+                end
+                z.each do |y|
+                  @final_results << y
+                end
+              end
+
+                @final_results.uniq!
+
+                @usernames = Username.where(id: @final_results.map(&:id)).distinct.order("name DESC").paginate(:page => params[:page], :per_page => 20)
+
+              end
+
+
+
+             if @searchtype == "Tags"
+            post_by_tags = Post.pluck(:tags)
               post_by_tags.each do |t|
                 if t != nil
-                matches << t if t.downcase.include?(query)
+                matches << t if t.downcase == query
               end
               end
 
@@ -44,8 +82,12 @@ class ApplicationController < ActionController::Base
 
             @final_results.uniq!
             @posts = Post.all.where(id: @final_results.map(&:id)).distinct.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+          end
 
-              end
+
+
+  end
+
 
               def followtag
                 Follow.create(

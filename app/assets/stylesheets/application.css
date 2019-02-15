@@ -63,6 +63,12 @@ h1, h2 {
 p {
 
 }
+h2 a {
+  color: white;
+}
+h2 a:visited {
+  color: white;
+}
 footer {
   top: auto;
   bottom: 0;
@@ -115,6 +121,9 @@ textarea {
 }
 form input[type="button"], form input[type="checkbox"] {
   width: auto;
+}
+.search form input {
+  width: 60%;
 }
 form input[type="submit"], .button, button{
   background-color: black;

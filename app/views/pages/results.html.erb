@@ -20,22 +20,38 @@
 <% end %>
 
 <h1>Search Results</h1>
-<div class="box">You searched for the tag "<%= @results %>" and got <%= @final_results.count %>
-<% if @final_results.count == 1 %>
-result.
-<% else %>
-  results.
-<% end %>
-<% if logged_in? && @current_user.usernames.present? %>
-Follow tag as
-<% @username = @current_user.usernames.find_by(default: true) %>
-<%= form_for([@username, Follow.new]) do |f| %>
-<%= f.hidden_field :tag, value: @results %>
-<%= f.select :username_id, options_for_select(@username_selector) %>
-<%= f.submit("Follow") %> ?
-<% end %>
-<% end %>
+
+<div class="box">
+<h2><%= @searchtype %></h2>
+<% if @searchtype == "Tags" %>
+    You searched for the tag "<%= @results %>" and got <%= @final_results.count %>
+    <% if @final_results.count == 1 %>
+    result.
+  <% else %>
+    results.
+  <% end %>
+  <% if logged_in? && @current_user.usernames.present? %>
+  Follow tag as
+  <% @username = @current_user.usernames.find_by(default: true) %>
+  <%= form_for([@username, Follow.new]) do |f| %>
+  <%= f.hidden_field :tag, value: @results %>
+  <%= f.select :username_id, options_for_select(@username_selector) %>
+  <%= f.submit("Follow") %> ?
+  <% end %>
+  <% end %>
+  </div>
+  <div class="posts">
+  <%= render 'layouts/post' %>
+  </div>
+  <% end %>
+
+<% if @searchtype == "People" && @usernames != nil %>
+  <% @usernames.each do |u| %>
+  <div class="usernameprofile collapse" id="profile" style="background-color:<%= u.userstyle.post_background_color %>;color:<%= u.userstyle.post_text_color %>">
+  <h2><%= link_to u.name, username_path(u.name) %>  <span class="expander"><i class="fas fa-expand-arrows-alt" onclick="expand('profile')"></i></span></h2>
+
+  <p><%= u.profile.gsub(/\n/,'[br]').bbcode_to_html.gsub('[marquee]','<marquee>').gsub('[/marquee]','</marquee>').html_safe %></p>
 </div>
-<div class="posts">
-<%= render 'layouts/post' %>
-</div>
+
+  <% end %>
+<% end %>
