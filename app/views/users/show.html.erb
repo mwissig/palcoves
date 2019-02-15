@@ -14,6 +14,11 @@
 
               <% @us = u %>
 <%= render 'layouts/username_stats' %>
+<hr>
+<%= form_for u do |f| %>
+<%= f.text_field :name, value: u.name %>
+<%= f.submit "Change name" %>
+<% end %>
 <%  names = [] %>
 <%  ids = [] %>
 <%  @current_user.usernames.each do |us| %>
@@ -46,9 +51,14 @@
             <% end %>
 
   <br>
+
             <% @us = u %>
 <%= render 'layouts/username_stats' %>
-
+<hr>
+<%= form_for u do |f| %>
+<%= f.text_field :name, value: u.name %>
+<%= f.submit "Change name" %>
+<% end %>
             <%  names = [] %>
             <%  ids = [] %>
             <%  @current_user.usernames.each do |us| %>
