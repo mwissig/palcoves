@@ -245,6 +245,11 @@ color:#e34e4e !important;
   overflow: hidden;
   text-align: center;
 }
+.fade .avatar {
+  width: 0.8em;
+  height: 0.8em;
+  font-size: 0.8em;
+}
 .comment p {
   margin: 0;
 }
