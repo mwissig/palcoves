@@ -2,7 +2,7 @@
   <div class="avatarbox"><div class="avatar" style="background-color:<%= @com.username.userstyle.post_background_color %>"></div></div>
   <div class="commentbody">
   <p>
-  <%= @com.body %>
+  <%= @com.body.gsub(/\n/,'[br]').bbcode_to_html.gsub('[marquee]','<marquee>').gsub('[/marquee]','</marquee>').html_safe %>
 <hr style=" border-bottom: 2px solid <%= @com.username.userstyle.post_background_color %>;"><i>
 <% if @com.private == true %>
 Private message to <%= link_to Username.find_by(id: @com.recipient_id).name, username_path(Username.find_by(id: @com.recipient_id).name) %>

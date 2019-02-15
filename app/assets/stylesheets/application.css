@@ -211,6 +211,14 @@ color:#e34e4e !important;
   background-color: rgb(204, 204, 204);
     border-left: 2px solid black;
 }
+.commentbody img {
+  max-width: 100%;
+  max-height: 250px;
+}
+.commentbody iframe {
+  max-width: 100%;
+  max-height: 250px;
+}
 .avatar {
   width: 35px;
   height: 35px;
