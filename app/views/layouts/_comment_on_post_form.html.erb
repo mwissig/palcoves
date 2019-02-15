@@ -20,7 +20,7 @@
 <%= f.submit 'Comment' %>
 
 <% if @po.username.user == @current_user %>
-<% @username_selector.pop %>
+<% @username_selector.shift %>
 <% end %>
 
 <% end %>

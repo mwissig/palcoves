@@ -19,7 +19,7 @@
 <% end %>
 
   <% if @co.username.user == @current_user || @co.post.username.user == @current_user %>
-  <% @username_selector.pop %>
+  <% @username_selector.shift %>
   <% end %>
 
 <% else %>
