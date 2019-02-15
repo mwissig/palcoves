@@ -12,6 +12,7 @@
   <%= f.text_area :body, placeholder: 'body', require: true, minlength: 12, require: true, :id => "create-post-body", :onkeydown => "updatePostBodyCounter()" %><span id="post-body-char-count"></span><br>
   <%# f.file_field :image, placeholder: 'upload an image' %>
     <%= f.text_field :tags, placeholder: 'tags, separated by spaces' %><br>
+    <small>Posts become private after 28 days. Including a post in your archive or gallery will make it stay up permanently. You can change this at any time.</small><br>
   <%= f.label "Add to archive?" %><%= f.check_box :archive %><br>
     <%= f.label "Add to gallery?" %><%= f.check_box :gallery %><br>
   <%= f.submit 'Post' %>

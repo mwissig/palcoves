@@ -96,6 +96,9 @@ form {
   max-width: 50%;
   margin: 0 auto;
 }
+form input {
+  width: 95%;
+}
 form input, textarea, select {
   border: 1px solid black;
   border-radius: 0;
@@ -107,13 +110,17 @@ form input, textarea, select {
     font-size: 16px;
 }
 textarea {
-  width: 50%;
+  width: 95%;
   height: 10em;
 }
-form input[type="submit"], .button, button {
+form input[type="button"], form input[type="checkbox"] {
+  width: auto;
+}
+form input[type="submit"], .button, button{
   background-color: black;
   color: white;
   border-radius: 5px;
+  width: auto;
 }
 .button a:link, .button a:visited {
   color: white !important;
