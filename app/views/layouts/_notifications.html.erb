@@ -18,7 +18,7 @@ Deleted post
 
 <% elsif @note.kind == "private_message" %>
  sent you a message at <%= @note.created_at.strftime("%-l:%M%P on %b %-d, %Y") %>:
-<div class="notebody"><b> <%= @note.body %></b> <%= link_to "(See conversation)", username_pm_path(@note.username.name, Username.find_by(id: @note.sender_id).name) %></div>
+<div class="notebody"><b> <%= @note.body %></b> <i><%= link_to "(See conversation)", username_pm_path(@note.username.name, Username.find_by(id: @note.sender_id).name) %></i></div>
 
 <% elsif @note.kind == "comment" %>
  commented on your post "
@@ -42,7 +42,8 @@ Deleted comment
 
 <% elsif @note.kind == "follow" %>
  followed you at <%= @note.created_at.strftime("%-l:%M%P on %b %-d, %Y") %> and said:
-<div class="notebody"><b> <%= @note.body %></b></div>
+<div class="notebody"><b> <%= @note.body %></b> <i><%= link_to "(See conversation)", username_pm_path(@note.username.name, Username.find_by(id: @note.sender_id).name) %></i></div>
+
 <% end %>
 
 </div>

@@ -24,6 +24,11 @@ class FollowsController < ApplicationController
         body: @follow.body,
         read: false
       )
+      Pm.create(
+        username_id: @follow.username_id,
+        body: @follow.body,
+        recipient_id: @follow.recipient_id
+      )
     end
       redirect_back(fallback_location: root_path)
     else
