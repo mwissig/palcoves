@@ -410,7 +410,7 @@ color:#e34e4e !important;
   background-color: white;
   border-radius: 5px;
   max-width: 100%;
-  width: auto;
+  width: 50%;
   margin: 5px auto;
   background: white;
   cursor: default;
@@ -647,7 +647,9 @@ padding: 0;
   left: auto;
   right: auto;
 }
-
+.digg_pagination {
+  width: 100%;
+}
 header {
   height: 5em;
     line-height: 2.5em;
